@@ -15,19 +15,15 @@ buildscript {
     }
 
 }
-dependencies {
-    compile 'org.jsoup:jsoup:1.9.2'
-}
 
 allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'https://jitpack.io' }
 
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
+
 
