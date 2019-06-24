@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_focus"
+            android:icon="@drawable/ic_star_black_24dp"
+            android:title="关注" />
+        <item
+            android:id="@+id/nav_game"
+            android:icon="@drawable/ic_face_black_24dp"
+            android:title="我的游戏" />
+        <item
+            android:id="@+id/nav_notification"
+            android:icon="@drawable/ic_notifications_black_24dp"
+            android:title="通知" />
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="设置" />
+    </group>
+
+</menu>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="25sp"
+        android:text="@string/下载中心" />
+    <ListView
+        android:id="@+id/downloadv_ss"
+        android:layout_width="343dp"
+        android:layout_height="645dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="166dp" />
+    <ImageView
+        android:id="@+id/download_back"
+        android:layout_width="30dp"
+        android:layout_height="46dp"
+        android:scaleType="fitEnd"
+        android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
+
+</FrameLayout>
