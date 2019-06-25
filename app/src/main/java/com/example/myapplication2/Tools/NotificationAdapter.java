@@ -12,16 +12,12 @@ import com.example.myapplication2.R;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-public class DownloadAdapter extends BaseAdapter {
-
-    private List<DownloadController> list = new ArrayList<>();
+public class NotificationAdapter extends BaseAdapter {
+    private List<String> list = new ArrayList<>();
     private Context context;
-    public DownloadAdapter (List<DownloadController> list, Context context) {
+    public NotificationAdapter (List<String> list, Context context) {
         this.list = list;
         this.context = context;
-
 
     }
 
@@ -45,15 +41,15 @@ public class DownloadAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-            ViewHolder holder = null;
+        ViewHolder holder = null;
         if (convertView == null) {
             holder = new ViewHolder();
-            convertView = LayoutInflater.from(context).inflate(R.layout.download_item, parent, false);
-            holder.downloadtv_ss = (TextView) convertView.findViewById(R.id.downloadtv_ss);
+            convertView = LayoutInflater.from(context).inflate(R.layout.notification_item, parent, false);
+            holder.notification_tv = (TextView) convertView.findViewById(R.id.notification_tv);
             convertView.setTag(holder);
         }
-            holder = (ViewHolder) convertView.getTag();
-            //holder.downloadtv_ss.setText(list.get(position).getGamename());
+        holder = (ViewHolder) convertView.getTag();
+        //holder.downloadtv_ss.setText(list.get(position).getGamename());
         return convertView;
     }
 
@@ -66,7 +62,8 @@ public class DownloadAdapter extends BaseAdapter {
      *
      */
     class ViewHolder {
-        TextView downloadtv_ss;
+        TextView notification_tv;
     }
 
 }
+

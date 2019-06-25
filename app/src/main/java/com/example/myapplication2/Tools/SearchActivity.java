@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -16,6 +18,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.myapplication2.Crawl_data;
 import com.example.myapplication2.FilterListener;
 import com.example.myapplication2.GameinfoActivity;
 import com.example.myapplication2.R;
@@ -26,7 +29,7 @@ import java.util.List;
 public class SearchActivity extends AppCompatActivity {
     private EditText et_ss;
     private ListView lsv_ss;
-    private List<String> list = new ArrayList<String>();
+    private List<String> list = new ArrayList<>();
     boolean isFilter;
     private MyAdapter adapter = null;
     @Override
@@ -82,15 +85,7 @@ public class SearchActivity extends AppCompatActivity {
      * 简单的list集合添加一些测试数据
      */
     private void initData() {
-        list.add("看着飞舞的尘埃   掉下来");
-        list.add("没人发现它存在");
-        list.add("多自由自在");
-        list.add("可世界都爱热热闹闹");
-        list.add("容不下   我百无聊赖");
-        list.add("不应该   一个人 发呆");
-        list.add("只有我   守着安静的沙漠");
-        list.add("等待着花开");
-        list.add("只有我   看着别人的快乐");
+        getdata();
     }
 
     private void setListeners() {
@@ -136,4 +131,20 @@ public class SearchActivity extends AppCompatActivity {
         et_ss = (EditText) findViewById(R.id.et_ss);// EditText控件
         lsv_ss = (ListView)findViewById(R.id.lsv_ss);// ListView控件
     }
+
+    private void getdata(){
+
+        new Thread(){
+            public void run(){
+                Crawl_data test = new Crawl_data("https://www.taptap.com/categories");
+                test.run();
+                for (int i=0;i<test.getNewgame().size();i++){
+                    list.add(test.getNewgame().get(i).getName());
+                };
+            }
+        }.start();
+
+
+    }
+
 }
