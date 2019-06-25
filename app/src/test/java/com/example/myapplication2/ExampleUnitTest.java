@@ -11,7 +11,8 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+    public void run(){
+        Crawl_data test = new Crawl_data("https://www.taptap.com/categories");
+        test.run();
     }
 }
