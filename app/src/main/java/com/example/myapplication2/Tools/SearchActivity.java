@@ -2,7 +2,10 @@ package com.example.myapplication2.Tools;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -22,6 +25,8 @@ import com.example.myapplication2.Crawl_data;
 import com.example.myapplication2.FilterListener;
 import com.example.myapplication2.GameinfoActivity;
 import com.example.myapplication2.R;
+import com.example.myapplication2.SQLiteDbHelper;
+import com.example.myapplication2.View.Game;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -133,18 +138,18 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void getdata(){
-
-        new Thread(){
-            public void run(){
-                Crawl_data test = new Crawl_data("https://www.taptap.com/categories");
-                test.run();
-                for (int i=0;i<test.getNewgame().size();i++){
-                    list.add(test.getNewgame().get(i).getName());
-                };
+        SQLiteDbHelper helper = new SQLiteDbHelper(getApplicationContext());
+        SQLiteDatabase database = helper.getWritableDatabase();
+        ContentValues cValue = new ContentValues();
+        Cursor cursor = database.query ("game",null,null,null,null,null,null);
+        if(cursor.moveToFirst()) {
+            while (cursor.moveToNext()) {
+                String username=cursor.getString(0);
+                list.add(username);
+                System.out.println(username);
             }
-        }.start();
+        }
 
-
-    }
+}
 
 }

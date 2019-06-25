@@ -14,5 +14,6 @@ public class ExampleUnitTest {
     public void run(){
         Crawl_data test = new Crawl_data("https://www.taptap.com/categories");
         test.run();
+
     }
 }

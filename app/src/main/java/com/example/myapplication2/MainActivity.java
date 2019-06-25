@@ -1,6 +1,9 @@
 package com.example.myapplication2;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -68,11 +71,13 @@ public class MainActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
         navigationView.setNavigationItemSelectedListener(this);
         BottomNavigationView navView = findViewById(R.id.bottom_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         mViewPager = findViewById(R.id.viewPager);
         initFragments();
+        getdate();
     }
 
     private void initFragments(){
@@ -141,4 +146,31 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public void getdate(){
+
+        new Thread(){
+            public void run(){
+                Crawl_data test = new Crawl_data("https://www.taptap.com/categories");
+                test.run();
+                SQLiteDbHelper helper = new SQLiteDbHelper(getApplicationContext());
+                SQLiteDatabase database = helper.getWritableDatabase();
+                ContentValues cValue = new ContentValues();
+                for (int i=0;i<test.getNewgame().size();i++){
+                    cValue.put("name",test.getNewgame().get(i).getName());
+                    database.replace(SQLiteDbHelper.TABLE_GAME, null,cValue);
+                };
+                Cursor cursor = database.query ("game",null,null,null,null,null,null);
+                if(cursor.moveToFirst()) {
+                    while (cursor.moveToNext()) {
+                        String username=cursor.getString(0);
+                        System.out.println(username);
+                    }
+                }
+
+            }
+        }.start();
+    }
+
+
 }

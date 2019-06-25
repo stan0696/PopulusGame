@@ -47,13 +47,13 @@ public class Crawl_data {
 
                         Element span=gamedoc.select(".card-app-title").get(i);
                         String text=span.text();
-                        System.out.println(text);
+                        //System.out.println(text);
 
                         Game nowgame =new Game(text);
                         newgame.add(nowgame);
                         for (Element tagelement:gamedoc.select(".card-tags").get(i).select("a")
                         ) {
-                            System.out.println(tagelement.text());
+                            //System.out.println(tagelement.text());
                             nowgame.addTag(tagelement.text());
                         }
 
