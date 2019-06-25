@@ -1,11 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="206dp"
-        android:layout_height="265dp"
-        android:text="home" />
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView_introduce0"
+                android:layout_width="match_parent"
+                android:layout_height="188dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="fitXY"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/zoro"
+                tools:layout_editor_absoluteX="8dp" />
+
+            <ImageView
+                android:id="@+id/imageView_game0"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_below="@id/imageView_introduce0"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="fitXY"
+                app:layout_constraintStart_toStartOf="@+id/imageView_introduce0"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_introduce0"
+                app:srcCompat="@drawable/zoro" />
+
+            <TextView
+                android:id="@+id/pointText0"
+                android:layout_width="74dp"
+                android:layout_height="23dp"
+                android:layout_marginEnd="8dp"
+                android:text="评分："
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView_game0" />
+
+            <TextView
+                android:id="@+id/point0"
+                android:layout_width="74dp"
+                android:layout_height="37dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="9.0"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="28sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView_game0"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/game_name0"
+                android:layout_width="62dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="游戏1"
+                android:textSize="22sp"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@+id/imageView_game0"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_introduce0" />
+
+            <TextView
+                android:id="@+id/game_introduce0"
+                android:layout_width="181dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="这是游戏1的简介另外凑一个字数"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView_game0"
+                app:layout_constraintStart_toEndOf="@+id/imageView_game0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView_introduce1"
+                android:layout_width="match_parent"
+                android:layout_height="188dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="fitXY"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/zoro"
+                tools:layout_editor_absoluteX="8dp" />
+
+            <ImageView
+                android:id="@+id/imageView_game1"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_below="@id/imageView_introduce1"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="fitXY"
+                app:layout_constraintStart_toStartOf="@+id/imageView_introduce1"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_introduce1"
+                app:srcCompat="@drawable/zoro" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView_introduce2"
+                android:layout_width="match_parent"
+                android:layout_height="188dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="fitXY"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/zoro"
+                tools:layout_editor_absoluteX="8dp" />
+
+            <ImageView
+                android:id="@+id/imageView_game2"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_below="@id/imageView_introduce2"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="fitXY"
+                app:layout_constraintStart_toStartOf="@+id/imageView_introduce2"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_introduce2"
+                app:srcCompat="@drawable/zoro" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView_introduce3"
+                android:layout_width="match_parent"
+                android:layout_height="188dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="fitXY"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/zoro"
+                tools:layout_editor_absoluteX="8dp" />
+
+            <ImageView
+                android:id="@+id/imageView_game3"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_below="@id/imageView_introduce3"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="fitXY"
+                app:layout_constraintStart_toStartOf="@+id/imageView_introduce3"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_introduce3"
+                app:srcCompat="@drawable/zoro" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>
