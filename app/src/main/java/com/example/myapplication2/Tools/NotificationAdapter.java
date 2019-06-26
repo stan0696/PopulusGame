@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication2.R;
@@ -46,6 +47,9 @@ public class NotificationAdapter extends BaseAdapter {
             holder = new ViewHolder();
             convertView = LayoutInflater.from(context).inflate(R.layout.notification_item, parent, false);
             holder.notification_tv = (TextView) convertView.findViewById(R.id.notification_tv);
+            holder.gamename_iv = convertView.findViewById(R.id.gamename_iv);
+            holder.delete_iv = convertView.findViewById(R.id.delete_iv);
+            holder.gameicon_iv = convertView.findViewById(R.id.gameicon_iv);
             convertView.setTag(holder);
         }
         holder = (ViewHolder) convertView.getTag();
@@ -63,6 +67,9 @@ public class NotificationAdapter extends BaseAdapter {
      */
     class ViewHolder {
         TextView notification_tv;
+        TextView gamename_iv;
+        ImageView gameicon_iv;
+        ImageView delete_iv;
     }
 
 }
