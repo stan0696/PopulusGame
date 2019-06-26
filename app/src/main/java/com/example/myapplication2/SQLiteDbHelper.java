@@ -12,10 +12,22 @@ public class SQLiteDbHelper  extends SQLiteOpenHelper {
     public static final int DB_VERSION = 1;
 
     public static final String TABLE_GAME= "game";
-
+    public static final String NAME= "name";
+    public static final String GAMEID= "gameid";
+    public static final String ICON= "icon";
+    public static final String INTRODUCTION= "introduction";
+    public static final String DOWNLOADURL= "downloadurl";
+    public static final String TITLEIMAGE= "titleImage";
+    public static final String MARK= "mark";
     //创建 students 表的 sql 语句
     private static final String GAME_CREATE_TABLE_SQL = "CREATE TABLE IF NOT EXISTS " + TABLE_GAME
-            +" (name varchar(30));";
+            +"("+ NAME + " varchar(10), " +
+               GAMEID+ " Integer primary key, " +
+               ICON+ " varchar(10)," +
+             INTRODUCTION + " TEXT ," +
+             DOWNLOADURL + " TEXT," +
+             TITLEIMAGE + "TEXT," +
+             MARK + "Integer)";
 
     public SQLiteDbHelper(Context context) {
         // 传递数据库名与版本号给父类
