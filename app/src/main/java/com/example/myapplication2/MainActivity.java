@@ -158,6 +158,7 @@ public class MainActivity extends AppCompatActivity
                 ContentValues cValue = new ContentValues();
                 for (int i=0;i<test.getNewgame().size();i++){
                     cValue.put("name",test.getNewgame().get(i).getName());
+                    cValue.put("gameid",test.getNewgame().get(i).getID());
                     database.replace(SQLiteDbHelper.TABLE_GAME, null,cValue);
                 };
                 Cursor cursor = database.query ("game",null,null,null,null,null,null);
