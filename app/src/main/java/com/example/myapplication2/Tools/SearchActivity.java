@@ -140,7 +140,6 @@ public class SearchActivity extends AppCompatActivity {
     private void getdata(){
         SQLiteDbHelper helper = new SQLiteDbHelper(getApplicationContext());
         SQLiteDatabase database = helper.getWritableDatabase();
-        ContentValues cValue = new ContentValues();
         Cursor cursor = database.query ("game",null,null,null,null,null,null);
         if(cursor.moveToFirst()) {
             while (cursor.moveToNext()) {

@@ -1,6 +1,10 @@
 package com.example.myapplication2;
 
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
 
@@ -24,8 +28,11 @@ public class Crawl_data {
         this.url=url;
     }
 
-    public void run(){
+    public void run(Context context){
         newgame =new ArrayList<>();
+        SQLiteDbHelper helper = new SQLiteDbHelper(context);
+        SQLiteDatabase database = helper.getWritableDatabase();
+        ContentValues cValue = new ContentValues();
         try {
             Document document = Jsoup.connect(url).timeout(10000).get();
             this.newgametag = new FindGame[document.select(".tag").size()];
@@ -98,13 +105,24 @@ public class Crawl_data {
                             nowgame.setIcon(icon);/*将获取的图标url传入nowgame里*/
                         }
 
+                        Cursor cursor = database.query ("game",null,null,null,null,null,null);
+                        if(cursor.moveToFirst()) {
+                            while (cursor.moveToNext()) {
+                                String username=cursor.getString(0);
+                                System.out.println(username);
+                            }
+                        }
                         //System.out.println(game.getIcon());
                         System.out.println(nowgame.getName());
                         System.out.println(nowgame.getID());
                         System.out.println(nowgame.getIcon());
                         System.out.println(nowgame.getUrl());
+                        cValue.put("name",nowgame.getName());
+                        cValue.put("gameid",nowgame.getID());
+                        cValue.put("icon",nowgame.getIcon());
+                        cValue.put("introduction",nowgame.getIntroduction());
+                        database.replace(SQLiteDbHelper.TABLE_GAME, null,cValue);
                         newgame.add(nowgame);/*传入newgame类*/
-
                     }
 
 

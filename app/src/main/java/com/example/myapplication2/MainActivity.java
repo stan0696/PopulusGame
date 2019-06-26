@@ -173,25 +173,7 @@ public class MainActivity extends AppCompatActivity
         new Thread(){
             public void run(){
                 Crawl_data test = new Crawl_data("https://www.taptap.com/categories");
-                test.run();
-                SQLiteDbHelper helper = new SQLiteDbHelper(getApplicationContext());
-                SQLiteDatabase database = helper.getWritableDatabase();
-                ContentValues cValue = new ContentValues();
-                for (int i=0;i<test.getNewgame().size();i++){
-                    cValue.put("name",test.getNewgame().get(i).getName());
-                    cValue.put("gameid",test.getNewgame().get(i).getID());
-                    cValue.put("icon",test.getNewgame().get(i).getIcon());
-                    cValue.put("introduction",test.getNewgame().get(i).getIntroduction());
-                    database.replace(SQLiteDbHelper.TABLE_GAME, null,cValue);
-                };
-                Cursor cursor = database.query ("game",null,null,null,null,null,null);
-                if(cursor.moveToFirst()) {
-                    while (cursor.moveToNext()) {
-                        String username=cursor.getString(0);
-                        System.out.println(username);
-                    }
-                }
-
+                test.run(getApplicationContext());
             }
         }.start();
     }
