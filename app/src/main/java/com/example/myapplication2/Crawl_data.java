@@ -112,11 +112,6 @@ public class Crawl_data {
                                 System.out.println(username);
                             }
                         }
-                        //System.out.println(game.getIcon());
-                        System.out.println(nowgame.getName());
-                        System.out.println(nowgame.getID());
-                        System.out.println(nowgame.getIcon());
-                        System.out.println(nowgame.getUrl());
                         cValue.put("name",nowgame.getName());
                         cValue.put("gameid",nowgame.getID());
                         cValue.put("icon",nowgame.getIcon());

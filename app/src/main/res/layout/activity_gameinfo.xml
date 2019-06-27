@@ -21,7 +21,7 @@
                 app:srcCompat="@drawable/zoro"
                 tools:layout_editor_absoluteX="8dp" />
 
-            <ImageView
+            <com.example.myapplication2.View.MyImageView
                 android:id="@+id/imageView_game"
                 android:layout_width="144dp"
                 android:layout_height="144dp"
@@ -30,8 +30,7 @@
                 android:layout_marginTop="8dp"
                 android:scaleType="fitXY"
                 app:layout_constraintStart_toStartOf="@+id/imageView_introduce"
-                app:layout_constraintTop_toBottomOf="@+id/imageView_introduce"
-                app:srcCompat="@drawable/zoro" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView_introduce" />
 
             <Button
                 android:id="@+id/button_focus"

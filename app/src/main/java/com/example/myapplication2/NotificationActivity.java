@@ -28,9 +28,6 @@ public class NotificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notification_main);
         ImageView back_btn = (ImageView)findViewById(R.id.notification_back);
-        setViews();// 控件初始化
-        setData();// 给listView设置adapter
-        setListeners();// 设置监听
         back_btn.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -39,7 +36,9 @@ public class NotificationActivity extends AppCompatActivity {
                 finish();
             }
         });
-
+        setViews();// 控件初始化
+        setData();// 给listView设置adapter
+        setListeners();// 设置监听
     }
     private void setData() {
         initData();// 初始化数据

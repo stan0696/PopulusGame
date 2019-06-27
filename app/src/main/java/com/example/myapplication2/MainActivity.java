@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity
     };
 
     private ViewPager mViewPager;
-
+    private int isfirsttomain=0;
     List<Fragment> fragmentList = new ArrayList<>();
     Fragment fragmentHome;
     Fragment fragmentExplore;
@@ -98,8 +98,12 @@ public class MainActivity extends AppCompatActivity
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         mViewPager = findViewById(R.id.viewPager);
         initFragments();
-        getdate();
-    }
+        if(isfirsttomain==0){
+            getdate();
+            isfirsttomain++;
+        }
+        }
+
 
     private void initFragments(){
         fragmentHome = new FragmentHome();
