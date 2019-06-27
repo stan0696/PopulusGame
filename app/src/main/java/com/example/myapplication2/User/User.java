@@ -2,7 +2,7 @@ package com.example.myapplication2.User;
 
 public class User {
     //表名
-    public static final String TABLE="User";
+    public static final String TABLE="user";
 
     //表的各域名
     public static final String KEY_ID="id";
