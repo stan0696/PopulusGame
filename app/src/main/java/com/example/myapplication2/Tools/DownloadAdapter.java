@@ -16,9 +16,9 @@ import java.util.List;
 
 public class DownloadAdapter extends BaseAdapter {
 
-    private List<DownloadController> list = new ArrayList<>();
+    private List<DownloadManagerUtil> list = new ArrayList<>();
     private Context context;
-    public DownloadAdapter (List<DownloadController> list, Context context) {
+    public DownloadAdapter (List<DownloadManagerUtil> list, Context context) {
         this.list = list;
         this.context = context;
 
@@ -53,7 +53,7 @@ public class DownloadAdapter extends BaseAdapter {
             convertView.setTag(holder);
         }
             holder = (ViewHolder) convertView.getTag();
-            //holder.downloadtv_ss.setText(list.get(position).getGamename());
+            //holder.downloadtv_ss.setText(list.get(position));
         return convertView;
     }
 

@@ -2,9 +2,7 @@ package com.example.myapplication2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.DownloadManager;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,7 +11,6 @@ import android.view.View.OnClickListener;
 import android.widget.ListView;
 
 
-import com.example.myapplication2.Tools.DownloadController;
 import com.example.myapplication2.Tools.NotificationAdapter;
 
 import java.util.ArrayList;

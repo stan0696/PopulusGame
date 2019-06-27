@@ -70,10 +70,11 @@ public class MainActivity extends AppCompatActivity
                 User user1 = new User(1, "populus");
                 DBUserService dbUserService = DBUserService.getDbUserService();
                 try {
-                    dbUserService.userInsert(user1);
+                    //dbUserService.userInsert(user1);
                     users = dbUserService.getUserData();
-                    dbUserService.updateUserData("mima3");
-                    dbUserService.delUserData("populus");
+                    dbUserService.updateUserData("lianjieyanzheng3333");
+                    System.out.println("lianjiechenggong");
+                    //dbUserService.delUserData("populus");
                 }
                 catch (Exception e){
                     e.printStackTrace();

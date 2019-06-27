@@ -1,104 +1,110 @@
 package com.example.myapplication2.Tools;
 
+import android.app.Activity;
 import android.app.DownloadManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
+import android.widget.Toast;
+
+import java.net.URI;
 
 public class DownloadManagerUtil {
+    //下载器
+    private DownloadManager downloadManager;
+    //上下文
     private Context mContext;
-    //    //简单的下载功能
-//    public long download(String url, String title, String desc) {
-//        Uri uri = Uri.parse(url);
-//        DownloadManager.Request req = new DownloadManager.Request(uri);
-//        //设置WIFI下进行更新
-//        req.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
-//        //下载中和下载完后都显示通知栏
-//        req.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-//        //使用系统默认的下载路径 此处为应用内 /android/data/packages ,所以兼容7.0
-//        req.setDestinationInExternalFilesDir(mContext, Environment.DIRECTORY_DOWNLOADS, title);
-//        //通知栏标题
-//        req.setTitle(title);
-//        //通知栏描述信息
-//        req.setDescription(desc);
-//        //设置类型为.apk
-//        req.setMimeType("application/vnd.android.package-archive");
-//        //获取下载任务ID
-//        DownloadManager dm = (DownloadManager) mContext.getSystemService(Context.DOWNLOAD_SERVICE);
-//        return dm.enqueue(req);
-//    }
-
-
-    /**
-     * 比较实用的升级版下载功能
-     *
-     * @param url   下载地址
-     * @param title 文件名字
-     * @param desc  文件路径
-     */
-    public DownloadManagerUtil(Context context,String url, String title, String desc) {
+    //下载的ID
+    private long downloadId;
+    public  DownloadManagerUtil(Context context){
         this.mContext = context;
-        DownloadManager downloadManager = (DownloadManager) mContext.getSystemService(Context.DOWNLOAD_SERVICE);
-        long ID;
+    }
 
-        //以下两行代码可以让下载的apk文件被直接安装而不用使用Fileprovider,系统7.0或者以上才启动。
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            StrictMode.VmPolicy.Builder localBuilder = new StrictMode.VmPolicy.Builder();
-            StrictMode.setVmPolicy(localBuilder.build());
-        }
+    //下载apk
+    public void downloadAPK(String url, String name) {
 
+        //创建下载任务
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
-        // 仅允许在WIFI连接情况下下载
-//        request.setAllowedNetworkTypes(Request.NETWORK_WIFI);
-        // 通知栏中将出现的内容
-        request.setTitle(title);
-        request.setDescription(desc);
+        //移动网络情况下是否允许漫游
+        request.setAllowedOverRoaming(false);
 
-        //7.0以上的系统适配
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            request.setRequiresDeviceIdle(false);
-            request.setRequiresCharging(false);
-        }
+        //在通知栏中显示，默认就是显示的
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+        request.setTitle("name");
+        request.setDescription("Apk Downloading");
+        request.setVisibleInDownloadsUi(true);
 
-        //制定下载的文件类型为APK
-        request.setMimeType("application/vnd.android.package-archive");
+        //设置下载的路径
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS , name);
 
-        //储存地址
-        request.setDestinationInExternalFilesDir(mContext, Environment.DIRECTORY_DOWNLOADS,"update.apk");
+        //获取DownloadManager
+        downloadManager = (DownloadManager) mContext.getSystemService(Context.DOWNLOAD_SERVICE);
+        //将下载请求加入下载队列，加入下载队列后会给该任务返回一个long型的id，通过该id可以取消任务，重启任务、获取下载的文件等等
+        downloadId = downloadManager.enqueue(request);
 
-        // 下载过程和下载完成后通知栏有通知消息。
-        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE | DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-
-        // 指定下载文件地址，使用这个指定地址可不需要WRITE_EXTERNAL_STORAGE权限。
-        request.setDestinationUri(Uri.parse("https://d.taptap.com/latest?app_id=32854"));
-
-        //大于11版本手机允许扫描
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            //表示允许MediaScanner扫描到这个文件，默认不允许。
-            request.allowScanningByMediaScanner();
-        }
-
-        //Activity activity = PublicUtile.getInstance().getmActivity();
-        //if (activity != null) {
-        //   activity.startActivity(new android.content.Intent(DownloadManager.ACTION_VIEW_DOWNLOADS));//启动系统下载界面
-        //}
-        ID = downloadManager.enqueue(request);
-
+        //注册广播接收者，监听下载状态
+        mContext.registerReceiver(receiver,
+                new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
     }
 
-    /**
-     * 下载前先移除前一个任务，防止重复下载
-     *
-     * @param downloadId
-     */
-    public void clearCurrentTask(long downloadId) {
-        DownloadManager dm = (DownloadManager) mContext.getSystemService(Context.DOWNLOAD_SERVICE);
-        try {
-            dm.remove(downloadId);
-        } catch (IllegalArgumentException ex) {
-            ex.printStackTrace();
+    //广播监听下载的各个状态
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            checkStatus();
+        }
+    };
+
+
+    //检查下载状态
+    private void checkStatus() {
+        DownloadManager.Query query = new DownloadManager.Query();
+        //通过下载的id查找
+        query.setFilterById(downloadId);
+        Cursor c = downloadManager.query(query);
+        if (c.moveToFirst()) {
+            int status = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_STATUS));
+            switch (status) {
+                //下载暂停
+                case DownloadManager.STATUS_PAUSED:
+                    break;
+                //下载延迟
+                case DownloadManager.STATUS_PENDING:
+                    break;
+                //正在下载
+                case DownloadManager.STATUS_RUNNING:
+                    break;
+                //下载完成
+                case DownloadManager.STATUS_SUCCESSFUL:
+                    //下载完成安装APK
+                    installAPK();
+                    break;
+                //下载失败
+                case DownloadManager.STATUS_FAILED:
+                    Toast.makeText(mContext, "下载失败", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        }
+        c.close();
+    }
+
+    //下载到本地后执行安装
+    private void installAPK() {
+        //获取下载文件的Uri
+        Uri downloadFileUri = downloadManager.getUriForDownloadedFile(downloadId);
+        if (downloadFileUri != null) {
+            Intent intent= new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(downloadFileUri, "application/vnd.android.package-archive");
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            mContext.startActivity(intent);
+            mContext.unregisterReceiver(receiver);
         }
     }
+
 }

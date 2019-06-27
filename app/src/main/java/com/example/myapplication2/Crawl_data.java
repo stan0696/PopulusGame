@@ -105,13 +105,6 @@ public class Crawl_data {
                             nowgame.setIcon(icon);/*将获取的图标url传入nowgame里*/
                         }
 
-                        Cursor cursor = database.query ("game",null,null,null,null,null,null);
-                        if(cursor.moveToFirst()) {
-                            while (cursor.moveToNext()) {
-                                String username=cursor.getString(0);
-                                System.out.println(username);
-                            }
-                        }
                         cValue.put("name",nowgame.getName());
                         cValue.put("gameid",nowgame.getID());
                         cValue.put("icon",nowgame.getIcon());

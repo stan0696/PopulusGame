@@ -38,8 +38,6 @@ public class GameinfoActivity extends AppCompatActivity {
             this.name= cursor.getString(0);
             this.iconurl=cursor.getString(2);
             this.introduction=cursor.getString(3);
-            System.out.println(iconurl);
-            System.out.println(123);
             iconview=(MyImageView)findViewById(R.id.imageView_game);
             iconview.setImageURL(iconurl);
 
