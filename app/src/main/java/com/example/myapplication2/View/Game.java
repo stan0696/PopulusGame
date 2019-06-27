@@ -4,21 +4,23 @@ package com.example.myapplication2.View;
 import android.media.Image;
 
 import java.net.URI;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Game {
     private String name;
-    private String[] introduction;
+    private String introduction;
     private URI downloadUrl;
     private Image titleImage;
-    private Image icon;
+    private String icon;
     private Boolean isfocused;
     private int  mark;
     private int  downloadnum;
     private Date publishTime;
     private ArrayList<String> tag;
     private int ID;
+    private URI url;
 
     public Game(String name){
         this.name=name;
@@ -41,11 +43,11 @@ public class Game {
         this.name = name;
     }
 
-    public String[] getIntroduction() {
+    public String getIntroduction() {
         return introduction;
     }
 
-    public void setIntroduction(String[] introduction) {
+    public void setIntroduction(String introduction) {
         this.introduction = introduction;
     }
 
@@ -65,11 +67,11 @@ public class Game {
         this.titleImage = titleImage;
     }
 
-    public Image getIcon() {
+    public String getIcon() {
         return icon;
     }
 
-    public void setIcon(Image icon) {
+    public void setIcon(String icon) {
         this.icon = icon;
     }
 
@@ -119,5 +121,13 @@ public class Game {
 
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    public URI getUrl() {
+        return url;
+    }
+
+    public void setUrl(URI url) {
+        this.url = url;
     }
 }

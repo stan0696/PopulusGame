@@ -81,6 +81,7 @@ public class SearchActivity extends AppCompatActivity {
                                     int position, long id) {
                 // 点击对应的item时，弹出toast提示所点击的内容
                 Intent intent = new Intent(SearchActivity.this.getBaseContext(), GameinfoActivity.class);
+                intent.putExtra("gamename",filter_lists.get(position));
                 startActivity(intent);
             }
         });
@@ -140,7 +141,6 @@ public class SearchActivity extends AppCompatActivity {
     private void getdata(){
         SQLiteDbHelper helper = new SQLiteDbHelper(getApplicationContext());
         SQLiteDatabase database = helper.getWritableDatabase();
-        ContentValues cValue = new ContentValues();
         Cursor cursor = database.query ("game",null,null,null,null,null,null);
         if(cursor.moveToFirst()) {
             while (cursor.moveToNext()) {

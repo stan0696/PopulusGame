@@ -26,8 +26,8 @@ public class SQLiteDbHelper  extends SQLiteOpenHelper {
                ICON+ " varchar(10)," +
              INTRODUCTION + " TEXT ," +
              DOWNLOADURL + " TEXT," +
-             TITLEIMAGE + "TEXT," +
-             MARK + "Integer)";
+             TITLEIMAGE + " TEXT," +
+             MARK + " Integer)";
 
     public SQLiteDbHelper(Context context) {
         // 传递数据库名与版本号给父类

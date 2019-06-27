@@ -10,9 +10,11 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 
 import android.view.MenuItem;
 
+import com.example.myapplication2.DBClass.DBUserService;
 import com.example.myapplication2.Tools.DownloadActivity;
 import com.example.myapplication2.Tools.SearchActivity;
 import com.example.myapplication2.Tools.SettingActivity;
+import com.example.myapplication2.User.User;
 import com.example.myapplication2.View.FocusActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -53,13 +55,32 @@ public class MainActivity extends AppCompatActivity
     };
 
     private ViewPager mViewPager;
-
+    private int isfirsttomain=0;
     List<Fragment> fragmentList = new ArrayList<>();
     Fragment fragmentHome;
     Fragment fragmentExplore;
     Fragment fragmentRanking;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                List<User> users = new ArrayList<>();
+                User user1 = new User(1, "populus");
+                DBUserService dbUserService = DBUserService.getDbUserService();
+                try {
+                    dbUserService.userInsert(user1);
+                    users = dbUserService.getUserData();
+                    dbUserService.updateUserData("mima3");
+                    dbUserService.delUserData("populus");
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -77,8 +98,12 @@ public class MainActivity extends AppCompatActivity
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         mViewPager = findViewById(R.id.viewPager);
         initFragments();
-        getdate();
-    }
+        if(isfirsttomain==0){
+            getdate();
+            isfirsttomain++;
+        }
+        }
+
 
     private void initFragments(){
         fragmentHome = new FragmentHome();
@@ -152,25 +177,9 @@ public class MainActivity extends AppCompatActivity
         new Thread(){
             public void run(){
                 Crawl_data test = new Crawl_data("https://www.taptap.com/categories");
-                test.run();
-                SQLiteDbHelper helper = new SQLiteDbHelper(getApplicationContext());
-                SQLiteDatabase database = helper.getWritableDatabase();
-                ContentValues cValue = new ContentValues();
-                for (int i=0;i<test.getNewgame().size();i++){
-                    cValue.put("name",test.getNewgame().get(i).getName());
-                    database.replace(SQLiteDbHelper.TABLE_GAME, null,cValue);
-                };
-                Cursor cursor = database.query ("game",null,null,null,null,null,null);
-                if(cursor.moveToFirst()) {
-                    while (cursor.moveToNext()) {
-                        String username=cursor.getString(0);
-                        System.out.println(username);
-                    }
-                }
-
+                test.run(getApplicationContext());
             }
         }.start();
     }
-
 
 }

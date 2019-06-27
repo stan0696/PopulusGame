@@ -1,6 +1,10 @@
 package com.example.myapplication2;
 
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
 
@@ -24,10 +28,13 @@ public class Crawl_data {
         this.url=url;
     }
 
-    public void run(){
-         newgame =new ArrayList<>();
+    public void run(Context context){
+        newgame =new ArrayList<>();
+        SQLiteDbHelper helper = new SQLiteDbHelper(context);
+        SQLiteDatabase database = helper.getWritableDatabase();
+        ContentValues cValue = new ContentValues();
         try {
-            Document document = Jsoup.connect(url).get();
+            Document document = Jsoup.connect(url).timeout(10000).get();
             this.newgametag = new FindGame[document.select(".tag").size()];
             for(int i=0;i<document.select(".tag").size();i++){
                 Element span=document.select(".tag").get(i);
@@ -35,29 +42,85 @@ public class Crawl_data {
                 String text=span.text();
                 URI uri = URI.create(relHref);
                 newgametag[i] = new FindGame(uri,text);
-               // System.out.println(newgametag[i].getTag());
-               // System.out.println(newgametag[i].getUrl());
+                // System.out.println(newgametag[i].getTag());
+                // System.out.println(newgametag[i].getUrl());
             }
             for (FindGame findGame:newgametag
-                 ) {
+            ) {
                 try {
-                    Document gamedoc = Jsoup.connect(findGame.getUrl().toString()).get();
+                    Document gamedoc = Jsoup.connect(findGame.getUrl().toString()).timeout(10000).get();
 
-                    for(int i=0;i<gamedoc.select(".card-app-title").size();i++){
+
+                    for(int i=0;i<gamedoc.select(".card-app-title").size();i++)
+                    {
 
                         Element span=gamedoc.select(".card-app-title").get(i);
                         String text=span.text();
                         //System.out.println(text);
-
+                        String relHref=gamedoc.select(".card-right-title").get(i).attr("href");/*获取游戏自身的url*/
+                        URI uri = URI.create(relHref);
                         Game nowgame =new Game(text);
-                        newgame.add(nowgame);
-                        for (Element tagelement:gamedoc.select(".card-tags").get(i).select("a")
-                        ) {
+                        nowgame.setUrl(uri);
+
+
+                        for (Element tagelement:gamedoc.select(".card-tags").get(i).select("a"))        /*获取游戏的tag*/
+
+                        {
                             //System.out.println(tagelement.text());
                             nowgame.addTag(tagelement.text());
                         }
+                        Document thisgamedoc = Jsoup.connect(nowgame.getUrl().toString()).timeout(10000).get();//获取具体某款游戏页面内的内容
 
+                        String introduction ;
+                        Element intro = thisgamedoc.select(".body-description-paragraph").first();
+                        String icon=thisgamedoc.select(".header-icon-body").select("img").attr("src");
+                        String id=thisgamedoc.select("button").attr("data-taptap-app-id");
+                        if(id.isEmpty())
+                        {
+                            id=thisgamedoc.select(".taptap-button-download").attr("data-app-id");/*付费游戏的id获取方式不同*/
+
+                        }
+                        if(id.isEmpty())
+                        {
+                            id="0";
+
+                        }
+
+                        if(id!=null)
+                        {
+                            int Id=new Integer(id);
+                            nowgame.setID(Id);
+                            /*将获取的id传入nowgame里*/
+                        }
+
+                        if(intro!=null)
+                        {
+                            introduction = intro.text();
+                            nowgame.setIntroduction(introduction);/*将获取的简介传入nowgame里*/
+                            //System.out.println(introduction);
+                            //data-taptap-apk
+                        }
+                        if(icon!=null)
+                        {
+                            nowgame.setIcon(icon);/*将获取的图标url传入nowgame里*/
+                        }
+
+                        Cursor cursor = database.query ("game",null,null,null,null,null,null);
+                        if(cursor.moveToFirst()) {
+                            while (cursor.moveToNext()) {
+                                String username=cursor.getString(0);
+                                System.out.println(username);
+                            }
+                        }
+                        cValue.put("name",nowgame.getName());
+                        cValue.put("gameid",nowgame.getID());
+                        cValue.put("icon",nowgame.getIcon());
+                        cValue.put("introduction",nowgame.getIntroduction());
+                        database.replace(SQLiteDbHelper.TABLE_GAME, null,cValue);
+                        newgame.add(nowgame);/*传入newgame类*/
                     }
+
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
