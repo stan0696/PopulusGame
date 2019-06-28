@@ -114,4 +114,5 @@ public class DownloadManagerUtil {
     public void setDownloadId(long downloadId) {
         this.downloadId = downloadId;
     }
+
 }

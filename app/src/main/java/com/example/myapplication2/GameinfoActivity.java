@@ -49,9 +49,6 @@ public class GameinfoActivity extends AppCompatActivity {
             this.introduction=cursor.getString(3);
             this.tag1=cursor.getString(6);
             this.tag2=cursor.getString(7);
-            this.tag3=cursor.getString(8);
-            System.out.println(iconurl);
-            System.out.println(123);
             iconview=(MyImageView)findViewById(R.id.imageView_game);
             introductiontext=findViewById(R.id.game_textIntroduce);
             nametext=findViewById(R.id.game_textname);

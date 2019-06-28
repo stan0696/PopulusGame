@@ -1,6 +1,7 @@
 package com.example.myapplication2.Tools;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication2.R;
+import com.example.myapplication2.View.MyImageView;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,8 +55,10 @@ public class NotificationAdapter extends BaseAdapter {
             holder.gameicon_iv = convertView.findViewById(R.id.gameicon_iv);
             convertView.setTag(holder);
         }
+
         holder = (ViewHolder) convertView.getTag();
-        //holder.downloadtv_ss.setText(list.get(position).getGamename());
+        holder.notification_tv.setText(list.get(position));
+        holder.gameicon_iv.setImageURL("https://img.tapimg.com/market/lcs/2ea1a63c45fe294d36e29e348d441ea3_360.png?imageMogr2/auto-orient/strip");
         return convertView;
     }
 
@@ -68,8 +73,8 @@ public class NotificationAdapter extends BaseAdapter {
     class ViewHolder {
         TextView notification_tv;
         TextView gamename_iv;
-        ImageView gameicon_iv;
-        ImageView delete_iv;
+        MyImageView gameicon_iv;
+        ImageView  delete_iv;
     }
 
 }
