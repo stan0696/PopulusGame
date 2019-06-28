@@ -66,7 +66,7 @@ public class Crawl_data {
                         for (Element tagelement:gamedoc.select(".card-tags").get(i).select("a"))        /*获取游戏的tag*/
 
                         {
-                            //System.out.println(tagelement.text());
+                            System.out.println(tagelement.text());
                             nowgame.addTag(tagelement.text());
                         }
                         Document thisgamedoc = Jsoup.connect(nowgame.getUrl().toString()).timeout(10000).get();//获取具体某款游戏页面内的内容

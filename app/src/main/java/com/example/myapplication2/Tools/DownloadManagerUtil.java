@@ -107,4 +107,11 @@ public class DownloadManagerUtil {
         }
     }
 
+    public long getDownloadId() {
+        return downloadId;
+    }
+
+    public void setDownloadId(long downloadId) {
+        this.downloadId = downloadId;
+    }
 }

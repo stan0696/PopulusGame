@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -28,7 +29,7 @@ import java.util.List;
 public class DownloadActivity extends AppCompatActivity {
     private ListView downloadv_ss;
     private List<DownloadManagerUtil> list = new ArrayList<>();
-    boolean isFilter;
+    private DownloadManager downloadManager;
     private DownloadAdapter adapter = null;
     private DownloadManagerUtil newdownload;
     private int WRITE_EXTERNAL_STORAGE_REQUEST_CODE = 1;
@@ -79,7 +80,10 @@ public class DownloadActivity extends AppCompatActivity {
      */
     private void initData() {
         int[] url = new int[]{WRITE_EXTERNAL_STORAGE_REQUEST_CODE};
+        DownloadManager.Query query = new DownloadManager.Query();
         newdownload = new DownloadManagerUtil(this);
+
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             //申请WRITE_EXTERNAL_STORAGE权限
@@ -89,6 +93,7 @@ public class DownloadActivity extends AppCompatActivity {
         else{
             String url2 = "http://mhhy.dl.gxpan.cn/apk/ml/MBGYD092101/Gardenscapes-ledou-MBGYD092101.apk";
             newdownload.downloadAPK(url2,"sss");
+            downloadManager = (DownloadManager)this.getSystemService(Context.DOWNLOAD_SERVICE);
             list.add( newdownload);
         }
 
