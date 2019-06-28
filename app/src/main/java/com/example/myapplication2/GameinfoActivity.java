@@ -26,6 +26,10 @@ import java.util.List;
 
 import java.net.URI;
 import java.util.ArrayList;
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameinfoActivity extends AppCompatActivity {
 
@@ -50,7 +54,6 @@ public class GameinfoActivity extends AppCompatActivity {
     Fragment fragmentDetails;
     Fragment fragmentComment;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +67,15 @@ public class GameinfoActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(mViewPager);
         tabLayout.getTabAt(0).setText("详情");
         tabLayout.getTabAt(1).setText("评论");
+        mViewPager = findViewById(R.id.viewPager);
+        tabLayout = findViewById(R.id.mytab);
+        initFragments();
+        tabLayout.setupWithViewPager(mViewPager);
+        tabLayout.getTabAt(0).setText("详情");
+        tabLayout.getTabAt(1).setText("评论");
     }
+
+
 
     private void initFragments(){
         fragmentDetails = new FragmentDetails();
