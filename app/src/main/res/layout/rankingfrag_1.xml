@@ -70,12 +70,12 @@
             <Button
                 android:id="@+id/Rankbtn1_1"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="67dp"
-                android:layout_height="37dp"
+                android:layout_width="62dp"
+                android:layout_height="32dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/button_shape"
                 android:text="下载"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -138,12 +138,12 @@
             <Button
                 android:id="@+id/Rankbtn1_2"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="67dp"
-                android:layout_height="37dp"
+                android:layout_width="62dp"
+                android:layout_height="32dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/button_shape"
                 android:text="下载"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -206,12 +206,12 @@
             <Button
                 android:id="@+id/Rankbtn1_3"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="67dp"
-                android:layout_height="37dp"
+                android:layout_width="62dp"
+                android:layout_height="32dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/button_shape"
                 android:text="下载"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -274,12 +274,12 @@
             <Button
                 android:id="@+id/Rankbtn1_4"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="67dp"
-                android:layout_height="37dp"
+                android:layout_width="62dp"
+                android:layout_height="32dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/button_shape"
                 android:text="下载"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -342,12 +342,12 @@
             <Button
                 android:id="@+id/Rankbtn1_5"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="67dp"
-                android:layout_height="37dp"
+                android:layout_width="62dp"
+                android:layout_height="32dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/button_shape"
                 android:text="下载"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -410,12 +410,12 @@
             <Button
                 android:id="@+id/Rankbtn1_6"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="67dp"
-                android:layout_height="37dp"
+                android:layout_width="62dp"
+                android:layout_height="32dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/button_shape"
                 android:text="下载"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
