@@ -73,14 +73,9 @@ public class GameinfoActivity extends AppCompatActivity {
             this.introduction=cursor.getString(3);
             this.tag1=cursor.getString(6);
             this.tag2=cursor.getString(7);
-            this.tag3=cursor.getString(8);
-            System.out.println(iconurl);
-            System.out.println(123);
             iconview=(MyImageView)findViewById(R.id.imageView_game);
             introductiontext=findViewById(R.id.game_textIntroduce);
             nametext=findViewById(R.id.game_textname);
-
-
             iconview.setImageURL(iconurl);
             introductiontext.setText(introduction);
             nametext.setText(name);
@@ -101,27 +96,6 @@ public class GameinfoActivity extends AppCompatActivity {
                 tag3text=findViewById(R.id.gametag3);
                 tag3text.setText(tag3);
             }
-
-
-
-
-            if(tag1!=null)
-            {
-                System.out.println(tag1);
-            }
-
-            if(tag2!=null)
-            {
-                System.out.println(tag2);
-            }
-
-            if(tag3!=null)
-            {
-                System.out.println(tag3);
-            }
-
-
-
 
         }
     }

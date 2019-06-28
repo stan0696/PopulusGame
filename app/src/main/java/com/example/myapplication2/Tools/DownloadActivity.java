@@ -79,11 +79,13 @@ public class DownloadActivity extends AppCompatActivity {
      * 简单的list集合添加一些测试数据
      */
     private void initData() {
-        int[] url = new int[]{WRITE_EXTERNAL_STORAGE_REQUEST_CODE};
-        DownloadManager.Query query = new DownloadManager.Query();
+        String url2 = new String();
+        Intent intent = getIntent();
         newdownload = new DownloadManagerUtil(this);
+        url2 = intent.getStringExtra("downloadurl");
+        if (url2==null){
 
-
+        }
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             //申请WRITE_EXTERNAL_STORAGE权限
@@ -91,7 +93,6 @@ public class DownloadActivity extends AppCompatActivity {
                     WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
         }
         else{
-            String url2 = "http://mhhy.dl.gxpan.cn/apk/ml/MBGYD092101/Gardenscapes-ledou-MBGYD092101.apk";
             newdownload.downloadAPK(url2,"sss");
             downloadManager = (DownloadManager)this.getSystemService(Context.DOWNLOAD_SERVICE);
             list.add( newdownload);

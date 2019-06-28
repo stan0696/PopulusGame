@@ -22,15 +22,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="46dp">
 
-                    <ImageView
+                    <com.example.myapplication2.View.MyImageView
                         android:id="@+id/gameicon_iv"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:scaleType="fitXY"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/zoro" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/gamename_iv"
