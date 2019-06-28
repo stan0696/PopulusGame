@@ -1,5 +1,4 @@
 package com.example.myapplication2;
-
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -19,15 +18,24 @@ public class SQLiteDbHelper  extends SQLiteOpenHelper {
     public static final String DOWNLOADURL= "downloadurl";
     public static final String TITLEIMAGE= "titleImage";
     public static final String MARK= "mark";
+    public static final String TAG1= "tag1";
+    public static final String TAG2= "tag2";
+    public static final String TAG3= "tag3";
     //创建 students 表的 sql 语句
     private static final String GAME_CREATE_TABLE_SQL = "CREATE TABLE IF NOT EXISTS " + TABLE_GAME
             +"("+ NAME + " varchar(10), " +
-               GAMEID+ " Integer primary key, " +
-               ICON+ " varchar(10)," +
-             INTRODUCTION + " TEXT ," +
-             DOWNLOADURL + " TEXT," +
-             TITLEIMAGE + " TEXT," +
-             MARK + " Integer)";
+            GAMEID+ " Integer primary key, " +
+            ICON+ " varchar(10)," +
+            INTRODUCTION + " TEXT ," +
+            DOWNLOADURL + " TEXT," +
+            TITLEIMAGE + " TEXT," +
+            TAG1 +" TEXT," +
+            TAG2 +" TEXT," +
+            TAG3 +" TEXT," +
+            MARK + " Integer)";
+
+
+
 
     public SQLiteDbHelper(Context context) {
         // 传递数据库名与版本号给父类
@@ -41,6 +49,7 @@ public class SQLiteDbHelper  extends SQLiteOpenHelper {
         // 在这里通过 db.execSQL 函数执行 SQL 语句创建所需要的表
         // 创建 students 表
         db.execSQL(GAME_CREATE_TABLE_SQL);
+
     }
 
     @Override

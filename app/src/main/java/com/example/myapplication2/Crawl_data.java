@@ -62,12 +62,18 @@ public class Crawl_data {
                         Game nowgame =new Game(text);
                         nowgame.setUrl(uri);
 
-
+                        int tagnum=0;
                         for (Element tagelement:gamedoc.select(".card-tags").get(i).select("a"))        /*获取游戏的tag*/
 
                         {
-                            System.out.println(tagelement.text());
-                            nowgame.addTag(tagelement.text());
+
+
+                            nowgame.setTag(tagnum%3+1,tagelement.text());
+                            System.out.println(nowgame.getTag(tagnum%3+1));
+                            tagnum++;
+
+
+
                         }
                         Document thisgamedoc = Jsoup.connect(nowgame.getUrl().toString()).timeout(10000).get();//获取具体某款游戏页面内的内容
 
@@ -75,11 +81,13 @@ public class Crawl_data {
                         Element intro = thisgamedoc.select(".body-description-paragraph").first();
                         String icon=thisgamedoc.select(".header-icon-body").select("img").attr("src");
                         String id=thisgamedoc.select("button").attr("data-taptap-app-id");
+
                         if(id.isEmpty())
                         {
                             id=thisgamedoc.select(".taptap-button-download").attr("data-app-id");/*付费游戏的id获取方式不同*/
 
                         }
+
                         if(id.isEmpty())
                         {
                             id="0";
@@ -100,16 +108,35 @@ public class Crawl_data {
                             //System.out.println(introduction);
                             //data-taptap-apk
                         }
+
                         if(icon!=null)
                         {
                             nowgame.setIcon(icon);/*将获取的图标url传入nowgame里*/
                         }
 
+
                         cValue.put("name",nowgame.getName());
                         cValue.put("gameid",nowgame.getID());
                         cValue.put("icon",nowgame.getIcon());
                         cValue.put("introduction",nowgame.getIntroduction());
+
+                        if(nowgame.getTag(1)!=null)
+                        {
+                            cValue.put("tag1",nowgame.getTag(1));
+                        }
+
+                        if(nowgame.getTag(2)!=null)
+                        {
+                            cValue.put("tag2",nowgame.getTag(2));
+                        }
+
+                        if(nowgame.getTag(3)!=null)
+                        {
+                            cValue.put("tag3",nowgame.getTag(3));
+                        }
+
                         database.replace(SQLiteDbHelper.TABLE_GAME, null,cValue);
+
                         newgame.add(nowgame);/*传入newgame类*/
                     }
 
@@ -152,3 +179,4 @@ public class Crawl_data {
         this.newgame = newgame;
     }
 }
+

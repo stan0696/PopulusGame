@@ -1,6 +1,5 @@
 package com.example.myapplication2.View;
 
-
 import android.media.Image;
 
 import java.net.URI;
@@ -18,13 +17,15 @@ public class Game {
     private int  mark;
     private int  downloadnum;
     private Date publishTime;
-    private ArrayList<String> tag;
+    private String tag1;
+    private String tag2;
+    private String tag3;
     private int ID;
     private URI url;
 
     public Game(String name){
         this.name=name;
-        this.tag=new ArrayList<>();
+
     }
 
 
@@ -91,14 +92,6 @@ public class Game {
         this.mark = mark;
     }
 
-    public ArrayList<String> getTag() {
-        return tag;
-    }
-
-    public void addTag(String tag) {
-        this.tag.add(tag)  ;
-    }
-
     public int getDownloadnum() {
         return downloadnum;
     }
@@ -130,4 +123,34 @@ public class Game {
     public void setUrl(URI url) {
         this.url = url;
     }
+
+    public String getTag(int i) {
+
+        switch (i)
+        {
+            case 1:return tag1;
+            case 2:return tag2;
+            case 3:return tag3;
+            default:return null;
+        }
+
+
+
+    }
+
+    public void setTag(int i,String tag)
+
+    {
+
+        switch (i)
+        {
+            case 1:this.tag1 = tag;
+            case 2:this.tag2 = tag;
+            case 3:this.tag3 = tag;
+        }
+
+
+    }
+
+
 }

@@ -6,74 +6,121 @@
     android:layout_height="wrap_content"
     android:padding="10dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView_introduce"
+            android:layout_width="match_parent"
+            android:layout_height="218dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="fitXY"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/zoro"
+            tools:layout_editor_absoluteX="40dp" />
+
+        <com.example.myapplication2.View.MyImageView
+            android:id="@+id/imageView_game"
+            android:layout_width="144dp"
+            android:layout_height="144dp"
+            android:layout_below="@id/imageView_introduce"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="fitXY"
+            app:layout_constraintStart_toStartOf="@+id/imageView_introduce"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_introduce" />
+
+        <Button
+            android:id="@+id/button_focus"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="65dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="120dp"
+            android:background="@drawable/button_shape"
+            android:text="关注"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintEnd_toStartOf="@+id/button_download"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_introduce" />
+
+        <Button
+            android:id="@+id/button_download"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="65dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_shape"
+            android:text="下载"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_introduce" />
+
+        <TextView
+            android:id="@+id/game_textIntroduce"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imageView_introduce"
-                android:layout_width="match_parent"
-                android:layout_height="218dp"
-                android:layout_marginTop="8dp"
-                android:scaleType="fitXY"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/zoro"
-                tools:layout_editor_absoluteX="8dp" />
-
-            <com.example.myapplication2.View.MyImageView
-                android:id="@+id/imageView_game"
-                android:layout_width="144dp"
-                android:layout_height="144dp"
-                android:layout_below="@id/imageView_introduce"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:scaleType="fitXY"
-                app:layout_constraintStart_toStartOf="@+id/imageView_introduce"
-                app:layout_constraintTop_toBottomOf="@+id/imageView_introduce" />
-
-            <Button
-                android:id="@+id/button_focus"
-                style="?android:attr/borderlessButtonStyle"
-                android:background="@drawable/button_shape"
-                android:layout_width="65dp"
-                android:layout_height="38dp"
-                android:layout_marginEnd="8dp"
-                android:text="关注"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintEnd_toStartOf="@+id/button_download"
-                app:layout_constraintTop_toBottomOf="@+id/imageView_introduce" />
-
-            <Button
-                android:id="@+id/button_download"
-                style="?android:attr/borderlessButtonStyle"
-                android:background="@drawable/button_shape"
-                android:layout_width="65dp"
-                android:layout_height="38dp"
-                android:layout_marginEnd="8dp"
-                android:text="下载"
-                android:textColor="@color/colorPrimary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView_introduce" />
-
-            <TextView
-                android:id="@+id/game_textIntroduce"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:gravity="center"
-                android:text="曾经的我在小河里有许多要好的朋友，我们一起哭，一起闹，一起笑，一起玩耍，生活得非常快乐。
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="曾经的我在小河里有许多要好的朋友，我们一起哭，一起闹，一起笑，一起玩耍，生活得非常快乐。
                 可现在，我们大家一个个都病怏怏的，吃不下饭，游不快，每天都呆在一个地方，一天、两天、三天，
                 我的身体越来越差，河里的一些年纪有点大的鱼和幼小的鱼都已经去世了，我看到了它们那肚皮朝上的样子越想越可怕。
                 生活不久的将来，肚皮朝上的鱼就是我，天堂便是我的归宿，想到这，我开始瑟瑟发抖起来。"
-                android:textColor="#000000"
-                android:textSize="34sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView_game" />
+            android:textColor="#000000"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_game" />
+
+        <TextView
+            android:id="@+id/game_textname"
+            android:layout_width="131dp"
+            android:layout_height="47dp"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            android:textSize="25sp"
+            app:layout_constraintStart_toEndOf="@+id/imageView_game"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_introduce" />
+
+        <TextView
+            android:id="@+id/game_text_mark"
+            android:layout_width="63dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="16dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="@+id/imageView_introduce"
+            app:layout_constraintTop_toTopOf="@+id/game_textname" />
+
+        <Button
+            android:id="@+id/gametag1"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="48dp"
+            android:text="Button"
+            app:layout_constraintStart_toEndOf="@+id/imageView_game"
+            app:layout_constraintTop_toTopOf="@+id/game_textname" />
+
+        <Button
+            android:id="@+id/gametag2"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="48dp"
+            android:text="Button"
+            app:layout_constraintStart_toEndOf="@+id/gametag1"
+            app:layout_constraintTop_toTopOf="@+id/game_textname" />
+
+        <Button
+            android:id="@+id/gametag3"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="48dp"
+            android:text="Button"
+            app:layout_constraintStart_toEndOf="@+id/gametag2"
+            app:layout_constraintTop_toTopOf="@+id/game_textname" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
