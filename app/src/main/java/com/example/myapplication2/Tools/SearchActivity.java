@@ -146,7 +146,6 @@ public class SearchActivity extends AppCompatActivity {
             while (cursor.moveToNext()) {
                 String username=cursor.getString(0);
                 list.add(username);
-                System.out.println(username);
             }
         }
 

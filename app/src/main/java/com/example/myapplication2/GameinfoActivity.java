@@ -52,8 +52,6 @@ public class GameinfoActivity extends AppCompatActivity {
             iconview=(MyImageView)findViewById(R.id.imageView_game);
             introductiontext=findViewById(R.id.game_textIntroduce);
             nametext=findViewById(R.id.game_textname);
-
-
             iconview.setImageURL(iconurl);
             introductiontext.setText(introduction);
             nametext.setText(name);
@@ -74,27 +72,6 @@ public class GameinfoActivity extends AppCompatActivity {
                 tag3text=findViewById(R.id.gametag3);
                 tag3text.setText(tag3);
             }
-
-
-
-
-            if(tag1!=null)
-            {
-                System.out.println(tag1);
-            }
-
-            if(tag2!=null)
-            {
-                System.out.println(tag2);
-            }
-
-            if(tag3!=null)
-            {
-                System.out.println(tag3);
-            }
-
-
-
 
         }
     }

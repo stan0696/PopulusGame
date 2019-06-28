@@ -81,9 +81,11 @@ public class DownloadActivity extends AppCompatActivity {
     private void initData() {
         String url2 = new String();
         Intent intent = getIntent();
-        DownloadManager.Query query = new DownloadManager.Query();
         newdownload = new DownloadManagerUtil(this);
         url2 = intent.getStringExtra("downloadurl");
+        if (url2==null){
+
+        }
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             //申请WRITE_EXTERNAL_STORAGE权限
@@ -91,8 +93,8 @@ public class DownloadActivity extends AppCompatActivity {
                     WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
         }
         else{
-            //newdownload.downloadAPK(url2,"sss");
-            //downloadManager = (DownloadManager)this.getSystemService(Context.DOWNLOAD_SERVICE);
+            newdownload.downloadAPK(url2,"sss");
+            downloadManager = (DownloadManager)this.getSystemService(Context.DOWNLOAD_SERVICE);
             list.add( newdownload);
         }
 

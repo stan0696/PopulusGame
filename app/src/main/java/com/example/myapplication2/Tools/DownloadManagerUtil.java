@@ -22,6 +22,8 @@ public class DownloadManagerUtil {
     private Context mContext;
     //下载的ID
     private long downloadId;
+    //下载的进度
+    private  int downloadSoFar;
     public  DownloadManagerUtil(Context context){
         this.mContext = context;
     }
@@ -70,6 +72,10 @@ public class DownloadManagerUtil {
         Cursor c = downloadManager.query(query);
         if (c.moveToFirst()) {
             int status = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_STATUS));
+            long downloadedSoFar = c.getLong(c.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR));
+            // 下载文件的总字节大小
+            long totalSize = c.getLong(c.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES));
+            this.downloadSoFar =(int)(downloadedSoFar/totalSize);
             switch (status) {
                 //下载暂停
                 case DownloadManager.STATUS_PAUSED:
@@ -115,4 +121,7 @@ public class DownloadManagerUtil {
         this.downloadId = downloadId;
     }
 
+    public int getDownloadSoFar() {
+        return downloadSoFar;
+    }
 }

@@ -65,9 +65,9 @@ public class NotificationActivity extends AppCompatActivity {
      */
     private void initData() {
 
-        list.add("通知1");
-        list.add("通知2");
-        list.add("通知3");
+        list.add("游戏1");
+        list.add("游戏2");
+        list.add("游戏3");
     }
 
 
