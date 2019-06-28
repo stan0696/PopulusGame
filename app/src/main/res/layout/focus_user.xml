@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/focus_user1"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/zoro" />
+
+            <TextView
+                android:id="@+id/focus_username1"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                android:text="用户1"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@+id/focus_user1"
+                app:layout_constraintStart_toEndOf="@+id/focus_user1"
+                app:layout_constraintTop_toTopOf="@+id/focus_user1"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/focus_userbutton1"
+                android:layout_width="67dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_shape"
+                android:text="已关注"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="@+id/focus_user1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/focus_user1" />
+
+            <TextView
+                android:id="@+id/focus_userintroduce1"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="这是用户自己的简介"
+                android:maxLines="1"
+                android:textColor="#BEBFC3"
+                app:layout_constraintStart_toEndOf="@+id/focus_user1"
+                app:layout_constraintTop_toBottomOf="@+id/focus_username1" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/focus_user2"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/zoro" />
+
+            <TextView
+                android:id="@+id/focus_username2"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                android:text="用户1"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@+id/focus_user2"
+                app:layout_constraintStart_toEndOf="@+id/focus_user2"
+                app:layout_constraintTop_toTopOf="@+id/focus_user2"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/focus_userbutton2"
+                android:layout_width="67dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_shape"
+                android:text="已关注"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="@+id/focus_user2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/focus_user2" />
+
+            <TextView
+                android:id="@+id/focus_userintroduce2"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="这是用户自己的简介"
+                android:maxLines="1"
+                android:textColor="#BEBFC3"
+                app:layout_constraintStart_toEndOf="@+id/focus_user2"
+                app:layout_constraintTop_toBottomOf="@+id/focus_username2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/focus_user3"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/zoro" />
+
+            <TextView
+                android:id="@+id/focus_username3"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                android:text="用户1"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@+id/focus_user3"
+                app:layout_constraintStart_toEndOf="@+id/focus_user3"
+                app:layout_constraintTop_toTopOf="@+id/focus_user3"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/focus_userbutton3"
+                android:layout_width="67dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_shape"
+                android:text="已关注"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="@+id/focus_user3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/focus_user3" />
+
+            <TextView
+                android:id="@+id/focus_userintroduce3"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="这是用户自己的简介"
+                android:maxLines="1"
+                android:textColor="#BEBFC3"
+                app:layout_constraintStart_toEndOf="@+id/focus_user3"
+                app:layout_constraintTop_toBottomOf="@+id/focus_username3" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</ScrollView>
