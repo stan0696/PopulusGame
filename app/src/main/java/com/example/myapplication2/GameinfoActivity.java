@@ -1,16 +1,21 @@
 package com.example.myapplication2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication2.View.MyImageView;
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameinfoActivity extends AppCompatActivity {
 
@@ -26,6 +31,11 @@ public class GameinfoActivity extends AppCompatActivity {
     private String tag1;
     private String tag2;
     private String tag3;
+    private TabLayout tabLayout;
+    private ViewPager mViewPager;
+    List<Fragment> fragmentList = new ArrayList<>();
+    Fragment fragmentDetails;
+    Fragment fragmentComment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +43,20 @@ public class GameinfoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         name = intent.getStringExtra("gamename");
         getdata();
+        mViewPager = findViewById(R.id.viewPager);
+        tabLayout = findViewById(R.id.mytab);
+        initFragments();
+        tabLayout.setupWithViewPager(mViewPager);
+        tabLayout.getTabAt(0).setText("详情");
+        tabLayout.getTabAt(1).setText("评论");
+    }
+
+    private void initFragments(){
+        fragmentDetails = new FragmentDetails();
+        fragmentComment = new FragmentComment();
+        fragmentList.add(fragmentDetails);
+        fragmentList.add(fragmentComment);
+        mViewPager.setAdapter(new ViewPagerAdapter(fragmentList,getSupportFragmentManager()));
     }
 
     private void getdata() {
