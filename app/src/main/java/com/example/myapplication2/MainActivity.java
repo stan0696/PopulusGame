@@ -15,6 +15,7 @@ import com.example.myapplication2.Tools.DownloadActivity;
 import com.example.myapplication2.Tools.SearchActivity;
 import com.example.myapplication2.Tools.SettingActivity;
 import com.example.myapplication2.User.User;
+import com.example.myapplication2.User.UserLoginActivity;
 import com.example.myapplication2.View.FocusActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -67,13 +68,12 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void run() {
                 List<User> users = new ArrayList<>();
-                User user1 = new User(1, "populus");
+                User user1 = new User("populus", "populus");
                 DBUserService dbUserService = DBUserService.getDbUserService();
                 try {
                     //dbUserService.userInsert(user1);
                     users = dbUserService.getUserData();
                     dbUserService.updateUserData("lianjieyanzheng3333");
-                    System.out.println("lianjiechenggong");
                     //dbUserService.delUserData("populus");
                 }
                 catch (Exception e){
@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_focus) {
-            Intent intent = new Intent(MainActivity.this, FocusActivity.class);
+            Intent intent = new Intent(MainActivity.this, UserLoginActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_game) {
             Intent intent = new Intent(MainActivity.this,MyGameActivity.class);

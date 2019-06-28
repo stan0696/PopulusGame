@@ -77,28 +77,6 @@ public class GameinfoActivity extends AppCompatActivity {
                 tag3text=findViewById(R.id.gametag3);
                 tag3text.setText(tag3);
             }
-
-
-
-
-            if(tag1!=null)
-            {
-                System.out.println(tag1);
-            }
-
-            if(tag2!=null)
-            {
-                System.out.println(tag2);
-            }
-
-            if(tag3!=null)
-            {
-                System.out.println(tag3);
-            }
-
-
-
-
         }
     }
 

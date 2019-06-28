@@ -5,24 +5,24 @@ public class User {
     public static final String TABLE="user";
 
     //表的各域名
-    public static final String KEY_ID="id";
+    public static final String KEY_NAME="name";
     public static final String KEY_Password="password";
 
     //属性
-    public int user_ID;
+    public String user_Name;
     public String password;
 
-    public User(int id, String password){
-        this.user_ID = id;
+    public User(String  name, String password){
+        this.user_Name = name;
         this.password = password;
     }
 
-    public int getUser_ID() {
-        return user_ID;
+    public String getUser_Name() {
+        return user_Name;
     }
 
-    public void setUser_ID(int user_ID) {
-        this.user_ID = user_ID;
+    public void setUser_Name(String user_Name) {
+        this.user_Name = user_Name;
     }
 
     public String getPassword() {

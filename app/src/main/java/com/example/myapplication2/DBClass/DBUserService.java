@@ -54,8 +54,8 @@ public class DBUserService {
                     rs= ps.executeQuery();
                     if(rs!=null){
                         while(rs.next()){
-                            User user=new User(0, null);
-                            user.setUser_ID(rs.getInt("id"));
+                            User user=new User(null, null);
+                            user.setUser_Name(rs.getString("name"));
                             user.setPassword(rs.getString("password"));
                             list.add(user);
                         }
@@ -67,6 +67,34 @@ public class DBUserService {
         }
         DBUtil.closeAll(con,ps,rs);//关闭相关操作
         return list;
+    }
+
+    /**
+     * 登录密码验证
+     */
+    public String findUser(String username){
+        String sql="select password from user where username=?";
+        String password = null;
+        //获取链接数据库对象
+        con= DBUtil.getSQLConnection();
+        try {
+            if (con != null && (!con.isClosed())) {
+                ps = (PreparedStatement) con.prepareStatement(sql);
+                ps.setString(1, username);
+                if (ps != null) {
+                    rs= ps.executeQuery();
+                    if(rs!=null){
+                        while(rs.next()) {
+                            password = rs.getString("password");
+                        }
+                    }
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        DBUtil.closeAll(con,ps,rs);//关闭相关操作
+        return password;
     }
 
     /**
@@ -102,14 +130,14 @@ public class DBUserService {
 
         con = DBUtil.getSQLConnection();
 
-        String sql="INSERT INTO user (id,password) VALUES (?,?)";
+        String sql="INSERT INTO user (username,password) VALUES (?,?)";
         try {
             boolean closed=con.isClosed();
             if((con!=null)&&(!closed)){
                 ps= (PreparedStatement) con.prepareStatement(sql);
-                int id = user.getUser_ID();
+                String name = user.getUser_Name();
                 String password = user.getPassword();
-                ps.setInt(1,id);//第一个参数 name 规则同上
+                ps.setString(1,name);//第一个参数 name 规则同上
                 ps.setString(2,password);//第二个参数 phone 规则同上
                 result=ps.executeUpdate();//返回1 执行成功
             }

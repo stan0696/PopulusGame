@@ -69,7 +69,6 @@ public class Crawl_data {
 
 
                             nowgame.setTag(tagnum%3+1,tagelement.text());
-                            System.out.println(nowgame.getTag(tagnum%3+1));
                             tagnum++;
 
 
@@ -105,8 +104,6 @@ public class Crawl_data {
                         {
                             introduction = intro.text();
                             nowgame.setIntroduction(introduction);/*将获取的简介传入nowgame里*/
-                            //System.out.println(introduction);
-                            //data-taptap-apk
                         }
 
                         if(icon!=null)
