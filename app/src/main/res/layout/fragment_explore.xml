@@ -17,14 +17,64 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/explore_headtext1"
+                android:id="@+id/explore_gametagtext1"
                 android:layout_width="wrap_content"
                 android:layout_height="43dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="你可能感兴趣"
-                android:textSize="20sp"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/explore_gametagtext"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="你可能感兴趣"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/explore_gametagtext2"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="你可能感兴趣"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/explore_gametagtext3"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="你可能感兴趣"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/explore_gametagtext4"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="你可能感兴趣"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/explore_gametagtext5"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="你可能感兴趣"
+                android:textColor="#000000"
+                android:textSize="20sp" />
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -34,7 +84,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="120dp"
@@ -50,13 +100,13 @@
                             app:srcCompat="@drawable/zoro" />
 
                         <TextView
-                            android:id="@+id/explore_textView1_1"
+                            android:id="@+id/explore_gamenametext_1"
                             android:layout_width="120dp"
                             android:layout_height="35dp"
-                            android:text="游戏1"
-                            android:textSize="16sp"
-                            android:textColor="#000000"
                             android:gravity="center"
+                            android:text="游戏1"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_1" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -75,13 +125,13 @@
                             app:srcCompat="@drawable/zoro" />
 
                         <TextView
-                            android:id="@+id/explore_textView1_2"
+                            android:id="@+id/explore_gamenametext1_2"
                             android:layout_width="120dp"
                             android:layout_height="35dp"
-                            android:text="游戏2"
-                            android:textSize="16sp"
-                            android:textColor="#000000"
                             android:gravity="center"
+                            android:text="游戏2"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_2" />
 
@@ -101,13 +151,13 @@
                             app:srcCompat="@drawable/zoro" />
 
                         <TextView
-                            android:id="@+id/explore_textView1_3"
+                            android:id="@+id/explore_gamenametext1_3"
                             android:layout_width="120dp"
                             android:layout_height="35dp"
-                            android:text="游戏3"
-                            android:textSize="16sp"
-                            android:textColor="#000000"
                             android:gravity="center"
+                            android:text="游戏3"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_3" />
 
@@ -127,13 +177,13 @@
                             app:srcCompat="@drawable/zoro" />
 
                         <TextView
-                            android:id="@+id/explore_textView1_4"
+                            android:id="@+id/explore_gamenametext1_4"
                             android:layout_width="120dp"
                             android:layout_height="35dp"
-                            android:text="游戏4"
-                            android:textSize="16sp"
-                            android:textColor="#000000"
                             android:gravity="center"
+                            android:text="游戏4"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_4" />
 
@@ -153,13 +203,13 @@
                             app:srcCompat="@drawable/zoro" />
 
                         <TextView
-                            android:id="@+id/explore_textView1_5"
+                            android:id="@+id/explore_gamenametext1_5"
                             android:layout_width="120dp"
                             android:layout_height="35dp"
-                            android:text="游戏5"
-                            android:textSize="16sp"
-                            android:textColor="#000000"
                             android:gravity="center"
+                            android:text="游戏5"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_5" />
 
@@ -179,13 +229,13 @@
                             app:srcCompat="@drawable/zoro" />
 
                         <TextView
-                            android:id="@+id/explore_textView1_6"
+                            android:id="@+id/explore_gamenametext1_6"
                             android:layout_width="120dp"
                             android:layout_height="35dp"
-                            android:text="游戏6"
-                            android:textSize="16sp"
-                            android:textColor="#000000"
                             android:gravity="center"
+                            android:text="游戏6"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_6" />
 
@@ -205,13 +255,13 @@
                             app:srcCompat="@drawable/zoro" />
 
                         <TextView
-                            android:id="@+id/explore_textView1_7"
+                            android:id="@+id/explore_gamenametext1_7"
                             android:layout_width="120dp"
                             android:layout_height="35dp"
-                            android:text="游戏7"
-                            android:textSize="16sp"
-                            android:textColor="#000000"
                             android:gravity="center"
+                            android:text="游戏7"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_7" />
 
@@ -231,13 +281,13 @@
                             app:srcCompat="@drawable/zoro" />
 
                         <TextView
-                            android:id="@+id/explore_textView1_8"
+                            android:id="@+id/explore_gamenametext1_8"
                             android:layout_width="120dp"
                             android:layout_height="35dp"
-                            android:text="游戏8"
-                            android:textSize="16sp"
-                            android:textColor="#000000"
                             android:gravity="center"
+                            android:text="游戏8"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_8" />
 
@@ -257,13 +307,503 @@
                             app:srcCompat="@drawable/zoro" />
 
                         <TextView
-                            android:id="@+id/explore_textView1_9"
+                            android:id="@+id/explore_gamenametext1_9"
                             android:layout_width="120dp"
                             android:layout_height="35dp"
-                            android:text="游戏9"
-                            android:textSize="16sp"
-                            android:textColor="#000000"
                             android:gravity="center"
+                            android:text="游戏9"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_9" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="155dp">
+
+                        <ImageView
+                            android:id="@+id/explore_imageView1_1"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="fitXY"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/zoro" />
+
+                        <TextView
+                            android:id="@+id/explore_gamenametext_1"
+                            android:layout_width="120dp"
+                            android:layout_height="35dp"
+                            android:gravity="center"
+                            android:text="游戏1"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_1" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="155dp">
+
+                        <ImageView
+                            android:id="@+id/explore_imageView1_2"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="fitXY"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/zoro" />
+
+                        <TextView
+                            android:id="@+id/explore_gamenametext1_2"
+                            android:layout_width="120dp"
+                            android:layout_height="35dp"
+                            android:gravity="center"
+                            android:text="游戏2"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_2" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="155dp">
+
+                        <ImageView
+                            android:id="@+id/explore_imageView1_3"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="fitXY"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/zoro" />
+
+                        <TextView
+                            android:id="@+id/explore_gamenametext1_3"
+                            android:layout_width="120dp"
+                            android:layout_height="35dp"
+                            android:gravity="center"
+                            android:text="游戏3"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_3" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="155dp">
+
+                        <ImageView
+                            android:id="@+id/explore_imageView1_4"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="fitXY"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/zoro" />
+
+                        <TextView
+                            android:id="@+id/explore_gamenametext1_4"
+                            android:layout_width="120dp"
+                            android:layout_height="35dp"
+                            android:gravity="center"
+                            android:text="游戏4"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_4" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="155dp">
+
+                        <ImageView
+                            android:id="@+id/explore_imageView1_5"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="fitXY"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/zoro" />
+
+                        <TextView
+                            android:id="@+id/explore_gamenametext1_5"
+                            android:layout_width="120dp"
+                            android:layout_height="35dp"
+                            android:gravity="center"
+                            android:text="游戏5"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_5" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="155dp">
+
+                        <ImageView
+                            android:id="@+id/explore_imageView1_6"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="fitXY"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/zoro" />
+
+                        <TextView
+                            android:id="@+id/explore_gamenametext1_6"
+                            android:layout_width="120dp"
+                            android:layout_height="35dp"
+                            android:gravity="center"
+                            android:text="游戏6"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_6" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="155dp">
+
+                        <ImageView
+                            android:id="@+id/explore_imageView1_7"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="fitXY"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/zoro" />
+
+                        <TextView
+                            android:id="@+id/explore_gamenametext1_7"
+                            android:layout_width="120dp"
+                            android:layout_height="35dp"
+                            android:gravity="center"
+                            android:text="游戏7"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_7" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="155dp">
+
+                        <ImageView
+                            android:id="@+id/explore_imageView1_8"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="fitXY"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/zoro" />
+
+                        <TextView
+                            android:id="@+id/explore_gamenametext1_8"
+                            android:layout_width="120dp"
+                            android:layout_height="35dp"
+                            android:gravity="center"
+                            android:text="游戏8"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_8" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="155dp">
+
+                        <ImageView
+                            android:id="@+id/explore_imageView1_9"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="fitXY"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/zoro" />
+
+                        <TextView
+                            android:id="@+id/explore_gamenametext1_9"
+                            android:layout_width="120dp"
+                            android:layout_height="35dp"
+                            android:gravity="center"
+                            android:text="游戏9"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_9" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="155dp">
+
+                        <ImageView
+                            android:id="@+id/explore_imageView1_1"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="fitXY"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/zoro" />
+
+                        <TextView
+                            android:id="@+id/explore_gamenametext_1"
+                            android:layout_width="120dp"
+                            android:layout_height="35dp"
+                            android:gravity="center"
+                            android:text="游戏1"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_1" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="155dp">
+
+                        <ImageView
+                            android:id="@+id/explore_imageView1_2"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="fitXY"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/zoro" />
+
+                        <TextView
+                            android:id="@+id/explore_gamenametext1_2"
+                            android:layout_width="120dp"
+                            android:layout_height="35dp"
+                            android:gravity="center"
+                            android:text="游戏2"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_2" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="155dp">
+
+                        <ImageView
+                            android:id="@+id/explore_imageView1_3"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="fitXY"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/zoro" />
+
+                        <TextView
+                            android:id="@+id/explore_gamenametext1_3"
+                            android:layout_width="120dp"
+                            android:layout_height="35dp"
+                            android:gravity="center"
+                            android:text="游戏3"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_3" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="155dp">
+
+                        <ImageView
+                            android:id="@+id/explore_imageView1_4"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="fitXY"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/zoro" />
+
+                        <TextView
+                            android:id="@+id/explore_gamenametext1_4"
+                            android:layout_width="120dp"
+                            android:layout_height="35dp"
+                            android:gravity="center"
+                            android:text="游戏4"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_4" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="155dp">
+
+                        <ImageView
+                            android:id="@+id/explore_imageView1_5"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="fitXY"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/zoro" />
+
+                        <TextView
+                            android:id="@+id/explore_gamenametext1_5"
+                            android:layout_width="120dp"
+                            android:layout_height="35dp"
+                            android:gravity="center"
+                            android:text="游戏5"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_5" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="155dp">
+
+                        <ImageView
+                            android:id="@+id/explore_imageView1_6"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="fitXY"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/zoro" />
+
+                        <TextView
+                            android:id="@+id/explore_gamenametext1_6"
+                            android:layout_width="120dp"
+                            android:layout_height="35dp"
+                            android:gravity="center"
+                            android:text="游戏6"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_6" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="155dp">
+
+                        <ImageView
+                            android:id="@+id/explore_imageView1_7"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="fitXY"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/zoro" />
+
+                        <TextView
+                            android:id="@+id/explore_gamenametext1_7"
+                            android:layout_width="120dp"
+                            android:layout_height="35dp"
+                            android:gravity="center"
+                            android:text="游戏7"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_7" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="155dp">
+
+                        <ImageView
+                            android:id="@+id/explore_imageView1_8"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="fitXY"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/zoro" />
+
+                        <TextView
+                            android:id="@+id/explore_gamenametext1_8"
+                            android:layout_width="120dp"
+                            android:layout_height="35dp"
+                            android:gravity="center"
+                            android:text="游戏8"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_8" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="155dp">
+
+                        <ImageView
+                            android:id="@+id/explore_imageView1_9"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="fitXY"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/zoro" />
+
+                        <TextView
+                            android:id="@+id/explore_gamenametext1_9"
+                            android:layout_width="120dp"
+                            android:layout_height="35dp"
+                            android:gravity="center"
+                            android:text="游戏9"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/explore_imageView1_9" />
 

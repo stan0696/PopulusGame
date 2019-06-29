@@ -1,4 +1,5 @@
 package com.example.myapplication2;
+
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -24,15 +25,15 @@ public class SQLiteDbHelper  extends SQLiteOpenHelper {
     //创建 students 表的 sql 语句
     private static final String GAME_CREATE_TABLE_SQL = "CREATE TABLE IF NOT EXISTS " + TABLE_GAME
             +"("+ NAME + " varchar(10), " +
-            GAMEID+ " Integer primary key, " +
-            ICON+ " varchar(10)," +
-            INTRODUCTION + " TEXT ," +
-            DOWNLOADURL + " TEXT," +
-            TITLEIMAGE + " TEXT," +
-            TAG1 +" TEXT," +
-            TAG2 +" TEXT," +
-            TAG3 +" TEXT," +
-            MARK + " Integer)";
+               GAMEID+ " Integer primary key, " +
+               ICON+ " varchar(10)," +
+             INTRODUCTION + " TEXT ," +
+             DOWNLOADURL + " TEXT," +
+             TITLEIMAGE + " TEXT," +
+             TAG1 +" TEXT," +
+             TAG2 +" TEXT," +
+             TAG3 +" TEXT," +
+             MARK + " Integer)";
 
 
 

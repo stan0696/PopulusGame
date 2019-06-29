@@ -42,7 +42,8 @@ public class Crawl_data {
                 String text=span.text();
                 URI uri = URI.create(relHref);
                 newgametag[i] = new FindGame(uri,text);
-
+                // System.out.println(newgametag[i].getTag());
+                // System.out.println(newgametag[i].getUrl());
             }
             for (FindGame findGame:newgametag
             ) {
@@ -68,6 +69,7 @@ public class Crawl_data {
 
 
                             nowgame.setTag(tagnum%3+1,tagelement.text());
+                            System.out.println(nowgame.getTag(tagnum%3+1));
                             tagnum++;
 
 

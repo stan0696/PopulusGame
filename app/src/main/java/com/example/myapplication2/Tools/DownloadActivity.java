@@ -37,6 +37,7 @@ public class DownloadActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.download_main);
         ImageView back_btn = (ImageView)findViewById(R.id.download_back);
         setViews();// 控件初始化
@@ -79,26 +80,34 @@ public class DownloadActivity extends AppCompatActivity {
      * 简单的list集合添加一些测试数据
      */
     private void initData() {
-        String url2 = new String();
-        Intent intent = getIntent();
+        int[] url = new int[]{WRITE_EXTERNAL_STORAGE_REQUEST_CODE};
+        DownloadManager.Query query = new DownloadManager.Query();
         newdownload = new DownloadManagerUtil(this);
-        url2 = intent.getStringExtra("downloadurl");
-        if (url2==null){
 
-        }
+        String url2 ;
+        Intent intent = getIntent();
+        url2 = intent.getStringExtra("downloadurl");
+
+        System.out.println(url2);
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             //申请WRITE_EXTERNAL_STORAGE权限
              ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
         }
-        else{
+        else
+            {
+
             newdownload.downloadAPK(url2,"sss");
             downloadManager = (DownloadManager)this.getSystemService(Context.DOWNLOAD_SERVICE);
             list.add( newdownload);
+
         }
 
     }
+
+
+
 
     /**
      * 注册下载成功的广播监听
