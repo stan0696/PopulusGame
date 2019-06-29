@@ -27,7 +27,6 @@ public class MyImageView extends AppCompatImageView {
                 case GET_DATA_SUCCESS:
                     Bitmap bitmap = (Bitmap) msg.obj;
                     setImageBitmap(bitmap);
-                    System.out.println("成功");
                     break;
                 case NETWORK_ERROR:
                     Toast.makeText(getContext(),"网络连接失败",Toast.LENGTH_SHORT).show();

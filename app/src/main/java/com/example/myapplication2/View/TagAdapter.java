@@ -1,28 +1,24 @@
-package com.example.myapplication2.Tools;
+package com.example.myapplication2.View;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication2.R;
-import com.example.myapplication2.View.MyImageView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-public class DownloadAdapter extends BaseAdapter {
-
-    private List<String[]> list = new ArrayList<>();
+public class TagAdapter extends BaseAdapter {
+    private List<String> list = new ArrayList<>();
     private Context context;
-    public DownloadAdapter (List<String[]> list, Context context) {
+    public TagAdapter (List<String> list, Context context) {
         this.list = list;
         this.context = context;
-
 
     }
 
@@ -46,17 +42,18 @@ public class DownloadAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-            ViewHolder holder = null;
+        ViewHolder holder = null;
         if (convertView == null) {
             holder = new ViewHolder();
-            convertView = LayoutInflater.from(context).inflate(R.layout.download_item, parent, false);
-            holder.downloadtv_ss = (TextView) convertView.findViewById(R.id.downloadtv_ss);
-            holder.downloadgameicon = convertView.findViewById(R.id.downloadgameicon);
+            convertView = LayoutInflater.from(context).inflate(R.layout.notification_item, parent, false);
+            holder.notification_tv = (TextView) convertView.findViewById(R.id.notification_tv);
+            holder.gamename_iv = convertView.findViewById(R.id.gamename_iv);
+            holder.delete_iv = convertView.findViewById(R.id.delete_iv);
+            holder.gameicon_iv = convertView.findViewById(R.id.gameicon_iv);
             convertView.setTag(holder);
         }
-            holder = (ViewHolder) convertView.getTag();
-            holder.downloadtv_ss.setText(list.get(position)[1]);
-            holder.downloadgameicon.setImageURL(list.get(position)[2]);
+        holder = (ViewHolder) convertView.getTag();
+        //holder.downloadtv_ss.setText(list.get(position).getGamename());
         return convertView;
     }
 
@@ -69,8 +66,11 @@ public class DownloadAdapter extends BaseAdapter {
      *
      */
     class ViewHolder {
-        TextView downloadtv_ss;
-        MyImageView downloadgameicon;
+        TextView notification_tv;
+        TextView gamename_iv;
+        ImageView gameicon_iv;
+        ImageView delete_iv;
     }
 
 }
+

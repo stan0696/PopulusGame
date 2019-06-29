@@ -102,8 +102,6 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                             pass = b.getString("pass");
                             dbUserService = DBUserService.getDbUserService();
                             password = dbUserService.findUser(name);//读取的密码
-                            System.out.println("pass" + pass);
-                            System.out.println("password" + password);
                             if (pass.equals("")){
                                 Toast.makeText(UserLoginActivity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
                                 break;

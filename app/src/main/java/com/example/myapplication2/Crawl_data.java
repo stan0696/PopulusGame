@@ -93,6 +93,17 @@ public class Crawl_data {
 
                         }
 
+
+                        String downloadget = new String("https://www.9game.cn/search/?keyword="+java.net.URLEncoder.encode(nowgame.getName(), "UTF-8")+"&uc_gd_adm=%E6%90%9C%E7%B4%A2");
+                        Document downloaddoc = Jsoup.connect(downloadget).timeout(10000).get();
+                        Element info =downloaddoc.select(".sr-poker").first();
+                        if (nowgame.getName().indexOf(info.select("img").attr("alt"))>-1){
+                            nowgame.setDownloadUrl(URI.create(info.select("a[class=down android]").attr("href")));
+                        }
+                        else {
+                            nowgame.setDownloadUrl(URI.create("no_this_game"));
+                        }
+
                         if(id!=null)
                         {
                             int Id=new Integer(id);
@@ -104,6 +115,7 @@ public class Crawl_data {
                         {
                             introduction = intro.text();
                             nowgame.setIntroduction(introduction);/*将获取的简介传入nowgame里*/
+
                         }
 
                         if(icon!=null)
@@ -116,7 +128,7 @@ public class Crawl_data {
                         cValue.put("gameid",nowgame.getID());
                         cValue.put("icon",nowgame.getIcon());
                         cValue.put("introduction",nowgame.getIntroduction());
-
+                        cValue.put("downloadurl",nowgame.getDownloadUrl().toString());
                         if(nowgame.getTag(1)!=null)
                         {
                             cValue.put("tag1",nowgame.getTag(1));
@@ -143,13 +155,12 @@ public class Crawl_data {
                 }
 
             }
-            //System.out.println(newgame.get(1).getName());
 
         } catch (
                 IOException e) {
             e.printStackTrace();
         }
-
+        database.close();
     }
 
     public FindGame[] getNewgametag() {

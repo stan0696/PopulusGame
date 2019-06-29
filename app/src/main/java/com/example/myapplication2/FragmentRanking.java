@@ -44,20 +44,15 @@ public class FragmentRanking extends Fragment{
         tabLayout.getTabAt(0).setText("类型一");
         tabLayout.getTabAt(1).setText("类型二");
         tabLayout.getTabAt(2).setText("类型三");
-        tabLayout.getTabAt(3).setText("类型四");
-        tabLayout.getTabAt(4).setText("类型五");
-        tabLayout.getTabAt(5).setText("类型六");
-        tabLayout.getTabAt(6).setText("类型七");
+
     }
 
     private void initFragment() {
-        fragmentList.add(new Rankingfrag_1());
         fragmentList.add(new Rankingfrag_2());
-        fragmentList.add(new Rankingfrag_3());
-        fragmentList.add(new Rankingfrag_4());
-        fragmentList.add(new Rankingfrag_5());
-        fragmentList.add(new Rankingfrag_6());
-        fragmentList.add(new Rankingfrag_7());
+        fragmentList.add(new Rankingfrag_2());
+        fragmentList.add(new Rankingfrag_2());
+
+
     }
 
 

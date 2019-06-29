@@ -17,6 +17,7 @@ import com.example.myapplication2.Tools.SettingActivity;
 import com.example.myapplication2.User.User;
 import com.example.myapplication2.User.UserLoginActivity;
 import com.example.myapplication2.View.FocusActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -25,6 +26,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -163,5 +166,4 @@ public class MainActivity extends AppCompatActivity
             }
         }.start();
     }
-
 }
