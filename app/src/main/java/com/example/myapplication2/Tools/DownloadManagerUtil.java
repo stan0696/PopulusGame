@@ -38,7 +38,7 @@ public class DownloadManagerUtil {
 
         //在通知栏中显示，默认就是显示的
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
-        request.setTitle("name");
+        request.setTitle(name);
         request.setDescription("Apk Downloading");
         request.setVisibleInDownloadsUi(true);
 
@@ -53,6 +53,7 @@ public class DownloadManagerUtil {
         //注册广播接收者，监听下载状态
         mContext.registerReceiver(receiver,
                 new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+        mContext.unregisterReceiver(receiver);
     }
 
     //广播监听下载的各个状态
@@ -98,6 +99,7 @@ public class DownloadManagerUtil {
             }
         }
         c.close();
+        mContext.unregisterReceiver(receiver);
     }
 
     //下载到本地后执行安装
@@ -112,6 +114,7 @@ public class DownloadManagerUtil {
             mContext.unregisterReceiver(receiver);
         }
     }
+
 
     public long getDownloadId() {
         return downloadId;

@@ -43,7 +43,7 @@ public class GameinfoActivity extends AppCompatActivity {
     private Button  button_download;
     private String name;
     private String iconurl;
-    private String downloadurl;
+    private String[] downloadgameinfo = new String[3];
     private String introduction;
     private String tag1;
     private String tag2;
@@ -89,20 +89,20 @@ public class GameinfoActivity extends AppCompatActivity {
     private void setlistener()
     {
         button_download=findViewById(R.id.button_download);
+        if (downloadgameinfo[0].equals("no_this_game")){
+            button_download.setText("暂无下载");
+        }else{
+            button_download.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
 
-        button_download.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GameinfoActivity.this.getBaseContext(), DownloadActivity.class);
-                /**此处需修改*/ intent.putExtra("downloadurl","http://mhhy.dl.gxpan.cn/apk/ml/MBGYD092101/Gardenscapes-ledou-MBGYD092101.apk");
-                startActivity(intent);
+                    Intent intent = new Intent(GameinfoActivity.this.getBaseContext(), DownloadActivity.class);
+                    /**此处需修改*/ intent.putExtra("downloadurl",downloadgameinfo);
+                    startActivity(intent);
+                }
+            });
+        }
 
-
-
-            }
-
-
-        });
     }
     private void getdata() {
         SQLiteDbHelper helper = new SQLiteDbHelper(getApplicationContext());
@@ -112,22 +112,22 @@ public class GameinfoActivity extends AppCompatActivity {
         names[0]=this.name;
         Cursor cursor = database.query("game", null, "name=?", new String[]{this.name}, null, null, null);//修改
         if (cursor.moveToFirst()) {
-            String username = cursor.getString(0);
             this.name= cursor.getString(0);
             this.iconurl=cursor.getString(2);
             this.introduction=cursor.getString(3);
-            this.downloadurl=cursor.getString(4);
+            this.downloadgameinfo[0]=cursor.getString(4);
+            this.downloadgameinfo[1]=name;
+            this.downloadgameinfo[2]=iconurl;
             this.tag1=cursor.getString(6);
             this.tag2=cursor.getString(7);
             this.tag3=cursor.getString(8);
-            System.out.println(iconurl);
-            System.out.println(123);
             iconview=(MyImageView)findViewById(R.id.imageView_game);
             introductiontext=findViewById(R.id.game_textIntroduce);
             nametext=findViewById(R.id.game_textname);
             iconview.setImageURL(iconurl);
             introductiontext.setText(introduction);
             nametext.setText(name);
+            System.out.println(this.downloadgameinfo);
             if(tag1!=null)
             {
                 tag1text=findViewById(R.id.gametag1);
@@ -145,11 +145,8 @@ public class GameinfoActivity extends AppCompatActivity {
                 tag3text=findViewById(R.id.gametag3);
                 tag3text.setText(tag3);
             }
-
-
-
-
         }
+        database.close();
     }
 
 }

@@ -49,11 +49,9 @@ public class FragmentRanking extends Fragment{
 
     private void initFragment() {
         fragmentList.add(new Rankingfrag_2());
-        System.out.println("初始化类型1");
         fragmentList.add(new Rankingfrag_2());
-        System.out.println("初始化类型2");
         fragmentList.add(new Rankingfrag_2());
-        System.out.println("初始化类型3");
+
 
     }
 

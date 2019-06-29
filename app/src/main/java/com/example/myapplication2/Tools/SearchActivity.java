@@ -148,7 +148,7 @@ public class SearchActivity extends AppCompatActivity {
                 list.add(username);
             }
         }
-
+        database.close();
 }
 
 }

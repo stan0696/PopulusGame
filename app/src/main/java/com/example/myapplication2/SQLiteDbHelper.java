@@ -22,6 +22,11 @@ public class SQLiteDbHelper  extends SQLiteOpenHelper {
     public static final String TAG1= "tag1";
     public static final String TAG2= "tag2";
     public static final String TAG3= "tag3";
+
+    public static final String TABLE_DOWNLOAD= "downloadgame";
+    public static final String DOWNLOADNAME= "name";
+    public static final String DOWNLOADICON= "icon";
+    public static final String DOWNLOADID= "id";
     //创建 students 表的 sql 语句
     private static final String GAME_CREATE_TABLE_SQL = "CREATE TABLE IF NOT EXISTS " + TABLE_GAME
             +"("+ NAME + " varchar(10), " +
@@ -35,7 +40,10 @@ public class SQLiteDbHelper  extends SQLiteOpenHelper {
              TAG3 +" TEXT," +
              MARK + " Integer)";
 
-
+    private static final String DOWNLOAD_TABLE_SQL = "CREATE TABLE IF NOT EXISTS " + TABLE_DOWNLOAD
+            +"("+ DOWNLOADNAME+ " varchar(10) primary key, " +
+            DOWNLOADID+ " Integer , " +
+            DOWNLOADICON+ " varchar(10))";
 
 
     public SQLiteDbHelper(Context context) {
@@ -50,6 +58,7 @@ public class SQLiteDbHelper  extends SQLiteOpenHelper {
         // 在这里通过 db.execSQL 函数执行 SQL 语句创建所需要的表
         // 创建 students 表
         db.execSQL(GAME_CREATE_TABLE_SQL);
+        db.execSQL(DOWNLOAD_TABLE_SQL );
 
     }
 

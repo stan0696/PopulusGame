@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.myapplication2.R;
+import com.example.myapplication2.View.MyImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +17,9 @@ import java.util.List;
 
 public class DownloadAdapter extends BaseAdapter {
 
-    private List<DownloadManagerUtil> list = new ArrayList<>();
+    private List<String[]> list = new ArrayList<>();
     private Context context;
-    public DownloadAdapter (List<DownloadManagerUtil> list, Context context) {
+    public DownloadAdapter (List<String[]> list, Context context) {
         this.list = list;
         this.context = context;
 
@@ -50,10 +51,12 @@ public class DownloadAdapter extends BaseAdapter {
             holder = new ViewHolder();
             convertView = LayoutInflater.from(context).inflate(R.layout.download_item, parent, false);
             holder.downloadtv_ss = (TextView) convertView.findViewById(R.id.downloadtv_ss);
+            holder.downloadgameicon = convertView.findViewById(R.id.downloadgameicon);
             convertView.setTag(holder);
         }
             holder = (ViewHolder) convertView.getTag();
-            //holder.downloadtv_ss.setText(list.get(position));
+            holder.downloadtv_ss.setText(list.get(position)[1]);
+            holder.downloadgameicon.setImageURL(list.get(position)[2]);
         return convertView;
     }
 
@@ -67,6 +70,7 @@ public class DownloadAdapter extends BaseAdapter {
      */
     class ViewHolder {
         TextView downloadtv_ss;
+        MyImageView downloadgameicon;
     }
 
 }

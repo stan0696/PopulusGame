@@ -98,7 +98,7 @@ public class FindGame {
             }
 
         }
-
+        database.close();
         return games;
     }
 

@@ -17,4 +17,5 @@
         android:layout_height="46dp"
         android:scaleType="fitEnd"
         android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
+
 </FrameLayout>
