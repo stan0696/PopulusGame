@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.myapplication2.View.MyImageView;
@@ -32,7 +33,7 @@ public class GameinfoActivity extends AppCompatActivity {
     private String tag2;
     private String tag3;
     private TabLayout tabLayout;
-    private ViewPager mViewPager;
+    private WrapContentHeightViewPager mViewPager;
     List<Fragment> fragmentList = new ArrayList<>();
     Fragment fragmentDetails;
     Fragment fragmentComment;
@@ -43,7 +44,7 @@ public class GameinfoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         name = intent.getStringExtra("gamename");
         getdata();
-        mViewPager = findViewById(R.id.viewPager);
+        mViewPager = findViewById(R.id.viewPager_gameinfo);
         tabLayout = findViewById(R.id.mytab);
         initFragments();
         tabLayout.setupWithViewPager(mViewPager);
@@ -99,6 +100,5 @@ public class GameinfoActivity extends AppCompatActivity {
 
         }
     }
-
 }
 
