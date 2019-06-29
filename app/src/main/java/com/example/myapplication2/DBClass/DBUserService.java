@@ -55,7 +55,7 @@ public class DBUserService {
                     if(rs!=null){
                         while(rs.next()){
                             User user=new User(null, null);
-                            user.setUser_Name(rs.getString("name"));
+                            user.setUser_Name(rs.getString("username"));
                             user.setPassword(rs.getString("password"));
                             list.add(user);
                         }
@@ -123,7 +123,7 @@ public class DBUserService {
     }
 
     /**
-     * 插入操作
+     * 插入操作（注册）
      */
     public int userInsert(User user){
         int result = -1;
@@ -149,21 +149,21 @@ public class DBUserService {
     }
 
     /**
-     * 更新操作
+     * 更新操作（更改密码）
      */
-    public int updateUserData(String password){
+    public int updateUserData(String name, String password){
         int result=-1;
         if(!StringUtils.isEmptyOrWhitespaceOnly(password)){
             //获取链接数据库对象
             con= DBUtil.getSQLConnection();
             //MySQL 语句
-            String sql="update user set password=? where id=?";
+            String sql="update user set password=? where username=?";
             try {
                 boolean closed=con.isClosed();
                 if(con!=null&&(!closed)){
                     ps= (PreparedStatement) con.prepareStatement(sql);
                     ps.setString(1,password);//第一个参数state 一定要和上面SQL语句字段顺序一致
-                    ps.setInt(2,2);//第二个参数 phone 一定要和上面SQL语句字段顺序一致
+                    ps.setString(2,name);//第二个参数 phone 一定要和上面SQL语句字段顺序一致
                     result=ps.executeUpdate();//返回1 执行成功
                 }
             } catch (SQLException e) {
@@ -174,4 +174,107 @@ public class DBUserService {
         return result;
     }
 
+    /**
+     * 关注游戏状态查询（0和2没有关注，2有记录，1表示已关注）
+     */
+    public int findGameState(String name, int gameid){
+        String selectSql = "select gamestate from usergame where username=? and gameid=?";
+        con = DBUtil.getSQLConnection();
+        int gamestate = 0;
+        try {
+            boolean closed=con.isClosed();
+            if((con!=null)&&(!closed)){
+                ps= (PreparedStatement) con.prepareStatement(selectSql);
+                ps.setString(1,name);//第一个参数 name 规则同上
+                ps.setInt(2,gameid);
+                if (ps != null) {
+                    rs= ps.executeQuery();
+                    if(rs!=null){
+                        while(rs.next()) {
+                            gamestate = rs.getInt("gamestate");
+                            if(gamestate == 0){
+                                DBUtil.closeAll(con, ps, rs);
+                                return 2;
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        DBUtil.closeAll(con, ps, rs);
+        return gamestate;
+    }
+
+    /**
+     * 关注游戏按钮点击
+     */
+    public int focusGame(String username, int gameid, int gamestate){
+        String updateSql = "update usergame set gamestate=? where username=?";
+        String insertSql = "insert into usergame(username, gameid, gamestate) values(?, ?, ?)";
+        con = DBUtil.getSQLConnection();
+        try {
+            boolean closed = con.isClosed();
+            if((con!=null)&&(!closed)){
+                if (gamestate == 0){
+                    ps= (PreparedStatement) con.prepareStatement(insertSql);
+                    ps.setString(1,username);
+                    ps.setInt(2,gameid);
+                    ps.setInt(3,1);
+                    ps.executeUpdate();
+                    DBUtil.closeAll(con, ps);
+                    return 1;
+                }
+                if (gamestate == 1){
+                    ps= (PreparedStatement) con.prepareStatement(updateSql);
+                    ps.setInt(1,0);
+                    ps.setString(2,username);
+                    ps.executeUpdate();
+                    DBUtil.closeAll(con, ps);
+                    return 1;
+                }
+                if (gamestate == 2){
+                    ps= (PreparedStatement) con.prepareStatement(updateSql);
+                    ps.setInt(1,1);
+                    ps.setString(2,username);
+                    ps.executeUpdate();
+                    DBUtil.closeAll(con, ps);
+                    return 1;
+                }
+            }
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    /**
+     * 获取用户关注的游戏
+     */
+    public List<Integer> findUserGame(String username){
+        String sql = "select gameid from usergame where username=? and gamestate=1";
+        List<Integer> games = new ArrayList<>();//返还用户关注游戏ID的列表
+        con= DBUtil.getSQLConnection();//获取链接数据库对象
+        try {
+            if (con != null && (!con.isClosed())) {
+                ps = (PreparedStatement) con.prepareStatement(sql);
+                ps.setString(1, username);
+                if (ps != null) {
+                    rs= ps.executeQuery();
+                    if(rs!=null){
+                        while(rs.next()) {
+                            int gameid = rs.getInt("gameid");
+                            games.add(gameid);
+                        }
+                    }
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        DBUtil.closeAll(con,ps,rs);//关闭相关操作
+        return games;
+    }
 }
