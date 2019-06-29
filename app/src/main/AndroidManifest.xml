@@ -28,6 +28,7 @@
         <activity android:name=".MyGameActivity" />
         <activity android:name=".NotificationActivity" />
         <activity android:name=".Tools.SettingActivity" />
+        <activity android:name=".CommentActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

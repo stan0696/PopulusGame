@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -49,11 +50,10 @@ public class GameinfoActivity extends AppCompatActivity {
     private String tag2;
     private String tag3;
     private TabLayout tabLayout;
-    private ViewPager mViewPager;
+    private WrapContentHeightViewPager mViewPager;
     List<Fragment> fragmentList = new ArrayList<>();
     Fragment fragmentDetails;
     Fragment fragmentComment;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,21 +61,13 @@ public class GameinfoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         name = intent.getStringExtra("gamename");
         getdata();
-        mViewPager = findViewById(R.id.viewPager);
-        tabLayout = findViewById(R.id.mytab);
-        initFragments();
-        tabLayout.setupWithViewPager(mViewPager);
-        tabLayout.getTabAt(0).setText("详情");
-        tabLayout.getTabAt(1).setText("评论");
-        mViewPager = findViewById(R.id.viewPager);
+        mViewPager = findViewById(R.id.viewPager_gameinfo);
         tabLayout = findViewById(R.id.mytab);
         initFragments();
         tabLayout.setupWithViewPager(mViewPager);
         tabLayout.getTabAt(0).setText("详情");
         tabLayout.getTabAt(1).setText("评论");
     }
-
-
 
     private void initFragments(){
         fragmentDetails = new FragmentDetails();
@@ -112,6 +104,7 @@ public class GameinfoActivity extends AppCompatActivity {
         names[0]=this.name;
         Cursor cursor = database.query("game", null, "name=?", new String[]{this.name}, null, null, null);//修改
         if (cursor.moveToFirst()) {
+            String username = cursor.getString(0);
             this.name= cursor.getString(0);
             this.iconurl=cursor.getString(2);
             this.introduction=cursor.getString(3);
@@ -127,7 +120,6 @@ public class GameinfoActivity extends AppCompatActivity {
             iconview.setImageURL(iconurl);
             introductiontext.setText(introduction);
             nametext.setText(name);
-            System.out.println(this.downloadgameinfo);
             if(tag1!=null)
             {
                 tag1text=findViewById(R.id.gametag1);
