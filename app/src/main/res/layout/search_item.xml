@@ -6,10 +6,12 @@
 
     <TextView
         android:id="@+id/tv_ss"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
+        android:padding="8dp"
         android:text="@string/搜索"
-        android:textSize="20sp" />
+        android:textSize="16sp"
+        android:textColor="#000000"/>
 
 </LinearLayout>
