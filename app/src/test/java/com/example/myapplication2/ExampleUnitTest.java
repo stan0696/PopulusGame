@@ -12,8 +12,6 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void run(){
-        Crawl_data test = new Crawl_data("https://www.taptap.com/categories");
-        test.run();
 
     }
 }

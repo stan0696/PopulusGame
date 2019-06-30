@@ -20,7 +20,7 @@
         <activity android:name=".GameinfoActivity" />
         <activity android:name=".User.PasswordFindActivity" />
         <activity android:name=".User.PasswordChangeActivity" />
-        <activity android:name=".User.UserLoadActivity" />
+        <activity android:name=".User.UserLoginActivity" />
         <activity android:name=".User.UserInfoActivity" />
         <activity android:name=".Tools.DownloadActivity" />
         <activity android:name=".Tools.SearchActivity" />

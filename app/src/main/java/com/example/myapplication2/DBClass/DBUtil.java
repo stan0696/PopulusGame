@@ -17,16 +17,13 @@ public class DBUtil {
         Connection con = null;
         try
         {
-            System.out.println(44);
 
             //加载JDBC驱
             Class.forName("com.mysql.jdbc.Driver");
 
-            System.out.println("jiazai");
             //连接
             con = DriverManager.getConnection("jdbc:mysql://192.168.43.211:3306/populus", "populus", "populus");
             //con = DriverManager.getConnection("jdbc:mysql://" + ip + ":3306/" + db, user, pwd);
-            System.out.println("lianjie");
 
         } catch (ClassNotFoundException e)
         {
