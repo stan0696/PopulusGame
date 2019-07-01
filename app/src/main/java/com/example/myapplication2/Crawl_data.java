@@ -69,6 +69,7 @@ public class Crawl_data {
 
 
                             nowgame.setTag(tagnum%3+1,tagelement.text());
+
                             tagnum++;
 
 
