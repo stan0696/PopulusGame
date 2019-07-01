@@ -149,26 +149,24 @@ public class DBUserService {
     }
 
     /**
-     * 更新操作（更改密码）
+     * 更新操作（更改个人信息）
      */
-    public int updateUserData(String name, String password){
+    public int updateUserData(String name, String change, String content){
         int result=-1;
-        if(!StringUtils.isEmptyOrWhitespaceOnly(password)){
-            //获取链接数据库对象
-            con= DBUtil.getSQLConnection();
-            //MySQL 语句
-            String sql="update user set password=? where username=?";
-            try {
-                boolean closed=con.isClosed();
-                if(con!=null&&(!closed)){
-                    ps= (PreparedStatement) con.prepareStatement(sql);
-                    ps.setString(1,password);//第一个参数state 一定要和上面SQL语句字段顺序一致
-                    ps.setString(2,name);//第二个参数 phone 一定要和上面SQL语句字段顺序一致
-                    result=ps.executeUpdate();//返回1 执行成功
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
+        con= DBUtil.getSQLConnection();
+        //MySQL 语句
+        String sql="update user set ?=? where username=?";
+        try {
+            boolean closed=con.isClosed();
+            if(con!=null&&(!closed)){
+                ps= (PreparedStatement) con.prepareStatement(sql);
+                ps.setString(1,change);
+                ps.setString(2,content);
+                ps.setString(3,name);
+                result=ps.executeUpdate();//返回1 执行成功
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         DBUtil.closeAll(con,ps);//关闭相关操作
         return result;
@@ -277,4 +275,6 @@ public class DBUserService {
         DBUtil.closeAll(con,ps,rs);//关闭相关操作
         return games;
     }
+
+
 }

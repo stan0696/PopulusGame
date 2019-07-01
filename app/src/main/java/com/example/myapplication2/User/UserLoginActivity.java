@@ -39,7 +39,6 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
         view_init();
         LoginThread lt=new LoginThread();
         lt.start();//调动子线程
-
     }
 
     /**
@@ -112,7 +111,10 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                             }
                             if (password.equals(pass))//为true，页面跳转，登陆成功
                             {
-                                startActivity(new Intent(UserLoginActivity.this, MainActivity.class));
+                                Intent intent = new Intent();
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.setClass(UserLoginActivity.this, MainActivity.class);
+                                startActivity(intent);
                                 Toast.makeText(UserLoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();//显示提示框
                                 return;
                             }
