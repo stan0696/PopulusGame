@@ -170,5 +170,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView_introduce3"
                 app:srcCompat="@drawable/zoro" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="80dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="暂无更多"
+            android:gravity="center"/>
     </LinearLayout>
 </ScrollView>
