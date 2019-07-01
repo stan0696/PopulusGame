@@ -9,6 +9,8 @@ import android.util.AttributeSet;
 import androidx.appcompat.widget.AppCompatImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -19,13 +21,14 @@ public class MyImageView extends AppCompatImageView {
     public static final int GET_DATA_SUCCESS = 1;
     public static final int NETWORK_ERROR = 2;
     public static final int SERVER_ERROR = 3;
+    private Bitmap bitmap;
     //子线程不能操作UI，通过Handler设置图片
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what){
                 case GET_DATA_SUCCESS:
-                    Bitmap bitmap = (Bitmap) msg.obj;
+                    bitmap = (Bitmap) msg.obj;
                     setImageBitmap(bitmap);
                     break;
                 case NETWORK_ERROR:
@@ -37,7 +40,6 @@ public class MyImageView extends AppCompatImageView {
             }
         }
     };
-
     public MyImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
@@ -93,4 +95,10 @@ public class MyImageView extends AppCompatImageView {
         }.start();
     }
 
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
+    }
 }

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication2.Tools.FindGame;
 import com.example.myapplication2.Tools.SearchActivity;
 import com.example.myapplication2.View.Game;
@@ -103,7 +104,9 @@ void setTagview( String tag,View rootView)
 
 
         icon= rootView.findViewWithTag(tag+"imageview"+id);
-        icon.setImageURL(tagGames.get(i).getIcon());
+        icon.setTag(null);
+        Glide.with(ROOTVIEW.getContext()).load(tagGames.get(i).getIcon()).animate(R.anim.item_alpha_in).thumbnail(0.1f).into(icon);
+        //icon.setImageURL(tagGames.get(i).getIcon());
         icon.setContentDescription(tagGames.get(i).getName());
         icon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +114,6 @@ void setTagview( String tag,View rootView)
                 MyImageView iconimg=ROOTVIEW.findViewWithTag(view.getTag());
                 Intent intent = new Intent(FragmentExplore.this.getContext(), GameinfoActivity.class);
                 intent.putExtra("gamename",iconimg.getContentDescription());
-
                 startActivity(intent);
             }
         });
