@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/userinfo_back"
+        android:layout_width="35dp"
+        android:layout_height="45dp"
+        android:scaleType="fitEnd"
+        android:src="@drawable/ic_keyboard_arrow_left_black_24dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/userinfo_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="fitXY"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/zoro" />
+
+        <TextView
+            android:id="@+id/userinfo_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:text="这是用户名"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/userinfo_image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/userinfo_intro"
+            android:layout_width="333dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="8dp"
+            android:text="这是用户简介"
+            app:layout_constraintStart_toStartOf="@+id/userinfo_image"
+            app:layout_constraintTop_toBottomOf="@+id/userinfo_image" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/user_button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="修改个人信息"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/button_shape"/>
+
+    <Button
+        android:id="@+id/uaer_button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="修改密码"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/button_shape"/>
+
+    <Button
+        android:id="@+id/user_button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="修改密保问题"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/button_shape"/>
+</LinearLayout>
