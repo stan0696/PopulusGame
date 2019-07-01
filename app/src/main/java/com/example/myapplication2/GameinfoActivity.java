@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication2.Tools.DownloadActivity;
 import com.example.myapplication2.Tools.FindGame;
 import com.example.myapplication2.Tools.SearchActivity;
@@ -117,7 +118,9 @@ public class GameinfoActivity extends AppCompatActivity {
             iconview=(MyImageView)findViewById(R.id.imageView_game);
             introductiontext=findViewById(R.id.game_textIntroduce);
             nametext=findViewById(R.id.game_textname);
-            iconview.setImageURL(iconurl);
+            iconview.setTag(null);
+            Glide.with(this.getBaseContext()).load(iconurl).animate(R.anim.item_alpha_in).thumbnail(0.1f).into(iconview);
+            //iconview.setImageURL(iconurl);
             introductiontext.setText(introduction);
             nametext.setText(name);
             if(tag1!=null)
