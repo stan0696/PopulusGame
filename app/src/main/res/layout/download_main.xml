@@ -22,11 +22,9 @@
         android:layout_marginTop="10dp"/>
     <ListView
         android:id="@+id/downloadv_ss"
-        android:layout_width="343dp"
+        android:layout_width="match_parent"
         android:layout_height="645dp"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="60dp"
-        android:layout_marginEnd="166dp"
         android:scrollbars="none"/>
     <ImageView
         android:id="@+id/downloadcenter_back"
