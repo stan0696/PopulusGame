@@ -1,4 +1,5 @@
-package com.example.myapplication2.View;
+package com.example.myapplication2.Tools;
+
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -21,15 +22,16 @@ import com.example.myapplication2.Rankingfrag_2;
 import com.example.myapplication2.SQLiteDbHelper;
 import com.example.myapplication2.Tools.DownloadActivity;
 import com.example.myapplication2.Tools.NotificationAdapter;
+import com.example.myapplication2.View.MyImageView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RankingfragAdapter extends BaseAdapter {
+public class fzDownloadAdapter extends BaseAdapter {
     private List<String[]> list = new ArrayList<>();
     private Context context;
     private String[] downloadgameinfo = new String[3];
-    public RankingfragAdapter (List<String[]> list, Context context) {
+    public fzDownloadAdapter (List<String[]> list, Context context) {
         this.list = list;
         this.context = context;
 
@@ -101,22 +103,15 @@ public class RankingfragAdapter extends BaseAdapter {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(context, DownloadActivity.class);
-                SQLiteDbHelper helper = new SQLiteDbHelper(context);
-                SQLiteDatabase database = helper.getWritableDatabase();
-                Cursor cursor = database.query("game", null, "name=?", new String[]{list.get(mPosition)[3]}, null, null, null);//修改
-                if (cursor.moveToFirst()) {
-                    downloadgameinfo[0]=cursor.getString(4);
-                    downloadgameinfo[1]=cursor.getString(0);
-                    downloadgameinfo[2]=cursor.getString(2);
-                }
-            System.out.println(downloadgameinfo[0]);
-                database.close();
-            if (downloadgameinfo[0].equals("no_this_game")){
-                Toast.makeText(context,"暂无下载",Toast.LENGTH_SHORT).show();
-            }else {
-                /**此处需修改*/ intent.putExtra("downloadurl",downloadgameinfo);
+            if (list.get(mPosition)[3].equals("biubiu加速器")){
+                downloadgameinfo[0]="https://www.wandoujia.com/apps/com.njh.biubiu/download/dot?ch=detail_normal_dl";
+                downloadgameinfo[1]=list.get(mPosition)[3];
+                downloadgameinfo[2]=list.get(mPosition)[1];
+                intent.putExtra("downloadurl",downloadgameinfo);
                 context.startActivity(intent);
             }
+
+
         }
 
     }

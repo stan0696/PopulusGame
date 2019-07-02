@@ -16,7 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".View.TagSearchActivity"></activity>
-        <activity android:name=".Tools.fzDownloadActivity" />
         <activity android:name=".GameinfoActivity" />
         <activity android:name=".User.PasswordFindActivity" />
         <activity android:name=".User.PasswordChangeActivity" />

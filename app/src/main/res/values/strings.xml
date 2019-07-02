@@ -27,6 +27,8 @@
     <string name="下载中心">下载中心</string>
     <string name="todo">TODO</string>
     <string name="通知中心">通知中心</string>
+    <string name="辅助工具下载">辅助工具下载</string>
+
     <string name="title_activity_tag_search">TagSearchActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
