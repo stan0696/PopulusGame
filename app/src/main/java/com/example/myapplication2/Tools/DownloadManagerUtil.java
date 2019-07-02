@@ -14,6 +14,7 @@ import android.os.StrictMode;
 import android.widget.Toast;
 
 import java.net.URI;
+import java.text.NumberFormat;
 
 public class DownloadManagerUtil {
     //下载器
@@ -23,7 +24,10 @@ public class DownloadManagerUtil {
     //下载的ID
     private long downloadId;
     //下载的进度
-    private  int downloadSoFar;
+    private int downloadSoFar;
+    private long totalSize;
+    private long downloadedSoFar;
+
     public  DownloadManagerUtil(Context context){
         this.mContext = context;
     }
@@ -73,10 +77,9 @@ public class DownloadManagerUtil {
         Cursor c = downloadManager.query(query);
         if (c.moveToFirst()) {
             int status = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_STATUS));
-            long downloadedSoFar = c.getLong(c.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR));
+            downloadedSoFar = c.getLong(c.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR));
             // 下载文件的总字节大小
-            long totalSize = c.getLong(c.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES));
-            this.downloadSoFar =(int)(downloadedSoFar/totalSize);
+            totalSize = c.getLong(c.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES));
             switch (status) {
                 //下载暂停
                 case DownloadManager.STATUS_PAUSED:
@@ -115,7 +118,10 @@ public class DownloadManagerUtil {
         }
     }
 
-
+    public void deletedownloadbyid(){
+        downloadManager = (DownloadManager) mContext.getSystemService(Context.DOWNLOAD_SERVICE);
+        downloadManager.remove(downloadId);
+    }
     public long getDownloadId() {
         return downloadId;
     }
@@ -125,6 +131,63 @@ public class DownloadManagerUtil {
     }
 
     public int getDownloadSoFar() {
+        downloadManager = (DownloadManager) mContext.getSystemService(Context.DOWNLOAD_SERVICE);
+        DownloadManager.Query query = new DownloadManager.Query();
+        //通过下载的id查找
+        query.setFilterById(downloadId);
+        Cursor c = downloadManager.query(query);
+        if (c.moveToFirst()) {
+            int status = c.getInt(c.getColumnIndex(DownloadManager.COLUMN_STATUS));
+            downloadedSoFar = c.getLong(c.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR));
+            // 下载文件的总字节大小
+            totalSize = c.getLong(c.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES));
+            double i =(double)downloadedSoFar/totalSize;
+            this.downloadSoFar =(int) (i*100);
+        }
         return downloadSoFar;
+    }
+
+    public String getTotalSize() {
+        return getPrintSize(totalSize);
+    }
+
+    public void setTotalSize(long totalSize) {
+        this.totalSize = totalSize;
+    }
+
+    public String getDownloadedSoFar() {
+        return getPrintSize(downloadedSoFar);
+    }
+
+    public void setDownloadedSoFar(long downloadedSoFar) {
+        this.downloadedSoFar = downloadedSoFar;
+    }
+    public static String getPrintSize(long size) {
+        //如果字节数少于1024，则直接以B为单位，否则先除于1024，后3位因太少无意义
+        if (size < 1024) {
+            return String.valueOf(size) + "B";
+        } else {
+            size = size / 1024;
+        }
+        //如果原字节数除于1024之后，少于1024，则可以直接以KB作为单位
+        //因为还没有到达要使用另一个单位的时候
+        //接下去以此类推
+        if (size < 1024) {
+            return String.valueOf(size) + "KB";
+        } else {
+            size = size / 1024;
+        }
+        if (size < 1024) {
+            //因为如果以MB为单位的话，要保留最后1位小数，
+            //因此，把此数乘以100之后再取余
+            size = size * 100;
+            return String.valueOf((size / 100)) + "."
+                    + String.valueOf((size % 100)) + "MB";
+        } else {
+            //否则如果要以GB为单位的，先除于1024再作同样的处理
+            size = size * 100 / 1024;
+            return String.valueOf((size / 100)) + "."
+                    + String.valueOf((size % 100)) + "GB";
+        }
     }
 }
