@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="218dp"
             android:layout_marginTop="8dp"
-            android:scaleType="fitXY"
+            android:scaleType="fitCenter"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/zoro"
             tools:layout_editor_absoluteX="40dp" />
@@ -127,10 +127,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:gravity="center"
-            android:text="曾经的我在小河里有许多要好的朋友，我们一起哭，一起闹，一起笑，一起玩耍，生活得非常快乐。
-                可现在，我们大家一个个都病怏怏的，吃不下饭，游不快，每天都呆在一个地方，一天、两天、三天，
-                我的身体越来越差，河里的一些年纪有点大的鱼和幼小的鱼都已经去世了，我看到了它们那肚皮朝上的样子越想越可怕。
-                生活不久的将来，肚皮朝上的鱼就是我，天堂便是我的归宿，想到这，我开始瑟瑟发抖起来。"
+            android:text=""
             android:textColor="#000000"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"

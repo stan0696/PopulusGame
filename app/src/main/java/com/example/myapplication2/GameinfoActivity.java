@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +39,8 @@ public class GameinfoActivity extends AppCompatActivity {
     private MyImageView iconview;
     private TextView introductiontext;
     private TextView nametext;
+    private ImageView imageView_introduce;
+
     private Button tag1text;
     private Button  tag2text;
     private Button  tag3text;
@@ -47,6 +50,7 @@ public class GameinfoActivity extends AppCompatActivity {
     private String iconurl;
     private String[] downloadgameinfo = new String[3];
     private String introduction;
+    private String[] tittleimg = new String[5];
     private String tag1;
     private String tag2;
     private String tag3;
@@ -61,9 +65,10 @@ public class GameinfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gameinfo);
         Intent intent = getIntent();
         name = intent.getStringExtra("gamename");
-        getdata();
+
         mViewPager = findViewById(R.id.viewPager_gameinfo);
         tabLayout = findViewById(R.id.mytab);
+        getdata();
         initFragments();
         tabLayout.setupWithViewPager(mViewPager);
         tabLayout.getTabAt(0).setText("详情");
@@ -71,7 +76,7 @@ public class GameinfoActivity extends AppCompatActivity {
     }
 
     private void initFragments(){
-        fragmentDetails = new FragmentDetails();
+        fragmentDetails = new FragmentDetails(tittleimg);
         fragmentComment = new FragmentComment();
         fragmentList.add(fragmentDetails);
         fragmentList.add(fragmentComment);
@@ -115,12 +120,25 @@ public class GameinfoActivity extends AppCompatActivity {
             this.tag1=cursor.getString(6);
             this.tag2=cursor.getString(7);
             this.tag3=cursor.getString(8);
+            this.tittleimg[0]=cursor.getString(5);
+            this.tittleimg[1]=cursor.getString(10);
+            this.tittleimg[2]=cursor.getString(11);
+            this.tittleimg[3]=cursor.getString(12);
+            this.tittleimg[4]=cursor.getString(13);
             iconview=(MyImageView)findViewById(R.id.imageView_game);
             introductiontext=findViewById(R.id.game_textIntroduce);
             nametext=findViewById(R.id.game_textname);
+            imageView_introduce=findViewById(R.id.imageView_introduce);
+
+
             iconview.setTag(null);
             Glide.with(this.getBaseContext()).load(iconurl).animate(R.anim.item_alpha_in).thumbnail(0.1f).into(iconview);
             //iconview.setImageURL(iconurl);
+            imageView_introduce.setTag(null);
+            Glide.with(this.getBaseContext()).load(tittleimg[0]).animate(R.anim.item_alpha_in).thumbnail(0.1f).into(imageView_introduce);
+
+
+
             introductiontext.setText(introduction);
             nametext.setText(name);
             if(tag1!=null)
