@@ -13,6 +13,7 @@
         android:layout_height="80dp"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
+        android:padding="10dp"
         app:srcCompat="?attr/colorControlHighlight" />
 
     <androidx.constraintlayout.widget.ConstraintLayout

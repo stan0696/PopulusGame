@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+        <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -38,17 +39,17 @@
             app:layout_constraintStart_toStartOf="@+id/imageView_introduce"
             app:layout_constraintTop_toBottomOf="@+id/imageView_introduce" />
 
-        <Button
-            android:id="@+id/button_focus"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="65dp"
-            android:layout_height="38dp"
-            android:layout_marginTop="120dp"
-            android:background="@drawable/button_shape"
-            android:text="关注"
-            android:textColor="#000000"
-            app:layout_constraintEnd_toStartOf="@+id/button_download"
-            app:layout_constraintTop_toBottomOf="@+id/imageView_introduce" />
+            <Button
+                android:id="@+id/button_focus"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="65dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="120dp"
+                android:background="@drawable/button_shape"
+                android:text="+ 关注"
+                android:textColor="#000000"
+                app:layout_constraintEnd_toStartOf="@+id/button_download"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_introduce" />
 
         <Button
             android:id="@+id/button_download"
@@ -57,9 +58,9 @@
             android:layout_height="38dp"
             android:layout_marginTop="120dp"
             android:layout_marginEnd="16dp"
-            android:background="@drawable/button_shape"
+            android:background="@drawable/button_shape1"
             android:text="下载"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView_introduce" />
 
@@ -70,7 +71,7 @@
             android:layout_marginTop="16dp"
             android:maxLines="2"
             android:text="TextView"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textColor="#000000"
             app:layout_constraintStart_toEndOf="@+id/imageView_game"
             app:layout_constraintTop_toBottomOf="@+id/imageView_introduce" />
@@ -92,8 +93,10 @@
         <Button
             android:id="@+id/gametag1"
             android:layout_width="70dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="48dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="55dp"
+            android:maxLines="1"
+            android:textColor="@color/colorPrimary"
             android:background="@drawable/type_shape"
             style="?android:attr/borderlessButtonStyle"
             app:layout_constraintStart_toEndOf="@+id/imageView_game"
@@ -102,8 +105,10 @@
         <Button
             android:id="@+id/gametag2"
             android:layout_width="70dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="48dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="55dp"
+            android:maxLines="1"
+            android:textColor="@color/colorPrimary"
             android:background="@drawable/type_shape"
             style="?android:attr/borderlessButtonStyle"
             app:layout_constraintStart_toEndOf="@+id/gametag1"
@@ -112,8 +117,10 @@
         <Button
             android:id="@+id/gametag3"
             android:layout_width="70dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="48dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="55dp"
+            android:maxLines="1"
+            android:textColor="@color/colorPrimary"
             android:background="@drawable/type_shape"
             style="?android:attr/borderlessButtonStyle"
             app:layout_constraintStart_toEndOf="@+id/gametag2"
@@ -138,6 +145,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView_game" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/mytab"
             android:layout_width="match_parent"
@@ -147,15 +159,6 @@
             app:tabSelectedTextColor="@color/colorPrimary"
             app:tabMode="fixed">
         </com.google.android.material.tabs.TabLayout>
-
-        <!--<androidx.viewpager.widget.ViewPager-->
-            <!--android:id="@+id/viewPager"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--app:layout_constraintLeft_toLeftOf="parent"-->
-            <!--app:layout_constraintRight_toRightOf="parent"-->
-            <!--app:layout_constraintTop_toTopOf="parent" />-->
         <com.example.myapplication2.WrapContentHeightViewPager
             android:id="@+id/viewPager_gameinfo"
             android:layout_width="match_parent"
