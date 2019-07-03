@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication2.DBClass.DBGameService;
 import com.example.myapplication2.DBClass.DBUserService;
 import com.example.myapplication2.MainActivity;
 import com.example.myapplication2.R;
@@ -79,6 +80,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
             case R.id.registe_button:
                 m.what=1;
                 handler.sendMessage(m);//把信息放到通道中
+
                 break;
         }
     }
@@ -112,7 +114,13 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                             }
                             if (password.equals(pass))//为true，页面跳转，登陆成功
                             {
-                                startActivity(new Intent(UserLoginActivity.this, MainActivity.class));
+                                Intent intent = new Intent();
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.setClass(UserLoginActivity.this, MainActivity.class);
+                                //intent.putExtra("Username", name);
+                                MainActivity.Username=name;
+                                System.out.println(MainActivity.Username);
+                                startActivity(intent);
                                 Toast.makeText(UserLoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();//显示提示框
                                 return;
                             }

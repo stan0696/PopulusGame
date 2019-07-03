@@ -31,9 +31,7 @@ public class DBUserService {
      * 获取数据库对象
      */
     public static DBUserService getDbUserService(){
-        if (dbUserService == null){
-            dbUserService = new DBUserService();
-        }
+        dbUserService = new DBUserService();
         return dbUserService;
     }
 
@@ -177,8 +175,8 @@ public class DBUserService {
     /**
      * 关注游戏状态查询（0和2没有关注，2有记录，1表示已关注）
      */
-    public int findGameState(String name, int gameid){
-        String selectSql = "select gamestate from usergame where username=? and gameid=?";
+    public int findGameState(String name, String gamename){
+        String selectSql = "select gamestate from usergame where username=? and gamename=?";
         con = DBUtil.getSQLConnection();
         int gamestate = 0;
         try {
@@ -186,7 +184,7 @@ public class DBUserService {
             if((con!=null)&&(!closed)){
                 ps= (PreparedStatement) con.prepareStatement(selectSql);
                 ps.setString(1,name);//第一个参数 name 规则同上
-                ps.setInt(2,gameid);
+                ps.setString(2,gamename);
                 if (ps != null) {
                     rs= ps.executeQuery();
                     if(rs!=null){
@@ -210,9 +208,9 @@ public class DBUserService {
     /**
      * 关注游戏按钮点击
      */
-    public int focusGame(String username, int gameid, int gamestate){
+    public int focusGame(String username, String gamename, int gamestate){
         String updateSql = "update usergame set gamestate=? where username=?";
-        String insertSql = "insert into usergame(username, gameid, gamestate) values(?, ?, ?)";
+        String insertSql = "insert into usergame(username, gamename, gamestate) values(?, ?, ?)";
         con = DBUtil.getSQLConnection();
         try {
             boolean closed = con.isClosed();
@@ -220,7 +218,7 @@ public class DBUserService {
                 if (gamestate == 0){
                     ps= (PreparedStatement) con.prepareStatement(insertSql);
                     ps.setString(1,username);
-                    ps.setInt(2,gameid);
+                    ps.setString(2,gamename);
                     ps.setInt(3,1);
                     ps.executeUpdate();
                     DBUtil.closeAll(con, ps);

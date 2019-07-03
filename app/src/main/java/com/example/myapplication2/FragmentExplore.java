@@ -7,12 +7,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication2.Tools.FindGame;
-import com.example.myapplication2.Tools.SearchActivity;
+
 import com.example.myapplication2.View.Game;
 import com.example.myapplication2.View.MyImageView;
 
@@ -34,15 +34,7 @@ FindGame findGame;
         ROOTVIEW=rootView;
         setview(rootView);
 
-/*
-        System.out.println("007");
-        String TAG="二次元";
-        String ID="1";
-        icon= rootView.findViewWithTag(TAG+"imageview"+ID);
-        icon.setImageURL("https://img.tapimg.com/market/lcs/d8e5a2b0bafba9df20511d2f035c8894_360.png?imageMogr2/auto-orient/strip");
-        System.out.println("007");
 
-*/
    return rootView;
 
 

@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity
         }
     };
 
+    public static String Username=null;
     private ViewPager mViewPager;
     private int isfirsttomain=0;
     List<Fragment> fragmentList = new ArrayList<>();
@@ -67,6 +68,13 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent=getIntent();
+        if(intent.getStringExtra("Username")!=null)
+        {
+//            Username=intent.getStringExtra("Username");
+//            System.out.println(Username);
+
+        }
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -121,11 +129,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
             if (id == R.id.download) {
                 Intent intent = new Intent(MainActivity.this, DownloadActivity.class);
+
                 startActivity(intent);
             return true;
         }
         if (id == R.id.search) {
             Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+
             startActivity(intent);
             return true;
         }
@@ -161,8 +171,14 @@ public class MainActivity extends AppCompatActivity
 
         new Thread(){
             public void run(){
+
                 Crawl_data test = new Crawl_data("https://www.taptap.com/categories");
                 test.run(getApplicationContext());
+
+
+
+
+
             }
         }.start();
     }

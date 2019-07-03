@@ -22,7 +22,7 @@ public class DBUtil {
             Class.forName("com.mysql.jdbc.Driver");
 
             //连接
-            con = DriverManager.getConnection("jdbc:mysql://192.168.43.211:3306/populus", "populus", "populus");
+            con = DriverManager.getConnection("jdbc:mysql://192.168.43.211:3306/populus?useUnicode=true&characterEncoding=utf-8", "populus", "populus");
             //con = DriverManager.getConnection("jdbc:mysql://" + ip + ":3306/" + db, user, pwd);
 
         } catch (ClassNotFoundException e)
