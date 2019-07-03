@@ -20,7 +20,17 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="46dp">
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/notification_tv"
+                        android:layout_width="359dp"
+                        android:layout_height="107dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="TextView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/gamename_iv" />
 
                     <com.example.myapplication2.View.MyImageView
                         android:id="@+id/gameicon_iv"
@@ -38,27 +48,19 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="8dp"
                         android:text="TextView"
-                        app:layout_constraintEnd_toStartOf="@+id/delete_iv"
-                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/gameicon_iv"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
-                        android:id="@+id/delete_iv"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_weight="1"
-                        android:scaleType="fitXY"
+                        android:id="@+id/notification_delete"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/zoro" />
+                        app:srcCompat="@drawable/ic_delete_cyan_800_24dp" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <TextView
-                    android:id="@+id/notification_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="107dp"
-                    android:text="TextView" />
 
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

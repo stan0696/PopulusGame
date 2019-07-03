@@ -224,8 +224,6 @@ public class DownloadActivity extends AppCompatActivity {
             //获取到具体的控件，
             DownloadManagerUtil nowdownload = new DownloadManagerUtil(getBaseContext());
             nowdownload.setDownloadId(Long.parseLong(list.get(itemIndex - fvisiblePosition)[0]));
-            System.out.println(nowdownload.getDownloadSoFar());
-            System.out.println(list.get(itemIndex - fvisiblePosition)[0]);
             item.setProgress(nowdownload.getDownloadSoFar());
             tvitem.setText(nowdownload.getDownloadedSoFar()+"/"+nowdownload.getTotalSize());
         }
