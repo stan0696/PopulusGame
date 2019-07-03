@@ -1,23 +1,18 @@
 package com.example.myapplication2;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
 import android.view.MenuItem;
 
-import com.example.myapplication2.DBClass.DBUserService;
 import com.example.myapplication2.Tools.DownloadActivity;
 import com.example.myapplication2.Tools.SearchActivity;
 import com.example.myapplication2.Tools.SettingActivity;
-import com.example.myapplication2.User.User;
+import com.example.myapplication2.User.UserInfoChangeActivity;
 import com.example.myapplication2.User.UserLoginActivity;
-import com.example.myapplication2.View.FocusActivity;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.myapplication2.User.UserSecretActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -26,7 +21,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -59,6 +53,8 @@ public class MainActivity extends AppCompatActivity
     };
 
     private ViewPager mViewPager;
+    public static String Username;
+    public static boolean passState=false;
     private int isfirsttomain=0;
     List<Fragment> fragmentList = new ArrayList<>();
     Fragment fragmentHome;
@@ -143,10 +139,10 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, UserLoginActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_game) {
-            Intent intent = new Intent(MainActivity.this,MyGameActivity.class);
+            Intent intent = new Intent(MainActivity.this, UserInfoChangeActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_notification) {
-            Intent intent = new Intent(MainActivity.this,NotificationActivity.class);
+            Intent intent = new Intent(MainActivity.this, UserSecretActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_setting) {
             Intent intent = new Intent(MainActivity.this, SettingActivity.class);

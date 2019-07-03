@@ -35,7 +35,7 @@ public class fzDownloadActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fz_download);
-        ImageView back_btn = (ImageView)findViewById(R.id.download_back);
+        ImageView back_btn = (ImageView)findViewById(R.id.downloadcenter_back);
         setViews();// 控件初始化
         setData();// 给listView设置adapter
         setListeners();// 设置监听

@@ -1,5 +1,7 @@
 package com.example.myapplication2.DBClass;
 
+import com.example.myapplication2.MainActivity;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

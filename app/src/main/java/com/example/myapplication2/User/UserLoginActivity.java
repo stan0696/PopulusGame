@@ -1,6 +1,7 @@
 package com.example.myapplication2.User;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ScrollingView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -23,12 +24,12 @@ import com.example.myapplication2.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserLoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class UserLoginActivity extends AppCompatActivity implements View.OnClickListener{
     private Context context;
     private Handler handler;
     private EditText user_name, user_password;
     private Button login, registe;
-    private String name, password ;
+    private String name, password;
 
 
 
@@ -86,6 +87,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
      * 登录线程
      */
     class LoginThread extends Thread{
+        @SuppressLint("HandlerLeak")
         @Override
         public void run(){
             Looper.prepare();
@@ -114,6 +116,8 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                                 Intent intent = new Intent();
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                                 intent.setClass(UserLoginActivity.this, MainActivity.class);
+                                MainActivity.Username = name;
+                                MainActivity.passState = true;
                                 startActivity(intent);
                                 Toast.makeText(UserLoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();//显示提示框
                                 return;
@@ -131,7 +135,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                             }
                             //返还密码为空，用户不存在，可创建用户
                             if (password == null){
-                                User user = new User(name, pass);
+                                User user = new User(name, pass,null, null, null, null, null);
                                 dbUserService.userInsert(user);
                                 Toast.makeText(UserLoginActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
                                 break;

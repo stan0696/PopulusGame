@@ -46,92 +46,97 @@
             android:orientation="vertical"
             android:padding="15dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/personal_userimage"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:scaleType="fitXY"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/zoro" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
             <TextView
                 android:id="@+id/personal_text1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="昵称"
                 android:layout_marginTop="10dp"/>
+
             <EditText
+                android:id="@+id/user_name_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/MyEditText"
-                android:textColor="#000000"/>
+                android:inputType="none"
+                android:textColor="#000000"
+                android:theme="@style/MyEditText" />
             <TextView
                 android:id="@+id/personal_text2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="个人简介"
                 android:layout_marginTop="10dp"/>
+
             <EditText
+                android:id="@+id/user_note_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/MyEditText"
-                android:textColor="#000000"/>
+                android:textColor="#000000"
+                android:theme="@style/MyEditText" />
             <TextView
                 android:id="@+id/personal_text3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="国家地区"
                 android:layout_marginTop="10dp"/>
+
             <EditText
+                android:id="@+id/user_city_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/MyEditText"
-                android:textColor="#000000"/>
+                android:textColor="#000000"
+                android:theme="@style/MyEditText" />
             <TextView
                 android:id="@+id/personal_text4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="生日"
+                android:text="生日(例如2008-08-08）"
                 android:layout_marginTop="10dp"/>
+
             <EditText
+                android:id="@+id/user_birth_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/MyEditText"
-                android:textColor="#000000"/>
+                android:inputType="date"
+                android:textColor="#000000"
+                android:theme="@style/MyEditText" />
             <TextView
                 android:id="@+id/personal_text5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="性别"
                 android:layout_marginTop="10dp"/>
+
             <EditText
+                android:id="@+id/user_sex_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/MyEditText"
-                android:textColor="#000000"/>
+                android:textColor="#000000"
+                android:theme="@style/MyEditText" />
             <TextView
                 android:id="@+id/personal_text6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="手机号"
                 android:layout_marginTop="10dp"/>
+
             <EditText
+                android:id="@+id/user_phone_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/MyEditText"
-                android:textColor="#000000"/>
+                android:inputType="phone"
+                android:textColor="#000000"
+                android:theme="@style/MyEditText" />
 
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/user_info_change_button"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:text="确认修改" />
 </LinearLayout>
