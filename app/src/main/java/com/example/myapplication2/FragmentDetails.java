@@ -29,6 +29,7 @@ public class FragmentDetails extends Fragment {
     {
         this.introduction=introduction;
         this.imgurl=imgurl;
+
     }
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

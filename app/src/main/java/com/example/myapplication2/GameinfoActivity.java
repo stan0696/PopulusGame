@@ -184,12 +184,10 @@ public class GameinfoActivity extends AppCompatActivity {
             this.tittleimg[3]=cursor.getString(12);
             this.tittleimg[4]=cursor.getString(13);
             iconview=(MyImageView)findViewById(R.id.imageView_game);
-            introductiontext=findViewById(R.id.game_textIntroduce);
             nametext=findViewById(R.id.game_textname);
 
             iconview.setImageURL(iconurl);
             imageView_introduce=findViewById(R.id.imageView_introduce);
-
 
             iconview.setTag(null);
             Glide.with(this.getBaseContext()).load(iconurl).animate(R.anim.item_alpha_in).thumbnail(0.1f).into(iconview);
@@ -198,7 +196,6 @@ public class GameinfoActivity extends AppCompatActivity {
             imageView_introduce.setTag(null);
             Glide.with(this.getBaseContext()).load(tittleimg[0]).animate(R.anim.item_alpha_in).thumbnail(0.1f).into(imageView_introduce);
 
-            introductiontext.setText(introduction);
             nametext.setText(name);
 
             if(tag1!=null)
