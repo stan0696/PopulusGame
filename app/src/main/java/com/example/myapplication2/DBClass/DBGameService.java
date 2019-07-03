@@ -64,6 +64,63 @@ public class DBGameService {
     }
 
     /**
+     * 游戏评分
+     */
+    public String[][] getGameMarkSort(){
+        String sql="select avg(gamemark)as avgmark, gamename  from usergamemark GROUP BY gamename ORDER BY avgmark DESC;";
+        String[][] gamemarksort = new String[100][2];
+        //获取链接数据库对象
+        con= DBUtil.getSQLConnection();
+        try {
+            if (con != null && (!con.isClosed())) {
+                ps = (PreparedStatement) con.prepareStatement(sql);
+                if (ps != null) {
+                    rs= ps.executeQuery();
+                    if(rs!=null){
+                        int i=0;
+                        while(rs.next()) {
+                            gamemarksort[i][0] = rs.getString("gamename");
+                            gamemarksort[i][1] = rs.getString("avgmark");
+                            i++;
+                        }
+                    }
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        DBUtil.closeAll(con,ps,rs);//关闭相关操作
+        return gamemarksort;
+    }
+
+    public String[][] getGameDownloadnumSort(){
+        String sql="select download , gamename  from gamedl GROUP BY gamename ORDER BY download DESC;";
+        String[][] gameDLsort = new String[100][2];
+        //获取链接数据库对象
+        con= DBUtil.getSQLConnection();
+        try {
+            if (con != null && (!con.isClosed())) {
+                ps = (PreparedStatement) con.prepareStatement(sql);
+                if (ps != null) {
+                    rs= ps.executeQuery();
+                    if(rs!=null){
+                        int i=0;
+                        while(rs.next()) {
+                            gameDLsort[i][0] = rs.getString("gamename");
+                            gameDLsort[i][1] = rs.getString("download");
+                            i++;
+                        }
+                    }
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        DBUtil.closeAll(con,ps,rs);//关闭相关操作
+        return gameDLsort;
+    }
+
+    /**
      * 更新游戏下载量
      */
     public void updateGameDL(String gamename, int gameDLnum){

@@ -93,6 +93,7 @@ public class DownloadAdapter extends BaseAdapter {
         ImageView download_delete;
         ProgressBar downloadprogressBar;
     }
+
     private class MyListener implements View.OnClickListener {
         int mPosition;
 

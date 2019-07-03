@@ -49,7 +49,7 @@ public class GameinfoActivity extends AppCompatActivity {
     private ScrollView scrollView;
     private Handler handler;
     private MyImageView iconview;
-    private TextView introductiontext;
+
     private TextView nametext;
     private ImageView imageView_introduce;
 
@@ -188,6 +188,7 @@ public class GameinfoActivity extends AppCompatActivity {
 
             iconview.setImageURL(iconurl);
             imageView_introduce=findViewById(R.id.imageView_introduce);
+
 
             iconview.setTag(null);
             Glide.with(this.getBaseContext()).load(iconurl).animate(R.anim.item_alpha_in).thumbnail(0.1f).into(iconview);

@@ -12,6 +12,7 @@
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -56,8 +57,8 @@
                 android:layout_height="37dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="9.0"
                 android:gravity="center"
+                android:text="9.0"
                 android:textColor="@color/colorPrimary"
                 android:textSize="28sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView_game0"
@@ -70,8 +71,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="游戏1"
-                android:textSize="22sp"
                 android:textColor="#000000"
+                android:textSize="22sp"
                 app:layout_constraintStart_toEndOf="@+id/imageView_game0"
                 app:layout_constraintTop_toBottomOf="@+id/imageView_introduce0" />
 
@@ -94,7 +95,9 @@
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:background="?android:attr/listDivider" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -121,13 +124,65 @@
                 app:layout_constraintStart_toStartOf="@+id/imageView_introduce1"
                 app:layout_constraintTop_toBottomOf="@+id/imageView_introduce1"
                 app:srcCompat="@drawable/zoro" />
+
+            <TextView
+                android:id="@+id/pointText1"
+                android:layout_width="74dp"
+                android:layout_height="23dp"
+                android:layout_marginEnd="8dp"
+                android:text="评分："
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView_game1" />
+
+            <TextView
+                android:id="@+id/point1"
+                android:layout_width="74dp"
+                android:layout_height="37dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="9.0"
+                android:textColor="@color/colorPrimary"
+                android:textSize="28sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView_game1"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/game_name1"
+                android:layout_width="62dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="游戏1"
+                android:textColor="#000000"
+                android:textSize="22sp"
+                app:layout_constraintStart_toEndOf="@+id/imageView_game1"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_introduce1" />
+
+            <TextView
+                android:id="@+id/game_introduce1"
+                android:layout_width="181dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="这是游戏1的简介另外凑一个字数"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView_game1"
+                app:layout_constraintStart_toEndOf="@+id/imageView_game1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
         <View
             android:id="@+id/divider_1"
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:background="?android:attr/listDivider" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -154,13 +209,65 @@
                 app:layout_constraintStart_toStartOf="@+id/imageView_introduce2"
                 app:layout_constraintTop_toBottomOf="@+id/imageView_introduce2"
                 app:srcCompat="@drawable/zoro" />
+
+            <TextView
+                android:id="@+id/pointText2"
+                android:layout_width="74dp"
+                android:layout_height="23dp"
+                android:layout_marginEnd="8dp"
+                android:text="评分："
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView_game2" />
+
+            <TextView
+                android:id="@+id/point2"
+                android:layout_width="74dp"
+                android:layout_height="37dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="9.0"
+                android:textColor="@color/colorPrimary"
+                android:textSize="28sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView_game2"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/game_name2"
+                android:layout_width="62dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="游戏1"
+                android:textColor="#000000"
+                android:textSize="22sp"
+                app:layout_constraintStart_toEndOf="@+id/imageView_game2"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_introduce2" />
+
+            <TextView
+                android:id="@+id/game_introduce2"
+                android:layout_width="181dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="这是游戏1的简介另外凑一个字数"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView_game2"
+                app:layout_constraintStart_toEndOf="@+id/imageView_game2" />
         </androidx.constraintlayout.widget.ConstraintLayout>
         <View
             android:id="@+id/divider_2"
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:background="?android:attr/listDivider" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -187,6 +294,56 @@
                 app:layout_constraintStart_toStartOf="@+id/imageView_introduce3"
                 app:layout_constraintTop_toBottomOf="@+id/imageView_introduce3"
                 app:srcCompat="@drawable/zoro" />
+
+            <TextView
+                android:id="@+id/pointText3"
+                android:layout_width="74dp"
+                android:layout_height="23dp"
+                android:layout_marginEnd="8dp"
+                android:text="评分："
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView_game3" />
+
+            <TextView
+                android:id="@+id/point3"
+                android:layout_width="74dp"
+                android:layout_height="37dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="9.0"
+                android:textColor="@color/colorPrimary"
+                android:textSize="28sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView_game3"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/game_name3"
+                android:layout_width="62dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="游戏1"
+                android:textColor="#000000"
+                android:textSize="22sp"
+                app:layout_constraintStart_toEndOf="@+id/imageView_game3"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_introduce3" />
+
+            <TextView
+                android:id="@+id/game_introduce3"
+                android:layout_width="181dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="这是游戏1的简介另外凑一个字数"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView_game3"
+                app:layout_constraintStart_toEndOf="@+id/imageView_game3" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView

@@ -28,6 +28,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -159,9 +160,19 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_focus) {
-            Intent intent = new Intent(MainActivity.this, MyGameActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_game) {
+
+            if(MainActivity.Username!=null)
+            {
+                Intent intent = new Intent(MainActivity.this, MyGameActivity.class);
+                startActivity(intent);
+            }
+            else
+            {
+                Toast.makeText(MainActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+        else if (id == R.id.nav_game) {
             Intent intent = new Intent(MainActivity.this, MyGameActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_notification) {

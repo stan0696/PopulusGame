@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.myapplication2.View.RankingFragment_3;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -22,6 +23,10 @@ public class FragmentRanking extends Fragment{
     private ViewPager viewpager;
     public boolean isFirstInit = true;
     ArrayList fragmentList = new ArrayList<Fragment>();
+    public FragmentRanking()
+    {
+
+    }
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -41,16 +46,19 @@ public class FragmentRanking extends Fragment{
         }
         tabLayout.setupWithViewPager(viewpager);
         viewpager.setAdapter(mPagerAdapter);
-        tabLayout.getTabAt(0).setText("类型一");
-        tabLayout.getTabAt(1).setText("类型二");
-        tabLayout.getTabAt(2).setText("类型三");
+        tabLayout.getTabAt(0).setText("评分");
+        tabLayout.getTabAt(1).setText("下载量");
+       // tabLayout.getTabAt(2).setText("综合");
 
     }
 
     private void initFragment() {
-        fragmentList.add(new Rankingfrag_2());
-        fragmentList.add(new Rankingfrag_2());
-        fragmentList.add(new Rankingfrag_2());
+
+        fragmentList.add(new Rankingfrag_2());//评分
+        fragmentList.add(new RankingFragment_3());//下载量
+       // fragmentList.add(new Rankingfrag_2());
+
+
     }
 
 

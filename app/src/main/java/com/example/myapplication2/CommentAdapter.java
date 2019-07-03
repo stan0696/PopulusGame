@@ -43,6 +43,7 @@ public class CommentAdapter extends BaseAdapter {
         private String name;
         private String[][] comment = new String[100][3];
         public CommentAdapter (List<String[]> list, Context context,String name) {
+
             this.list = list;
             this.name=name;
             this.context = context;
@@ -78,8 +79,13 @@ public class CommentAdapter extends BaseAdapter {
                 holder.comment = (TextView) convertView.findViewById(R.id.player_comment1);
                 holder.nametext = convertView.findViewById(R.id.player_name);
                 holder.rating = convertView.findViewById(R.id.ratingBarplayer);
-                gameThread gt = new gameThread();
-                gt.start();
+                if(list.size()==1)
+                {
+                    list.clear();
+                    gameThread gt = new gameThread();
+                    gt.start();
+                }
+
                 System.out.println("开启线程");
                 convertView.setOnTouchListener(new View.OnTouchListener() {
                     @Override
@@ -99,14 +105,17 @@ public class CommentAdapter extends BaseAdapter {
                 });
                 convertView.setTag(holder);
             }
+            if(list.size()!=0)
+            {
+             holder = (com.example.myapplication2.CommentAdapter.ViewHolder) convertView.getTag();
+                holder.comment.setText(list.get(position)[2]);
+                holder.nametext.setText(list.get(position)[0]);
+                holder.rating.setRating(new Float(list.get(position)[1])/2);
+                notifyDataSetChanged();
 
-            holder = (com.example.myapplication2.CommentAdapter.ViewHolder) convertView.getTag();
-            holder.comment.setText(list.get(position)[2]);
-            holder.nametext.setText(list.get(position)[0]);
-            holder.rating.setRating(new Float(list.get(position)[1]));
-            notifyDataSetChanged();
+            }
+
             return convertView;
-
         }
 
 
@@ -140,13 +149,13 @@ public class CommentAdapter extends BaseAdapter {
                 switch (msg.what){
                     case GET_DATA_SUCCESS:
                         for(int k=0;k<100;k++) {
-                            if (comment[k][0] != null)
-                            {
+                            if (comment[k][0] != null) {
                                 String[] commentlist = new String[3];
                                 commentlist[0] = comment[k][0];
                                 commentlist[1] = comment[k][1];
                                 commentlist[2] = comment[k][2];
                                 list.add(commentlist);
+
                                 notifyDataSetChanged();
                                 System.out.println(list.get(k)[0]);
                                 System.out.println(list.get(k)[1]);
@@ -167,12 +176,11 @@ public class CommentAdapter extends BaseAdapter {
             @Override
             public  void run()
             {
-                System.out.println("开启线程");
                 DBGameService dbGameService=new DBGameService();
                 comment = new String[100][3];
                 System.out.println(name);
                 comment = dbGameService.getGameComment(name);
-                System.out.println("读取成功");
+
                 Message msg = Message.obtain();
                 msg.obj = comment;
                 msg.what = GET_DATA_SUCCESS;

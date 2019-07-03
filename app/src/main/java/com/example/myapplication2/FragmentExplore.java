@@ -28,6 +28,11 @@ public class  FragmentExplore extends Fragment{
 ArrayList<Game> tagGames;
 FindGame findGame;
 
+public FragmentExplore()
+{
+
+}
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_explore, container, false);
