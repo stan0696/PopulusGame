@@ -71,10 +71,11 @@
         android:background="?android:attr/listDivider" />
 
     <EditText
+        android:id="@+id/comment_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="写下你的想法..."
-        android:theme="@style/MyEditText"
         android:background="@null"
-        android:padding="10dp"/>
+        android:hint="写下你的想法..."
+        android:padding="10dp"
+        android:theme="@style/MyEditText" />
 </LinearLayout>
