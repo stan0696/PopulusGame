@@ -94,7 +94,7 @@
                     android:layout_width="80dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginStart="105dp"
+                    android:layout_marginStart="100dp"
                     android:background="@drawable/icon_shape"
                     android:text="登录"
                     android:textSize="18sp"/>
@@ -103,13 +103,20 @@
                     android:layout_width="80dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginStart="35dp"
+                    android:layout_marginStart="30dp"
                     android:background="@drawable/icon_shape"
                     android:text="注册"
                     android:textSize="18sp"/>
 
             </LinearLayout>
-
+        <Button
+            android:id="@+id/code_find"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="忘记密码？点击这里"
+            style="?android:attr/borderlessButtonStyle"/>
 
         </LinearLayout>
 
