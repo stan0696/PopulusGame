@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity
 
     public static String Username=null;
     private ViewPager mViewPager;
-    public static String Username=null;
     private int isfirsttomain=0;
     List<Fragment> fragmentList = new ArrayList<>();
     Fragment fragmentHome;
