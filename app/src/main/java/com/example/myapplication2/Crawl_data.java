@@ -81,6 +81,15 @@ public class Crawl_data {
                         Element intro = thisgamedoc.select(".body-description-paragraph").first();
                         String icon=thisgamedoc.select(".header-icon-body").select("img").attr("src");
                         String id=thisgamedoc.select("button").attr("data-taptap-app-id");
+                        String[] tittleimg =new String[5];
+                        if (thisgamedoc.select("a[data-lightbox=screenshots]").size()>=5){
+                                    tittleimg = new String[]{thisgamedoc.select("a[data-lightbox=screenshots]").get(0).attr("href"),
+                                    thisgamedoc.select("a[data-lightbox=screenshots]").get(1).attr("href"),
+                                    thisgamedoc.select("a[data-lightbox=screenshots]").get(2).attr("href"),
+                                    thisgamedoc.select("a[data-lightbox=screenshots]").get(3).attr("href"),
+                                    thisgamedoc.select("a[data-lightbox=screenshots]").get(4).attr("href")
+                            };//获取主题图片
+                        }
 
                         if(id.isEmpty())
                         {
@@ -124,12 +133,21 @@ public class Crawl_data {
                             nowgame.setIcon(icon);/*将获取的图标url传入nowgame里*/
                         }
 
+                        if(tittleimg!=null){
+                            nowgame.setTitleImage(tittleimg);/*将获取的主题图片url传入nowgame里*/
+                        }
+
 
                         cValue.put("name",nowgame.getName());
                         cValue.put("gameid",nowgame.getID());
                         cValue.put("icon",nowgame.getIcon());
                         cValue.put("introduction",nowgame.getIntroduction());
                         cValue.put("downloadurl",nowgame.getDownloadUrl().toString());
+                        cValue.put("titleImage",nowgame.getTitleImage()[0]);
+                        cValue.put("titleImage1",nowgame.getTitleImage()[1]);
+                        cValue.put("titleImage2",nowgame.getTitleImage()[2]);
+                        cValue.put("titleImage3",nowgame.getTitleImage()[3]);
+                        cValue.put("titleImage4",nowgame.getTitleImage()[4]);
                         if(nowgame.getTag(1)!=null)
                         {
                             cValue.put("tag1",nowgame.getTag(1));

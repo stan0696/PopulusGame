@@ -11,6 +11,7 @@ import com.example.myapplication2.Tools.DownloadActivity;
 import com.example.myapplication2.Tools.SearchActivity;
 import com.example.myapplication2.Tools.SettingActivity;
 import com.example.myapplication2.User.UserInfoChangeActivity;
+import com.example.myapplication2.User.UserInfoActivity;
 import com.example.myapplication2.User.UserLoginActivity;
 import com.example.myapplication2.User.UserSecretActivity;
 import com.google.android.material.navigation.NavigationView;
@@ -25,6 +26,8 @@ import android.view.Menu;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
+import android.view.View;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,8 +55,8 @@ public class MainActivity extends AppCompatActivity
         }
     };
 
+    public static String Username=null;
     private ViewPager mViewPager;
-    public static String Username;
     public static boolean passState=false;
     private int isfirsttomain=0;
     List<Fragment> fragmentList = new ArrayList<>();
@@ -63,20 +66,43 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent=getIntent();
+        if(intent.getStringExtra("Username")!=null)
+        {
+//            Username=intent.getStringExtra("Username");
+//            System.out.println(Username);
+
+        }
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("      PopulusGame");
+        getSupportActionBar().setTitle("             PopulusGame");
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
         navigationView.setNavigationItemSelectedListener(this);
         BottomNavigationView navView = findViewById(R.id.bottom_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        View v = navigationView.getHeaderView(0);
+        ImageView img=(ImageView) v.findViewById(R.id.nav_imageView);
+        img.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                if (Username == null) {
+                    Intent intent = new Intent(MainActivity.this, UserLoginActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(MainActivity.this, UserInfoActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
         mViewPager = findViewById(R.id.viewPager);
         initFragments();
         if(isfirsttomain==0){
@@ -84,7 +110,6 @@ public class MainActivity extends AppCompatActivity
             isfirsttomain++;
         }
         }
-
 
     private void initFragments(){
         fragmentHome = new FragmentHome();
@@ -117,11 +142,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
             if (id == R.id.download) {
                 Intent intent = new Intent(MainActivity.this, DownloadActivity.class);
+
                 startActivity(intent);
             return true;
         }
         if (id == R.id.search) {
             Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+
             startActivity(intent);
             return true;
         }
@@ -136,7 +163,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_focus) {
-            Intent intent = new Intent(MainActivity.this, UserLoginActivity.class);
+            Intent intent = new Intent(MainActivity.this, MyGameActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_game) {
             Intent intent = new Intent(MainActivity.this, UserInfoChangeActivity.class);
@@ -157,8 +184,10 @@ public class MainActivity extends AppCompatActivity
 
         new Thread(){
             public void run(){
+
                 Crawl_data test = new Crawl_data("https://www.taptap.com/categories");
                 test.run(getApplicationContext());
+
             }
         }.start();
     }

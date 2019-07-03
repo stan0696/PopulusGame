@@ -11,7 +11,7 @@ public class Game {
     private String name;
     private String introduction;
     private URI downloadUrl;
-    private Image titleImage;
+    private String[] titleImage;
     private String icon;
     private Boolean isfocused;
     private int  mark;
@@ -25,7 +25,6 @@ public class Game {
 
     public Game(String name){
         this.name=name;
-
     }
 
 
@@ -60,11 +59,11 @@ public class Game {
         this.downloadUrl = downloadUrl;
     }
 
-    public Image getTitleImage() {
+    public String[] getTitleImage() {
         return titleImage;
     }
 
-    public void setTitleImage(Image titleImage) {
+    public void setTitleImage(String[] titleImage) {
         this.titleImage = titleImage;
     }
 

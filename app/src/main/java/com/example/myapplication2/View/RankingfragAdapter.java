@@ -103,7 +103,6 @@ public class RankingfragAdapter extends BaseAdapter {
             Intent intent = new Intent(context, DownloadActivity.class);
                 SQLiteDbHelper helper = new SQLiteDbHelper(context);
                 SQLiteDatabase database = helper.getWritableDatabase();
-                System.out.println(list.get(mPosition)[3]);
                 Cursor cursor = database.query("game", null, "name=?", new String[]{list.get(mPosition)[3]}, null, null, null);//修改
                 if (cursor.moveToFirst()) {
                     downloadgameinfo[0]=cursor.getString(4);
@@ -118,8 +117,6 @@ public class RankingfragAdapter extends BaseAdapter {
                 /**此处需修改*/ intent.putExtra("downloadurl",downloadgameinfo);
                 context.startActivity(intent);
             }
-
-
         }
 
     }

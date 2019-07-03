@@ -14,6 +14,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +29,8 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
     private Context context;
     private Handler handler;
     private EditText user_name, user_password;
-    private Button login, registe;
+    private ImageView login_back;
+    private Button login, registe, code_find;
     private String name, password;
 
 
@@ -37,6 +39,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_main);
+
         view_init();
         LoginThread lt=new LoginThread();
         lt.start();//调动子线程
@@ -49,10 +52,14 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
         context = UserLoginActivity.this;
         user_name = (EditText) findViewById(R.id.user_name);
         user_password = (EditText) findViewById(R.id.password);
+        login_back = (ImageView) findViewById(R.id.login_back);
         login = (Button) findViewById(R.id.login_button);
         registe = (Button) findViewById(R.id.registe_button);
+        code_find = (Button) findViewById(R.id.code_find);
+        login_back.setOnClickListener(this);
         login.setOnClickListener(this);
         registe.setOnClickListener(this);
+        code_find.setOnClickListener(this);
     }
 
     /**
@@ -79,6 +86,13 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
             case R.id.registe_button:
                 m.what=1;
                 handler.sendMessage(m);//把信息放到通道中
+                break;
+            case R.id.code_find:
+                m.what=2;
+                handler.sendMessage(m);//把信息放到通道中
+                break;
+            case R.id.login_back:
+                finish();
                 break;
         }
     }
@@ -118,6 +132,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                                 intent.setClass(UserLoginActivity.this, MainActivity.class);
                                 MainActivity.Username = name;
                                 MainActivity.passState = true;
+                                finish();
                                 startActivity(intent);
                                 Toast.makeText(UserLoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();//显示提示框
                                 return;
@@ -142,6 +157,14 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                             }
                             Toast.makeText(UserLoginActivity.this, "用户已存在", Toast.LENGTH_SHORT).show();
                             break;
+                        case 2:
+                            name = b.getString("name");//根据键取值
+                            Intent intent = new Intent();
+                            //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent.putExtra("name", name);
+                            intent.setClass(UserLoginActivity.this, UserSecretActivity.class);
+                            finish();
+                            startActivity(intent);
                     }
                 }
             };

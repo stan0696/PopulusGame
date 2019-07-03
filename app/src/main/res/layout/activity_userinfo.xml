@@ -64,7 +64,7 @@
         android:background="@drawable/button_shape"/>
 
     <Button
-        android:id="@+id/uaer_button2"
+        android:id="@+id/user_button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="修改密码"

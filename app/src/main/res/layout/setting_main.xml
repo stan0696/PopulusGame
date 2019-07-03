@@ -17,5 +17,18 @@
         android:layout_height="46dp"
         android:scaleType="fitEnd"
         android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
-
+    <TextView
+        android:id="@+id/notification_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="25sp"
+        android:text="@string/辅助工具下载" />
+    <ListView
+        android:id="@+id/fz_download_list2"
+        android:layout_width="match_parent"
+        android:layout_height="657dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="0dp" />
 </FrameLayout>

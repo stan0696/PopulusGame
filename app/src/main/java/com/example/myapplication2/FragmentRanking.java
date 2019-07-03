@@ -48,6 +48,7 @@ public class FragmentRanking extends Fragment{
     }
 
     private void initFragment() {
+
         fragmentList.add(new Rankingfrag_2());
         fragmentList.add(new Rankingfrag_2());
         fragmentList.add(new Rankingfrag_2());

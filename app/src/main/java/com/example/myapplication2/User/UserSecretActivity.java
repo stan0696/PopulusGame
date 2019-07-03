@@ -25,11 +25,12 @@ public class UserSecretActivity extends AppCompatActivity implements View.OnClic
     private Button secretbutton;
     private String usersecretprotect, name;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.usersecret);
+
+
         Intent intent=getIntent();
         name = intent.getStringExtra("name");
 
@@ -91,7 +92,11 @@ public class UserSecretActivity extends AppCompatActivity implements View.OnClic
                                     Toast.makeText(UserSecretActivity.this, "密保问题回答错误", Toast.LENGTH_SHORT).show();
                                     break;
                                 }else{
-                                    //TODO调到修改密码界面
+                                    Intent intentuser = new Intent(UserSecretActivity.this, PasswordChangeActivity.class);
+                                    intentuser.putExtra("name", name);
+                                    Toast.makeText(UserSecretActivity.this, "回答正确", Toast.LENGTH_SHORT).show();
+                                    startActivity(intentuser);
+                                    finish();
                                     break;
                                 }
                             }
@@ -101,6 +106,9 @@ public class UserSecretActivity extends AppCompatActivity implements View.OnClic
                             }
                             int result = dbUserService.changeProtect(MainActivity.Username, usersecret);
                             if(result==1){
+                                Intent intent = new Intent(UserSecretActivity.this, UserInfoActivity.class);
+                                startActivity(intent);
+                                finish();
                                 Toast.makeText(UserSecretActivity.this, "设置成功", Toast.LENGTH_SHORT).show();
                                 break;
                             }

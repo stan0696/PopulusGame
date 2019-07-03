@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
     android:scrollbars="none">
 
     <LinearLayout
@@ -15,7 +14,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <ImageView
                 android:id="@+id/imageView_introduce0"
@@ -89,10 +89,16 @@
                 app:layout_constraintBottom_toBottomOf="@+id/imageView_game0"
                 app:layout_constraintStart_toEndOf="@+id/imageView_game0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/divider_0"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="?android:attr/listDivider" />
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <ImageView
                 android:id="@+id/imageView_introduce1"
@@ -116,10 +122,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView_introduce1"
                 app:srcCompat="@drawable/zoro" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/divider_1"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="?android:attr/listDivider" />
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <ImageView
                 android:id="@+id/imageView_introduce2"
@@ -143,10 +155,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView_introduce2"
                 app:srcCompat="@drawable/zoro" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/divider_2"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="?android:attr/listDivider" />
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <ImageView
                 android:id="@+id/imageView_introduce3"
@@ -170,5 +188,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView_introduce3"
                 app:srcCompat="@drawable/zoro" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:text="暂无更多"
+            android:gravity="center"/>
     </LinearLayout>
 </ScrollView>

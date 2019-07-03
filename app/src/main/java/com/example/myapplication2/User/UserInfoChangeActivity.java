@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -12,6 +13,7 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication2.DBClass.DBUserService;
@@ -25,7 +27,7 @@ public class UserInfoChangeActivity extends AppCompatActivity implements View.On
     private Context context;
     private Handler handler;
     private EditText user_name, user_note, user_birth, user_sex, user_city, user_phone;
-    private Button userInfoChange;
+    private TextView userInfoChange;
     private String name, note, birth, sex, city, phone;
 
     @Override
@@ -49,7 +51,7 @@ public class UserInfoChangeActivity extends AppCompatActivity implements View.On
         user_city = (EditText) findViewById(R.id.user_city_info);
         user_phone = (EditText) findViewById(R.id.user_phone_info);
         user_phone.setInputType(InputType.TYPE_CLASS_PHONE);
-        userInfoChange = (Button) findViewById(R.id.user_info_change_button);
+        userInfoChange = (TextView) findViewById(R.id.personalinfo_save);
         userInfoChange.setOnClickListener(this);
     }
 
@@ -73,7 +75,7 @@ public class UserInfoChangeActivity extends AppCompatActivity implements View.On
         b.putString("phone", phone);
         m.setData(b);
         switch (view.getId()){
-            case R.id.user_info_change_button:
+            case R.id.personalinfo_save:
                 m.what = 1;
                 handler.sendMessage(m);//把信息放到通道中
                 break;
@@ -161,6 +163,9 @@ public class UserInfoChangeActivity extends AppCompatActivity implements View.On
                             int result = dbUserService.changeUserinfo(user);
                             if(result==1){
                                 Toast.makeText(UserInfoChangeActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(UserInfoChangeActivity.this, UserInfoActivity.class);
+                                finish();
+                                startActivity(intent);
                                 break;
                             }else if(result==-1){
                                 Toast.makeText(UserInfoChangeActivity.this, "修改失败", Toast.LENGTH_SHORT).show();

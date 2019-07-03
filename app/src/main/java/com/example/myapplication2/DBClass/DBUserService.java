@@ -229,8 +229,8 @@ public class DBUserService {
     /**
      * 关注游戏状态查询（0和2没有关注，2有记录，1表示已关注）
      */
-    public int findGameState(String name, int gameid){
-        String selectSql = "select gamestate from usergame where username=? and gameid=?";
+    public int findGameState(String name, String gamename){
+        String selectSql = "select gamestate from usergame where username=? and gamename=?";
         con = DBUtil.getSQLConnection();
         int gamestate = 0;
         try {
@@ -238,7 +238,7 @@ public class DBUserService {
             if((con!=null)&&(!closed)){
                 ps= (PreparedStatement) con.prepareStatement(selectSql);
                 ps.setString(1,name);//第一个参数 name 规则同上
-                ps.setInt(2,gameid);
+                ps.setString(2,gamename);
                 if (ps != null) {
                     rs= ps.executeQuery();
                     if(rs!=null){
@@ -305,9 +305,9 @@ public class DBUserService {
     /**
      * 获取用户关注的游戏
      */
-    public List<String> findUserGame(String username){
+    public String[] findUserGame(String username){
         String sql = "select gamename from usergame where username=? and gamestate=1";
-        List<String> games = new ArrayList<>();//返还用户关注游戏ID的列表
+        String[] games = new String[100];//返还用户关注游戏ID的列表
         con= DBUtil.getSQLConnection();//获取链接数据库对象
         try {
             if (con != null && (!con.isClosed())) {
@@ -315,10 +315,11 @@ public class DBUserService {
                 ps.setString(1, username);
                 if (ps != null) {
                     rs= ps.executeQuery();
+                    int i=0;
                     if(rs!=null){
                         while(rs.next()) {
-                            String gamename = rs.getString("gamename");
-                            games.add(gamename);
+                            games[i] = rs.getString("gamename");
+                            i++;
                         }
                     }
                 }

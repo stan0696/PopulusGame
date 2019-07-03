@@ -32,6 +32,7 @@ public class Rankingfrag_2 extends Fragment{
         initData();// 初始化数据
         // 这里创建adapter的时候，构造方法参数传了一个接口对象，这很关键，回调接口中的方法来实现对过滤后的数据的获取
         adapter = new RankingfragAdapter(list,getActivity());
+
         rankingfrag_list.setAdapter(adapter);
         setData();// 给listView设置adapter
         setListeners();// 设置监听
@@ -39,6 +40,7 @@ public class Rankingfrag_2 extends Fragment{
 
     }
     private void setData() {
+
 
     }
 
@@ -74,9 +76,7 @@ public class Rankingfrag_2 extends Fragment{
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 // 点击对应的item时，弹出toast提示所点击的内容
-                Intent intent = new Intent(Rankingfrag_2.this.getContext(), GameinfoActivity.class);
-                intent.putExtra("gamename",filter_lists.get(position)[3]);
-                startActivity(intent);
+
             }
         });
     }

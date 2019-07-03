@@ -18,6 +18,10 @@ public class SQLiteDbHelper  extends SQLiteOpenHelper {
     public static final String INTRODUCTION= "introduction";
     public static final String DOWNLOADURL= "downloadurl";
     public static final String TITLEIMAGE= "titleImage";
+    public static final String TITLEIMAGE1= "titleImage1";
+    public static final String TITLEIMAGE2= "titleImage2";
+    public static final String TITLEIMAGE3= "titleImage3";
+    public static final String TITLEIMAGE4= "titleImage4";
     public static final String MARK= "mark";
     public static final String TAG1= "tag1";
     public static final String TAG2= "tag2";
@@ -38,7 +42,11 @@ public class SQLiteDbHelper  extends SQLiteOpenHelper {
              TAG1 +" TEXT," +
              TAG2 +" TEXT," +
              TAG3 +" TEXT," +
-             MARK + " Integer)";
+             MARK + " Integer," +
+            TITLEIMAGE1 + " TEXT," +
+            TITLEIMAGE2 + " TEXT," +
+            TITLEIMAGE3 + " TEXT," +
+            TITLEIMAGE4 + " TEXT )";
 
     private static final String DOWNLOAD_TABLE_SQL = "CREATE TABLE IF NOT EXISTS " + TABLE_DOWNLOAD
             +"("+ DOWNLOADNAME+ " varchar(10) primary key, " +

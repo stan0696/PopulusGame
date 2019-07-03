@@ -10,14 +10,14 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/treee"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/treee"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".View.TagSearchActivity"></activity>
         <activity android:name=".User.UserSecretActivity"></activity>
-        <activity android:name=".View.TagSearchActivity" />
-        <activity android:name=".Tools.fzDownloadActivity" />
+        <activity android:name=".User.UserInfoActivity" />
         <activity android:name=".GameinfoActivity" />
         <activity android:name=".User.PasswordFindActivity" />
         <activity android:name=".User.PasswordChangeActivity" />
@@ -30,6 +30,8 @@
         <activity android:name=".NotificationActivity" />
         <activity android:name=".Tools.SettingActivity" />
         <activity android:name=".CommentActivity" />
+        <activity android:name=".User.PersonalInfoChangeActivity" />
+        <activity android:name=".User.UserImageSelect" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
