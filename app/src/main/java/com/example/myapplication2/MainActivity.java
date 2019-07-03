@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity
     public static String Username=null;
     private ViewPager mViewPager;
     public static boolean passState=false;
-    private int isfirsttomain=0;
     List<Fragment> fragmentList = new ArrayList<>();
     Fragment fragmentHome;
     Fragment fragmentExplore;
@@ -105,10 +104,7 @@ public class MainActivity extends AppCompatActivity
         });
         mViewPager = findViewById(R.id.viewPager);
         initFragments();
-        if(isfirsttomain==0){
-            getdate();
-            isfirsttomain++;
-        }
+
         }
 
     private void initFragments(){
@@ -166,10 +162,10 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, MyGameActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_game) {
-            Intent intent = new Intent(MainActivity.this, UserInfoChangeActivity.class);
+            Intent intent = new Intent(MainActivity.this, MyGameActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_notification) {
-            Intent intent = new Intent(MainActivity.this, UserSecretActivity.class);
+            Intent intent = new Intent(MainActivity.this, NotificationActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_setting) {
             Intent intent = new Intent(MainActivity.this, SettingActivity.class);
@@ -180,15 +176,5 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void getdate(){
 
-        new Thread(){
-            public void run(){
-
-                Crawl_data test = new Crawl_data("https://www.taptap.com/categories");
-                test.run(getApplicationContext());
-
-            }
-        }.start();
-    }
 }

@@ -26,6 +26,8 @@ public class SplashActivity extends Activity{
                 SplashActivity.this.finish();
             }
         }, SPLASH_DISPLAY_LENGHT);
+            getdate();
+
     }
     /**
      * 全透状态栏
@@ -43,5 +45,16 @@ public class SplashActivity extends Activity{
             //虚拟键盘也透明
             //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
+    }
+    public void getdate(){
+
+        new Thread(){
+            public void run(){
+
+                Crawl_data test = new Crawl_data("https://www.taptap.com/categories");
+                test.run(getApplicationContext());
+
+            }
+        }.start();
     }
 }
