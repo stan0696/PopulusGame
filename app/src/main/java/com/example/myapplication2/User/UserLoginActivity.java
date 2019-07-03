@@ -13,10 +13,10 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication2.DBClass.DBGameService;
 import com.example.myapplication2.DBClass.DBUserService;
 import com.example.myapplication2.MainActivity;
 import com.example.myapplication2.R;
@@ -37,10 +37,18 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_main);
+        ImageView back_btn = (ImageView)findViewById(R.id.login_back);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                finish();
+            }
+        });
         view_init();
         LoginThread lt=new LoginThread();
         lt.start();//调动子线程
-
     }
 
     /**
@@ -80,7 +88,6 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
             case R.id.registe_button:
                 m.what=1;
                 handler.sendMessage(m);//把信息放到通道中
-
                 break;
         }
     }
@@ -114,13 +121,8 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                             }
                             if (password.equals(pass))//为true，页面跳转，登陆成功
                             {
-                                Intent intent = new Intent();
-                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                                intent.setClass(UserLoginActivity.this, MainActivity.class);
-                                //intent.putExtra("Username", name);
                                 MainActivity.Username=name;
-                                System.out.println(MainActivity.Username);
-                                startActivity(intent);
+                                startActivity(new Intent(UserLoginActivity.this, MainActivity.class));
                                 Toast.makeText(UserLoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();//显示提示框
                                 return;
                             }

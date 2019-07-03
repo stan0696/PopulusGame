@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/iconselect_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:title="头像选择"
+            app:titleMarginStart="163dp"
+            app:titleTextColor="#ffffff" />
+
+        <ImageView
+            android:id="@+id/imageicon_back"
+            android:layout_width="35dp"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/imageicon0"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="10dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/agricultural_productivity" />
+        <ImageView
+            android:id="@+id/imageicon1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="10dp"
+            android:clickable="true"
+            android:layout_marginStart="40dp"
+            app:srcCompat="@drawable/clean_energy" />
+        <ImageView
+            android:id="@+id/imageicon2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="10dp"
+            android:clickable="true"
+            android:layout_marginStart="40dp"
+            app:srcCompat="@drawable/drought" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/imageicon3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="10dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/energy_research" />
+        <ImageView
+            android:id="@+id/imageicon4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="10dp"
+            android:clickable="true"
+            android:layout_marginStart="40dp"
+            app:srcCompat="@drawable/eruption" />
+        <ImageView
+            android:id="@+id/imageicon5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="10dp"
+            android:clickable="true"
+            android:layout_marginStart="40dp"
+            app:srcCompat="@drawable/farmer" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/imageicon6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="10dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/healthy_meal" />
+        <ImageView
+            android:id="@+id/imageicon7"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="10dp"
+            android:clickable="true"
+            android:layout_marginStart="40dp"
+            app:srcCompat="@drawable/international_agreement" />
+        <ImageView
+            android:id="@+id/imageicon8"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="10dp"
+            android:clickable="true"
+            android:layout_marginStart="40dp"
+            app:srcCompat="@drawable/urban_planning" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/imageicon9"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="10dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/educational_for_all" />
+        <ImageView
+            android:id="@+id/imageicon10"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="10dp"
+            android:clickable="true"
+            android:layout_marginStart="40dp"
+            app:srcCompat="@drawable/gmo" />
+        <ImageView
+            android:id="@+id/imageicon11"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="10dp"
+            android:clickable="true"
+            android:layout_marginStart="40dp"
+            app:srcCompat="@drawable/leadership" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/imageicon12"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="10dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/trafficking_boat" />
+        <ImageView
+            android:id="@+id/imageicon13"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="10dp"
+            android:clickable="true"
+            android:layout_marginStart="40dp"
+            app:srcCompat="@drawable/life_below_water" />
+        <ImageView
+            android:id="@+id/imageicon14"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="10dp"
+            android:clickable="true"
+            android:layout_marginStart="40dp"
+            app:srcCompat="@drawable/sustainable_community" />
+    </LinearLayout>
+
+</LinearLayout>

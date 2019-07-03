@@ -82,25 +82,41 @@
                     app:layout_constraintTop_toBottomOf="@+id/user_name" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <Button
-                android:id="@+id/login_button"
-                android:layout_width="220dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="105dp"
-                android:background="@drawable/icon_shape"
-                android:text="登录"
-                android:textSize="18sp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:layout_marginTop="30dp">
 
-            <Button
-                android:id="@+id/registe_button"
-                android:layout_width="220dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="105dp"
-                android:background="@drawable/icon_shape"
-                android:text="账号注册"
-                android:textSize="18sp"/>
+                <Button
+                    android:id="@+id/login_button"
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="100dp"
+                    android:background="@drawable/icon_shape"
+                    android:text="登录"
+                    android:textSize="18sp"/>
+                <Button
+                    android:id="@+id/registe_button"
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="30dp"
+                    android:background="@drawable/icon_shape"
+                    android:text="注册"
+                    android:textSize="18sp"/>
+
+            </LinearLayout>
+        <Button
+            android:id="@+id/code_find"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="忘记密码？点击这里"
+            style="?android:attr/borderlessButtonStyle"/>
 
         </LinearLayout>
 
