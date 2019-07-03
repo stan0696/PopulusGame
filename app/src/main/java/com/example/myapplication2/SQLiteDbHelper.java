@@ -31,6 +31,12 @@ public class SQLiteDbHelper  extends SQLiteOpenHelper {
     public static final String DOWNLOADNAME= "name";
     public static final String DOWNLOADICON= "icon";
     public static final String DOWNLOADID= "id";
+
+    public static final String TABLE_NOTIFICATION= "notificationlist";
+    public static final String NOTIFICATIONNAME= "name";
+    public static final String NOTIFICATIONICON= "icon";
+    public static final String NOTIFICATION= "notification";
+    public static final String NOTIFICATIONID= "id";
     //创建 students 表的 sql 语句
     private static final String GAME_CREATE_TABLE_SQL = "CREATE TABLE IF NOT EXISTS " + TABLE_GAME
             +"("+ NAME + " varchar(10), " +
@@ -53,7 +59,11 @@ public class SQLiteDbHelper  extends SQLiteOpenHelper {
             DOWNLOADID+ " Integer , " +
             DOWNLOADICON+ " varchar(10))";
 
-
+    private static final String NOTIFICATION_TABLE_SQL = "CREATE TABLE IF NOT EXISTS " + TABLE_NOTIFICATION
+            +"("+ NOTIFICATIONNAME+ " varchar(10) , " +
+            NOTIFICATIONID+ " Integer primary key, " +
+            NOTIFICATIONICON+ " TEXT , " +
+            NOTIFICATION+ " varchar(10))";
     public SQLiteDbHelper(Context context) {
         // 传递数据库名与版本号给父类
         super(context, DB_NAME, null, DB_VERSION);
@@ -67,7 +77,7 @@ public class SQLiteDbHelper  extends SQLiteOpenHelper {
         // 创建 students 表
         db.execSQL(GAME_CREATE_TABLE_SQL);
         db.execSQL(DOWNLOAD_TABLE_SQL );
-
+        db.execSQL(NOTIFICATION_TABLE_SQL);
     }
 
     @Override
