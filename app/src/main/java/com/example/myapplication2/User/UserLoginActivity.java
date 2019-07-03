@@ -13,6 +13,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,10 +37,18 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_main);
+        ImageView back_btn = (ImageView)findViewById(R.id.login_back);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                finish();
+            }
+        });
         view_init();
         LoginThread lt=new LoginThread();
         lt.start();//调动子线程
-
     }
 
     /**
@@ -112,6 +121,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                             }
                             if (password.equals(pass))//为true，页面跳转，登陆成功
                             {
+                                MainActivity.Username=name;
                                 startActivity(new Intent(UserLoginActivity.this, MainActivity.class));
                                 Toast.makeText(UserLoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();//显示提示框
                                 return;

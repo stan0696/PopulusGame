@@ -21,7 +21,7 @@
             app:titleTextColor="#ffffff" />
 
         <ImageView
-            android:id="@+id/userinfo_back"
+            android:id="@+id/personalinfo_back"
             android:layout_width="35dp"
             android:layout_height="45dp"
             android:layout_alignParentLeft="true"
@@ -52,11 +52,12 @@
 
                 <ImageView
                     android:id="@+id/personal_userimage"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
                     android:scaleType="fitXY"
+                    android:clickable="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

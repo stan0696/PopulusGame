@@ -15,6 +15,7 @@ import com.example.myapplication2.Tools.DownloadActivity;
 import com.example.myapplication2.Tools.SearchActivity;
 import com.example.myapplication2.Tools.SettingActivity;
 import com.example.myapplication2.User.User;
+import com.example.myapplication2.User.UserInfoActivity;
 import com.example.myapplication2.User.UserLoginActivity;
 import com.example.myapplication2.View.FocusActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -31,6 +32,9 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
+import android.os.Bundle;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +63,7 @@ public class MainActivity extends AppCompatActivity
     };
 
     private ViewPager mViewPager;
+    public static String Username=null;
     private int isfirsttomain=0;
     List<Fragment> fragmentList = new ArrayList<>();
     Fragment fragmentHome;
@@ -77,10 +82,26 @@ public class MainActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
         navigationView.setNavigationItemSelectedListener(this);
         BottomNavigationView navView = findViewById(R.id.bottom_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        View v = navigationView.getHeaderView(0);
+        ImageView img=(ImageView) v.findViewById(R.id.nav_imageView);
+        img.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                if (Username == null) {
+                    Intent intent = new Intent(MainActivity.this, UserLoginActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(MainActivity.this, UserInfoActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
         mViewPager = findViewById(R.id.viewPager);
         initFragments();
         if(isfirsttomain==0){
@@ -88,7 +109,6 @@ public class MainActivity extends AppCompatActivity
             isfirsttomain++;
         }
         }
-
 
     private void initFragments(){
         fragmentHome = new FragmentHome();
