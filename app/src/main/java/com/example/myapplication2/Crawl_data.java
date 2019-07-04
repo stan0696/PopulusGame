@@ -53,22 +53,7 @@ public class Crawl_data {
                 URI uritj =URI.create("https://www.taptap.com/category/recommend?sort=hits&page="+k);
                 newgametj[k]=new FindGame(uritj,"推荐");
             }
-            for (FindGame findGame:newgametj){
-                try{
-                    Document gamedoc = Jsoup.connect(findGame.getUrl().toString()).timeout(10000).get();
-                    for (int i=0;i<gamedoc.select("h4[class=flex-text]").size();i++){
-                        Element span=gamedoc.select("h4[class=flex-text]").get(i);
-                        String text=span.text();
-                        String relHref=gamedoc.select("a[style]").get(i).attr("href");/*获取游戏自身的url*/
-                        URI uri = URI.create(relHref);
-                        Game nowgame =new Game(text);
-                        nowgame.setUrl(uri);
-                        setgameinfo(nowgame,context);
-                    }
-                }catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+
             for (FindGame findGame:newgametag
             ) {
                 try {
@@ -189,7 +174,22 @@ public class Crawl_data {
                 }
 
             }
-
+            for (FindGame findGame:newgametj){
+                try{
+                    Document gamedoc = Jsoup.connect(findGame.getUrl().toString()).timeout(10000).get();
+                    for (int i=0;i<gamedoc.select("h4[class=flex-text]").size();i++){
+                        Element span=gamedoc.select("h4[class=flex-text]").get(i);
+                        String text=span.text();
+                        String relHref=gamedoc.select("a[style]").get(i).attr("href");/*获取游戏自身的url*/
+                        URI uri = URI.create(relHref);
+                        Game nowgame =new Game(text);
+                        nowgame.setUrl(uri);
+                        setgameinfo(nowgame,context);
+                    }
+                }catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         } catch (
                 IOException e) {
             e.printStackTrace();
