@@ -136,7 +136,6 @@ public class GameinfoActivity extends AppCompatActivity {
             });
         }
 
-
         button_focus=findViewById(R.id.button_focus);
         button_focus.setOnClickListener(new View.OnClickListener() {
             @Override

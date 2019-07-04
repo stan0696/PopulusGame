@@ -1,5 +1,6 @@
 package com.example.myapplication2.Tools;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -16,8 +17,11 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.os.SystemClock;
 import android.view.View;
 import android.widget.AdapterView;
@@ -37,6 +41,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static com.example.myapplication2.View.MyImageView.GET_DATA_SUCCESS;
+
 public class DownloadActivity extends AppCompatActivity {
     private ListView downloadv_ss;
     private List<String[]> list = new ArrayList<>();
@@ -47,6 +53,9 @@ public class DownloadActivity extends AppCompatActivity {
     private  String[] downloadgameinfo ;
     private  List<String[]> alreadydownloadgameinfo = new ArrayList<>();
     private boolean isRegisterReceiver;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -97,13 +106,92 @@ public class DownloadActivity extends AppCompatActivity {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     != PackageManager.PERMISSION_GRANTED) {
                 //申请WRITE_EXTERNAL_STORAGE权限
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                        WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
-                newdownload.downloadAPK(downloadgameinfo[0],downloadgameinfo[1]);
-                downloadManager = (DownloadManager)this.getSystemService(Context.DOWNLOAD_SERVICE);
-                setdata(newdownload);
-                getdata();
-                list=alreadydownloadgameinfo;
+//                String[] permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
+//                int requestCode = 100;
+//                requestPermissions(permissions,requestCode);
+////                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+////                        WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
+                //要申请的权限
+                final String[] permission= new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+                //要申请权限的回调
+                PermissionCallback callbackk=new PermissionCallback() {
+
+                    @Override
+                    public void onPermissionGranted() {
+                        System.out.println("开始下载");
+                        newdownload.downloadAPK(downloadgameinfo[0],downloadgameinfo[1]);
+                        downloadManager = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
+                        setdata(newdownload);
+                        getdata();
+                        list=alreadydownloadgameinfo;
+                }
+
+                    @Override
+                    public void shouldShowRational(String[] rationalPermissons, boolean before) {
+
+                        StringBuilder sb=new StringBuilder();
+                        sb.append("我们将获取以下权限:\n\n");
+
+                        for(int i=0;i<rationalPermissons.length;i++){
+                            sb.append((i+1)+"、");
+                            if(Manifest.permission.WRITE_EXTERNAL_STORAGE.equals(rationalPermissons[i])){
+                                sb.append("读写设备外部存储空间的权限，将被用于获取用户头像、保存一些文件到项目文件夹中");
+                            }else if(Manifest.permission.CAMERA.equals(rationalPermissons[i])){
+                                sb.append("使用摄像头的权限将，被用于拍照获取用户头像，直播视频采集");
+                            }else if(Manifest.permission.READ_PHONE_STATE.equals(rationalPermissons[i])){
+                                sb.append("读取手机状态信息的权限，将被用于登录时账号验证");
+                            }
+
+                            sb.append("\n");
+                        }
+
+                        PermissionUtil.showDialog(DownloadActivity.this, sb.toString(),
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                        //重新申请权限
+                                        //PermissionUtil.requestAgain(DownloadActivity.this,callbackk);
+                                    }
+                                });
+                    }
+
+                    @Override
+                    public void onPermissonReject(String[] rejectPermissons) {
+                        StringBuilder sb=new StringBuilder();
+                        sb.append("我们需要的权限:\n\n");
+
+                        for(int i=0;i<rejectPermissons.length;i++){
+                            sb.append((i+1)+"、");
+                            if(Manifest.permission.WRITE_EXTERNAL_STORAGE.equals(rejectPermissons[i])){
+                                sb.append("读写外部存储空间的权限，将被用于获取用户头像、保存一些文件到项目文件夹中");
+                            }else if(Manifest.permission.CAMERA.equals(rejectPermissons[i])){
+                                sb.append("使用摄像头的权限，被用于拍照获取用户头像，直播视频采集");
+                            }else if(Manifest.permission.READ_PHONE_STATE.equals(rejectPermissons[i])){
+                                sb.append("读取手机状态信息的权限，将被用于登录时账号验证");
+                            }
+                            sb.append("\n");
+                        }
+                        sb.append("\n被设为禁止,请到设置里开启权限");
+
+                        PermissionUtil.showDialog(DownloadActivity.this, sb.toString(),
+                                getString(R.string.下载中心),
+                                getString(R.string.下载中心),
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                        //重新申请权限
+                                        PermissionUtil.startSettingsActivity(DownloadActivity.this);
+                                    }
+                                }
+                        );
+                    }
+                };
+                        System.out.println("申请权限");
+                        PermissionUtil.request(DownloadActivity.this,permission,callbackk);
+
             }
             else
             {
@@ -158,8 +246,6 @@ public class DownloadActivity extends AppCompatActivity {
      * 权限申请
      * @return
      */
-
-    //4. 接收申请成功或者失败回调
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -176,7 +262,6 @@ public class DownloadActivity extends AppCompatActivity {
                 Toast.makeText(this,"拒绝了权限",Toast.LENGTH_SHORT);
             }
         }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
     }
 
@@ -195,39 +280,37 @@ public class DownloadActivity extends AppCompatActivity {
         SQLiteDatabase database = helper.getWritableDatabase();
         Cursor cursor = database.query("downloadgame", null, null, null, null, null, null);
         if (cursor.moveToFirst()){
+            DownloadManagerUtil nowdownload = new DownloadManagerUtil(getBaseContext());
+            nowdownload.setDownloadId(Long.parseLong(cursor.getString(1)));
+            String DownloadSoFar=new String();
+            DownloadSoFar = String.valueOf(nowdownload.getDownloadSoFar());
+            String DownloadSoFarinfo =new String(nowdownload.getDownloadedSoFar()+"/"+nowdownload.getTotalSize());
             alreadydownloadgameinfo.add(new String[]{cursor.getString(1),
                     cursor.getString(0),
-                    cursor.getString(2)});
+                    cursor.getString(2),
+                    DownloadSoFar,
+                    DownloadSoFarinfo
+
+            });
 
             while (cursor.moveToNext()) {
-                alreadydownloadgameinfo.add(
-                        new String[]{cursor.getString(1),
-                                cursor.getString(0),
-                                cursor.getString(2)});
+                DownloadManagerUtil nowdownload1 = new DownloadManagerUtil(getBaseContext());
+                nowdownload.setDownloadId(Long.parseLong(cursor.getString(1)));
+                String DownloadSoFar1=new String();
+                DownloadSoFar = String.valueOf(nowdownload.getDownloadSoFar());
+                String DownloadSoFarinfo1 =new String(nowdownload.getDownloadedSoFar()+"/"+nowdownload.getTotalSize());
+                alreadydownloadgameinfo.add(new String[]{cursor.getString(1),
+                        cursor.getString(0),
+                        cursor.getString(2),
+                        DownloadSoFar1,
+                        DownloadSoFarinfo1
+
+                });
             }
         }
         database.close();
     }
-    public void updateView(int itemIndex) {
-        //得到第一个可显示控件的位置，
-        int fvisiblePosition = downloadv_ss.getFirstVisiblePosition();
 
-        //只有当要更新的view在可见的位置时才更新，不可见时，跳过不更新
-        if (itemIndex >= fvisiblePosition ) {
-            //得到要更新的item的view
-            View view = downloadv_ss.getChildAt(itemIndex - fvisiblePosition);
-            //从view中取得holder
-            ProgressBar item;
-            item =view.findViewById(R.id.downloadprogressBar);
-            TextView   tvitem;
-            tvitem = view.findViewById(R.id.downloadgameprogress);
-            //获取到具体的控件，
-            DownloadManagerUtil nowdownload = new DownloadManagerUtil(getBaseContext());
-            nowdownload.setDownloadId(Long.parseLong(list.get(itemIndex - fvisiblePosition)[0]));
-            item.setProgress(nowdownload.getDownloadSoFar());
-            tvitem.setText(nowdownload.getDownloadedSoFar()+"/"+nowdownload.getTotalSize());
-        }
-    }
 
 
 }

@@ -1,10 +1,13 @@
 package com.example.myapplication2.Tools;
 
+import android.annotation.SuppressLint;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,19 +17,25 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication2.DBClass.DBGameService;
 import com.example.myapplication2.R;
 import com.example.myapplication2.SQLiteDbHelper;
 import com.example.myapplication2.View.MyImageView;
+import com.example.myapplication2.View.Rankbymark;
+import com.example.myapplication2.View.RankingfragAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import static com.example.myapplication2.View.MyImageView.GET_DATA_SUCCESS;
 
 
 public class DownloadAdapter extends BaseAdapter {
     private List<String[]> list = new ArrayList<>();
     private Context context;
     private DownloadManagerUtil newdownload;
+    private DownloadManagerUtil[] nowdownload ;
     public DownloadAdapter (List<String[]> list, Context context) {
         this.list = list;
         this.context = context;
@@ -65,6 +74,8 @@ public class DownloadAdapter extends BaseAdapter {
             holder.download_delete = convertView.findViewById(R.id.download_delete);
             holder.downloadprogressBar = convertView.findViewById(R.id.downloadprogressBar);
             convertView.setTag(holder);
+            rankThread rt=new rankThread();
+            rt.start();
         }
             holder = (ViewHolder) convertView.getTag();
             holder.downloadtv_ss.setText(list.get(position)[1]);
@@ -73,7 +84,7 @@ public class DownloadAdapter extends BaseAdapter {
             newdownload = new DownloadManagerUtil(context);
             newdownload.setDownloadId(Long.parseLong(list.get(position)[0]));
             holder.downloadprogressBar.setProgress(newdownload.getDownloadSoFar());
-            holder.downloadgameprogress.setText(newdownload.getDownloadedSoFar()+"/"+newdownload.getTotalSize());
+            holder.downloadgameprogress.setText(list.get(position)[4]);
             notifyDataSetChanged();
         return convertView;
     }
@@ -113,4 +124,41 @@ public class DownloadAdapter extends BaseAdapter {
             notifyDataSetChanged();
         }
     }
+
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what){
+                case GET_DATA_SUCCESS:
+                    for(int k=0;k<nowdownload.length;k++){
+                        list.get(k)[3]=String.valueOf(nowdownload[k].getDownloadSoFar());
+                        list.get(k)[4]=nowdownload[k].getDownloadedSoFar();
+                        notifyDataSetChanged();
+                    }
+                    break;
+            }
+        }
+    };
+    class rankThread extends Thread{
+
+        @SuppressLint("HandlerLeak")
+        @Override
+        public  void run()
+        {
+
+            System.out.println("开启线程");
+            nowdownload = new DownloadManagerUtil[list.size()];
+            for (int i=0;i<list.size();i++){
+                    nowdownload[i] = new DownloadManagerUtil(context);
+                    nowdownload[i].setDownloadId(Long.parseLong(list.get(i)[0]));
+            }
+            Message msg = Message.obtain();
+            msg.what = GET_DATA_SUCCESS;
+            msg.obj = nowdownload;
+            handler.sendMessage(msg);
+
+        }
+    }
+
 }
