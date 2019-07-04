@@ -66,7 +66,6 @@ public class RankingfragAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
-        MyListener myListener=new MyListener(position);
         System.out.println(list+"list");
         if (convertView == null)
         {
@@ -142,33 +141,7 @@ if(list.size()!=0)
         Button  Rankbtn1_1;
 
     }
-    private class MyListener implements View.OnClickListener {
-        int mPosition;
-        public MyListener(int inPosition){
-            mPosition= inPosition;
-        }
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(context, DownloadActivity.class);
-                SQLiteDbHelper helper = new SQLiteDbHelper(context);
-                SQLiteDatabase database = helper.getWritableDatabase();
-                Cursor cursor = database.query("game", null, "name=?", new String[]{list.get(mPosition).getGamename()}, null, null, null);//修改
-                if (cursor.moveToFirst()) {
-                    downloadgameinfo[0]=cursor.getString(4);
-                    downloadgameinfo[1]=cursor.getString(0);
-                    downloadgameinfo[2]=cursor.getString(2);
-                }
-            System.out.println(downloadgameinfo[0]);
-                database.close();
-            if (downloadgameinfo[0].equals("no_this_game")){
-                Toast.makeText(context,"暂无下载",Toast.LENGTH_SHORT).show();
-            }else {
-                /**此处需修改*/ intent.putExtra("downloadurl",downloadgameinfo);
-                context.startActivity(intent);
-            }
-        }
 
-    }
 
     private Handler handler = new Handler() {
         @Override
@@ -178,9 +151,6 @@ if(list.size()!=0)
                   for(int k=0;k<100;k++)
                       if(temprank[k]!=null)
                       {
-                          System.out.println(temprank[k].getGamename());
-                          System.out.println(temprank[k].getIcon());
-                          System.out.println(1234);
                           list.add(temprank[k]);
                           Collections.sort(list);//根据评分排序
                           notifyDataSetChanged();

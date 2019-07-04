@@ -56,7 +56,6 @@ void setview(View rootView)
     setTagview("卡牌",rootView);
     setTagview("生存",rootView);
     setTagview("模拟",rootView);
-    setTagview("竞速",rootView);
     setTagview("益智",rootView);
     setTagview("二次元",rootView);
 
