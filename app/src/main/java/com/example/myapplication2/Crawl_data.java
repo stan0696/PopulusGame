@@ -233,7 +233,7 @@ public class Crawl_data {
 
             for (int tagnum=0;tagnum<3;tagnum++)        /*获取游戏的tag*/
             {
-                nowgame.setTag(tagnum%3+1,thisgamedoc.select("ul[id=appTag]").select("a").get(tagnum+1).text());
+                nowgame.setTag(tagnum%3+1,thisgamedoc.select("ul[id=appTag]").select("a").get(tagnum).text());
             }
             Element intro = thisgamedoc.select(".body-description-paragraph").first();
             String icon = thisgamedoc.select(".header-icon-body").select("img").attr("src");
