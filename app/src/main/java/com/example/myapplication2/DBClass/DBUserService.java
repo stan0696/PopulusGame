@@ -263,7 +263,7 @@ public class DBUserService {
      * 关注游戏按钮点击
      */
     public int focusGame(String username, String gamename, int gamestate){
-        String updateSql = "update usergame set gamestate=? where username=?";
+        String updateSql = "update usergame set gamestate=? where username=? and gamename=?";
         String insertSql = "insert into usergame(username, gamename, gamestate) values(?, ?, ?)";
         con = DBUtil.getSQLConnection();
         try {
@@ -282,6 +282,7 @@ public class DBUserService {
                     ps= (PreparedStatement) con.prepareStatement(updateSql);
                     ps.setInt(1,0);
                     ps.setString(2,username);
+                    ps.setString(3,gamename);
                     ps.executeUpdate();
                     DBUtil.closeAll(con, ps);
                     return 1;
@@ -290,6 +291,7 @@ public class DBUserService {
                     ps= (PreparedStatement) con.prepareStatement(updateSql);
                     ps.setInt(1,1);
                     ps.setString(2,username);
+                    ps.setString(3,gamename);
                     ps.executeUpdate();
                     DBUtil.closeAll(con, ps);
                     return 1;

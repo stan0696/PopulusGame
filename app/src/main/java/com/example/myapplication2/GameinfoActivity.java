@@ -232,6 +232,15 @@ public class GameinfoActivity extends AppCompatActivity {
             {
                 final DBUserService dbUserService=DBUserService.getDbUserService();
                 final DBGameService dbgameservice=new DBGameService();
+                mark= dbgameservice.getAvgMark(name);//从云端获取平均分
+                button_focus=findViewById(R.id.button_focus);
+                if(state==1)
+                {
+                    button_focus.setText("已关注");
+                }
+
+                marktext=findViewById(R.id.game_text_mark);
+                marktext.setText(String.valueOf(mark));
                 Looper.prepare();
                 handler = new Handler(){
                     @Override
@@ -281,17 +290,6 @@ public class GameinfoActivity extends AppCompatActivity {
 
                 };
                 Looper.loop();
-                mark= dbgameservice.getAvgMark(name);//从云端获取平均分
-
-                button_focus=findViewById(R.id.button_focus);
-                if(state==1)
-                {
-                    button_focus.setText("已关注");
-                }
-
-                marktext=findViewById(R.id.game_text_mark);
-                marktext.setText(String.valueOf(mark));
-
             }
     }
 
