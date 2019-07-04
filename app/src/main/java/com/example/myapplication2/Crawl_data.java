@@ -231,7 +231,7 @@ public class Crawl_data {
 
             String introduction;
 
-            for (int tagnum=0;tagnum<3;tagnum++)        /*获取游戏的tag*/
+            for (int tagnum=0;tagnum<3&&tagnum<thisgamedoc.select("ul[id=appTag]").select("a").size();tagnum++)        /*获取游戏的tag*/
             {
                 nowgame.setTag(tagnum%3+1,thisgamedoc.select("ul[id=appTag]").select("a").get(tagnum).text());
             }

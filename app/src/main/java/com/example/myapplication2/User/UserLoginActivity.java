@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.text.method.PasswordTransformationMethod;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -52,6 +53,7 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
         context = UserLoginActivity.this;
         user_name = (EditText) findViewById(R.id.user_name);
         user_password = (EditText) findViewById(R.id.password);
+        user_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
         login_back = (ImageView) findViewById(R.id.login_back);
         login = (Button) findViewById(R.id.login_button);
         registe = (Button) findViewById(R.id.registe_button);
@@ -159,6 +161,10 @@ public class UserLoginActivity extends AppCompatActivity implements View.OnClick
                             break;
                         case 2:
                             name = b.getString("name");//根据键取值
+                            if(name.isEmpty()){
+                                Toast.makeText(UserLoginActivity.this, "请输入用户名", Toast.LENGTH_SHORT).show();
+                                break;
+                            }
                             Intent intent = new Intent();
                             //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                             intent.putExtra("name", name);

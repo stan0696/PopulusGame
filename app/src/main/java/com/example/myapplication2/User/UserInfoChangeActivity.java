@@ -13,6 +13,7 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ public class UserInfoChangeActivity extends AppCompatActivity implements View.On
     private Handler handler;
     private EditText user_name, user_note, user_birth, user_sex, user_city, user_phone;
     private TextView userInfoChange;
+    private ImageView userInfoBack;
     private String name, note, birth, sex, city, phone;
 
     @Override
@@ -52,7 +54,9 @@ public class UserInfoChangeActivity extends AppCompatActivity implements View.On
         user_phone = (EditText) findViewById(R.id.user_phone_info);
         user_phone.setInputType(InputType.TYPE_CLASS_PHONE);
         userInfoChange = (TextView) findViewById(R.id.personalinfo_save);
+        userInfoBack = (ImageView) findViewById(R.id.personalinfo_back);
         userInfoChange.setOnClickListener(this);
+        userInfoBack.setOnClickListener(this);
     }
 
     @Override
@@ -78,6 +82,9 @@ public class UserInfoChangeActivity extends AppCompatActivity implements View.On
             case R.id.personalinfo_save:
                 m.what = 1;
                 handler.sendMessage(m);//把信息放到通道中
+                break;
+            case R.id.personalinfo_back:
+                this.finish();
                 break;
         }
     }

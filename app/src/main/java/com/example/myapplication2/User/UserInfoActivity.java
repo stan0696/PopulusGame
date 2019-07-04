@@ -24,6 +24,7 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
     private Handler handler;
     private TextView user_info_name, user_info_intro;
     private Button changeuserinfo, changepass, changesecret;
+    private ImageView userinfo_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,8 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
         changeuserinfo = (Button) findViewById(R.id.user_button1);
         changepass = (Button) findViewById(R.id.user_button2);
         changesecret = (Button) findViewById(R.id.user_button3);
+        userinfo_back = (ImageView) findViewById(R.id.userinfo_back);
+        userinfo_back.setOnClickListener(this);
         changeuserinfo.setOnClickListener(this);
         changepass.setOnClickListener(this);
         changesecret.setOnClickListener(this);
@@ -51,6 +54,9 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
+        if (view.getId() == R.id.userinfo_back){
+            this.finish();
+        }
         Message m;
         m=handler.obtainMessage();//获取事件
         switch (view.getId()){
@@ -65,6 +71,9 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
             case R.id.user_button3:
                 m.what=3;
                 handler.sendMessage(m);//把信息放到通道中
+                break;
+            case R.id.userinfo_back:
+
                 break;
         }
     }
