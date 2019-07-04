@@ -1,12 +1,16 @@
 package com.example.myapplication2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -75,7 +79,7 @@ public class GameinfoActivity extends AppCompatActivity {
     List<Fragment> fragmentList = new ArrayList<>();
     Fragment fragmentDetails;
     Fragment fragmentComment;
-
+    private int WRITE_EXTERNAL_STORAGE_REQUEST_CODE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,8 +128,6 @@ public class GameinfoActivity extends AppCompatActivity {
                     m=handler.obtainMessage();//获取事件
                     m.what=1;
                     handler.sendMessage(m);
-
-
 
 
                 }
