@@ -8,6 +8,9 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        app:title="我的游戏"
+        app:titleTextColor="#ffffff"
+        app:titleMarginStart="160dp"
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
