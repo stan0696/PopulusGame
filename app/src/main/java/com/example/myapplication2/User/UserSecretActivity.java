@@ -12,6 +12,7 @@ import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.myapplication2.DBClass.DBUserService;
@@ -22,6 +23,7 @@ public class UserSecretActivity extends AppCompatActivity implements View.OnClic
     private Context context;
     private Handler handler;
     private EditText secretedittext;
+    private ImageView usersecret_back;
     private Button secretbutton;
     private String usersecretprotect, name;
 
@@ -46,6 +48,8 @@ public class UserSecretActivity extends AppCompatActivity implements View.OnClic
         context = UserSecretActivity.this;
         secretedittext = (EditText) findViewById(R.id.secret_edittext);
         secretbutton = (Button) findViewById(R.id.secret_button);
+        usersecret_back = (ImageView) findViewById(R.id.usersecret_back);
+        usersecret_back.setOnClickListener(this);
         secretbutton.setOnClickListener(this);
 
     }
@@ -66,6 +70,9 @@ public class UserSecretActivity extends AppCompatActivity implements View.OnClic
         if (view.getId()==R.id.secret_button){
                 m.what=1;
                 handler.sendMessage(m);//把信息放到通道中
+        }
+        if (view.getId()==R.id.usersecret_back){
+            this.finish();
         }
     }
 

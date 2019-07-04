@@ -9,9 +9,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,7 @@ public class PasswordChangeActivity extends AppCompatActivity implements View.On
     private Context context;
     private Handler handler;
     private EditText user_answer, user_new_pass, user_new_pass1;
+    private ImageView userinfo_back;
     private Button password_certify;
     private String useranswer, usernewpass, usernewpass1, name;
 
@@ -49,9 +52,13 @@ public class PasswordChangeActivity extends AppCompatActivity implements View.On
         context = PasswordChangeActivity.this;
         user_answer = (EditText) findViewById(R.id.useranswer);
         user_new_pass = (EditText) findViewById(R.id.passwordreset0);
+        user_new_pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
         user_new_pass1 = (EditText) findViewById(R.id.passwordreset1);
+        user_new_pass1.setTransformationMethod(PasswordTransformationMethod.getInstance());
         password_certify = (Button) findViewById(R.id.password_certify);
+        userinfo_back = (ImageView) findViewById(R.id.userinfo_back);
         password_certify.setOnClickListener(this);
+        userinfo_back.setOnClickListener(this);
     }
 
     @Override
@@ -71,6 +78,9 @@ public class PasswordChangeActivity extends AppCompatActivity implements View.On
             case R.id.password_certify:
                 m.what = 1;
                 handler.sendMessage(m);//把信息放到通道中
+                break;
+            case R.id.userinfo_back:
+                this.finish();
                 break;
         }
     }
