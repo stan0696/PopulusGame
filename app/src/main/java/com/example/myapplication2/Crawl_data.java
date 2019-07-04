@@ -51,7 +51,6 @@ public class Crawl_data {
             this.newgametj = new FindGame[17];
             for (int k=0;k<17;k++){
                 URI uritj =URI.create("https://www.taptap.com/category/recommend?sort=hits&page="+k);
-                System.out.println(uritj);
                 newgametj[k]=new FindGame(uritj,"推荐");
             }
             for (FindGame findGame:newgametj){
@@ -234,9 +233,7 @@ public class Crawl_data {
 
             for (int tagnum=0;tagnum<3;tagnum++)        /*获取游戏的tag*/
             {
-                nowgame.setTag(tagnum%3+1,thisgamedoc.select("ul[id=appTag]").select("a").get(tagnum).text());
-                tagnum++;
-
+                nowgame.setTag(tagnum%3+1,thisgamedoc.select("ul[id=appTag]").select("a").get(tagnum+1).text());
             }
             Element intro = thisgamedoc.select(".body-description-paragraph").first();
             String icon = thisgamedoc.select(".header-icon-body").select("img").attr("src");
@@ -255,8 +252,7 @@ public class Crawl_data {
                 id = thisgamedoc.select(".taptap-button-download").attr("data-app-id");/*付费游戏的id获取方式不同*/
             }
             if (id.isEmpty()) {
-                Random ra = new Random();
-                id = "100000" + ra.nextInt(1000) + 1;
+                id = "0" ;
             }
 
             String downloadget = new String("https://www.9game.cn/search/?keyword=" + java.net.URLEncoder.encode(nowgame.getName(), "UTF-8") + "&uc_gd_adm=%E6%90%9C%E7%B4%A2");
@@ -289,9 +285,7 @@ public class Crawl_data {
 
 
             cValue.put("name", nowgame.getName());
-            System.out.println(nowgame.getName());
             cValue.put("gameid", nowgame.getID());
-            System.out.println(nowgame.getID());
             cValue.put("icon", nowgame.getIcon());
             cValue.put("introduction", nowgame.getIntroduction());
             cValue.put("downloadurl", nowgame.getDownloadUrl().toString());
@@ -313,7 +307,6 @@ public class Crawl_data {
             }
 
             database.replace(SQLiteDbHelper.TABLE_GAME, null, cValue);
-            System.out.println(cValue);
             database.close();
             newgame.add(nowgame);/*传入newgame类*/
         } catch (IOException e) {

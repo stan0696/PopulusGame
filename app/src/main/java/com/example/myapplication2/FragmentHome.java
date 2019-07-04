@@ -77,7 +77,7 @@ public class FragmentHome extends Fragment{
 
         SQLiteDbHelper helper = new SQLiteDbHelper(Rootview.getContext());
         SQLiteDatabase database = helper.getWritableDatabase();
-        Cursor cursor = database.query("game", null, "name=?", new String[]{"明日方舟 CN"}, null, null, null);
+        Cursor cursor = database.query("game", null, "name=?", new String[]{"明日方舟"}, null, null, null);
         if(cursor.moveToFirst())
         {
             Glide.with(Rootview.getContext()).load(cursor.getString(2)).animate(R.anim.item_alpha_in).thumbnail(0.1f).into(iconview1);
@@ -108,7 +108,7 @@ public class FragmentHome extends Fragment{
 
 
         }
-        cursor = database.query("game", null, "name=?", new String[]{"王者荣耀 CN"}, null, null, null);
+        cursor = database.query("game", null, "name=?", new String[]{"王者荣耀"}, null, null, null);
         if(cursor.moveToFirst())
         {
             Glide.with(Rootview.getContext()).load(cursor.getString(2)).animate(R.anim.item_alpha_in).thumbnail(0.1f).into(iconview4);
@@ -184,10 +184,10 @@ public class FragmentHome extends Fragment{
         public  void run()
         {
             DBGameService dbGameService=new DBGameService();
-            mark1=dbGameService.getAvgMark("明日方舟 CN");
+            mark1=dbGameService.getAvgMark("明日方舟");
             mark2=dbGameService.getAvgMark("脑裂");
             mark3=dbGameService.getAvgMark("濡沫江湖");
-            mark4=dbGameService.getAvgMark("王者荣耀 CN");
+            mark4=dbGameService.getAvgMark("王者荣耀");
 
             Message msg = Message.obtain();
 
@@ -201,7 +201,7 @@ cl1.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
         Intent intent = new Intent(FragmentHome.this.getContext(), GameinfoActivity.class);
-        intent.putExtra("gamename","明日方舟 CN");
+        intent.putExtra("gamename","明日方舟");
         startActivity(intent);
 
     }
@@ -228,7 +228,7 @@ cl1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(FragmentHome.this.getContext(), GameinfoActivity.class);
-                intent.putExtra("gamename","王者荣耀 CN");
+                intent.putExtra("gamename","王者荣耀");
                 startActivity(intent);
 
             }
